@@ -29,7 +29,7 @@ SOEN 341 Project
     $ pip install -r requirements.txt
     ```
 5. Setup a local PostgreSQL database
-6. Rename `.env.sample` to `.env` and change any values as needed
+6. Copy `.env.sample`, rename to `.env` and change any values as needed.
 7. Start application
     ```sh
     $ flask run

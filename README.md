@@ -8,6 +8,7 @@ SOEN 341 Project
 - [Python 3](https://www.python.org/)
 - [Flask 1.1.2](https://flask.palletsprojects.com/en/1.1.x/)
 - [PostgreSQL >= 13.0](https://www.postgresql.org/)
+- [Jinga 2.11.2](https://jinja.palletsprojects.com/en/2.11.x/)
 
 ### Setup
 

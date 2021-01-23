@@ -1,7 +1,7 @@
 # SOEN341
 SOEN 341 Project
 
-## Students
+## Team
 |Name|Email|
 |----|-----|
-|Fadi Albasha|fadi.albasha@gmail.com|
+|[Fadi Albasha](https://github.com/fadi-albasha)|fadi.albasha@gmail.com|

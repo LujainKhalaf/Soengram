@@ -1,6 +1,8 @@
 # SOEN341
 SOEN 341 Project
 
+Lea Lakkis 40125381
+
 ## Getting Started
 
 ### Requirements

@@ -35,3 +35,7 @@ SOEN 341 Project
     ```sh
     $ flask run
     ```
+
+## Team
+
+- Domenic Seccareccia [(@domsec)](https://github.com/domsec)

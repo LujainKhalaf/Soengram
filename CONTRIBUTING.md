@@ -70,7 +70,7 @@ This is refering to the pull request title which should follow the same format a
 
 ### Commits
 
-Commits have no defined naming template, but they should be descriptive of what changes were made in that commit.
+Commits have no defined naming template, but they should be descriptive of what changes were made in that commit and start with the id of the issue it is associated to i.e. #10
 
 ### Ticket Types
 

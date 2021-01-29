@@ -40,3 +40,4 @@ SOEN 341 Project
 
 - Domenic Seccareccia [(@domsec)](https://github.com/domsec)
 - Lea Lakkis [(@lea)](https://github.com/lealakkis)
+- Jason Gerard [(@jason-gerard)](https://github.com/jason-gerard)

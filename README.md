@@ -37,3 +37,8 @@ Lea Lakkis 40125381
     ```sh
     $ flask run
     ```
+
+## Team
+
+- Domenic Seccareccia [(@domsec)](https://github.com/domsec)
+- Leak Lakkis [(@lealakkis)](https://github.com/lealakkis)

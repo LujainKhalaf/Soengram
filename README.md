@@ -39,3 +39,4 @@ SOEN 341 Project
 ## Team
 
 - Domenic Seccareccia [(@domsec)](https://github.com/domsec)
+- Jason Gerard [(@jason-gerard)](https://github.com/jason-gerard)

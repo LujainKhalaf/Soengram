@@ -36,6 +36,10 @@ SOEN 341 Project
     $ flask run
     ```
 
+## Contributing
+
+See `CONTRIBUTING.md` detailing basic guidlines for pushing new code to the repo and a basic workflow example.
+
 ## Team
 
 - Domenic Seccareccia [(@domsec)](https://github.com/domsec)

@@ -66,11 +66,11 @@ The `issue-number` is the number associated with the ticket / issue on the [issu
 
 ### Pull Requests
 
-This is refering to the pull request title which should follow the same format as the branch name for simplicity. So a branch with the name of `doc/10_add_readme_info` should have a pull request with the title of `doc/10_add_readme_info`
+This is refering to the pull request title which should describe in short what the PR is doing as well as including the issue id. An example is `#22 new api endpoint for likes`
 
 ### Commits
 
-Commits have no defined naming template, but they should be descriptive of what changes were made in that commit and start with the id of the issue it is associated to i.e. #10
+Commits have no defined naming template, but they should be descriptive of what changes were made in that commit and start with the id of the issue it is associated to i.e. #10 an example is `#10 added my name to the readme file`
 
 ### Ticket Types
 

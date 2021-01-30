@@ -43,3 +43,4 @@ SOEN 341 Project
 - Jason Gerard [(@jason-gerard)](https://github.com/jason-gerard)
 - Mahmoud Elsayed [(@mnashat)](https://github.com/mnashat)
 - Fadi Albasha [(@fadi-albasha)](https://github.com/fadi-albasha)
+- Lujain Khalaf [(@lujainkhalaf)](https://github.com/LujainKhalaf)

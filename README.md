@@ -1,6 +1,10 @@
 # SOEN341
 SOEN 341 Project
 
+## Objectives / Description
+
+The goal of this app is to allow our users to post photos and interact with others. Our users are anyone who wants to use social media to interact with others. With features such as following and commenting we allow for a lot of interaction. A user can signup/login and immediately start posting, following, and commenting.
+
 ## Features
 
 Our instagram clone is a modern web app which gives users full functionality to post, follow, comment and more. There is an intuitive user interface from the signup, to the profile, to the feed. A full feature list is as follows:

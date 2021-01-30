@@ -1,6 +1,14 @@
 # SOEN341
 SOEN 341 Project
 
+## Features
+
+Our instagram clone is a modern web app which gives users full functionality to post, follow, comment and more. There is an intuitive user interface from the signup, to the profile, to the feed. A full feature list is as follows:
+
+- Post pictures with description
+- Follow other users on the platform
+- Comment on other users posts
+
 ## Getting Started
 
 ### Requirements

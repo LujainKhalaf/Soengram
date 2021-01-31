@@ -47,3 +47,4 @@ The goal of this app is to allow our users to post photos and interact with othe
 - Jason Gerard [(@jason-gerard)](https://github.com/jason-gerard)
 - Mahmoud Elsayed [(@mnashat)](https://github.com/mnashat)
 - Fadi Albasha [(@fadi-albasha)](https://github.com/fadi-albasha)
+- David Lemme [(@David)](https://github.com/davrine)

@@ -1,6 +1,10 @@
 # SOEN341
 SOEN 341 Project
 
+## Objectives / Description
+
+The goal of this app is to allow our users to post photos and interact with others. Our users are anyone who wants to use social media to interact with others. With features such as following and commenting we allow for a lot of interaction. A user can signup/login and immediately start posting, following, and commenting.
+
 ## Getting Started
 
 ### Requirements
@@ -44,3 +48,5 @@ SOEN 341 Project
 - Mahmoud Elsayed [(@mnashat)](https://github.com/mnashat)
 - Fadi Albasha [(@fadi-albasha)](https://github.com/fadi-albasha)
 - Lujain Khalaf [(@lujainkhalaf)](https://github.com/LujainKhalaf)
+- David Lemme [(@David)](https://github.com/davrine)
+

@@ -56,11 +56,9 @@ The standard naming convention for naming branches, commits, and pull requests i
 
 ### Branches
 
-Branches should be named with the following template `[ticket-type]/[issue-number]_short_description`
+Branches should be named with the following template `[issue-number]_short_description`
 
-An example of this is for creating a branch to update the readme file `doc/10_add_readme_info`
-
-For a list of `ticket-types` see the `ticket-types` section below.
+An example of this is for creating a branch to update the readme file `10_add_readme_info`
 
 The `issue-number` is the number associated with the ticket / issue on the [issues page](https://github.com/LujainKhalaf/SOEN341/issues)
 
@@ -68,14 +66,8 @@ The `issue-number` is the number associated with the ticket / issue on the [issu
 
 This is refering to the pull request title which should describe in short what the PR is doing as well as including the issue id. An example is `#22 new api endpoint for likes`
 
+In the body or description of the pull request also include the key phrase close [issue number] ex `close #10` this will link the pull request to the issue and automatically close the issue when the pr is merged.
+
 ### Commits
 
-Commits have no defined naming template, but they should be descriptive of what changes were made in that commit and start with the id of the issue it is associated to i.e. #10 an example is `#10 added my name to the readme file`
-
-### Ticket Types
-
-- feat
-- bug
-- doc
-- config
-- refactor
+Commits have no defined naming template, but they should be descriptive of what changes were made in that commit an example is `added my name to the readme file`

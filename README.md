@@ -48,6 +48,10 @@ Our instagram clone is a modern web app which gives users full functionality to 
     $ flask run
     ```
 
+## Contributing
+
+See `CONTRIBUTING.md` detailing basic guidlines for pushing new code to the repo and a basic workflow example.
+
 ## Team
 
 - Domenic Seccareccia [(@domsec)](https://github.com/domsec)

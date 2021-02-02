@@ -1,19 +1,22 @@
-# SOEN341
-SOEN 341 Project
+# Soengram
 
-## Objectives / Description
+> A photo sharing social networking website
 
-The goal of this app is to allow our users to post photos and interact with others. Our users are anyone who wants to use social media to interact with others. With features such as following and commenting we allow for a lot of interaction. A user can signup/login and immediately start posting, following, and commenting.
+## About this Project
 
-## Features
+Social media platforms provide instant gratification and analytical data among users - businesses, celebrities, influencers and everyday individuals - as they are able to gauge engagement and impact through their posts and comments received by other users. Follower count is a measure by which users are gauge their popularity among other users on the platform. Soengram provides users all these tools by allowing users to easily interact with others through posting photos on their account timeline and spark conversation through commenting on posts. Users are also able to stay up to date and informed by following friends, family and favorite celebrities and influencers.
 
-Our instagram clone is a modern web app which gives users full functionality to post, follow, comment and more. There is an intuitive user interface from the signup, to the profile, to the feed. A full feature list is as follows:
+### Objective
+
+Develop a photo sharing social networking website where businesses, celebrities, influencers and regular everyday individuals can post photos, commnet on posts and follow other users.
+
+### Features
 
 - Post pictures with description
 - Follow other users on the platform
 - Comment on other users posts
 
-## Built With
+### Built With
 
 - [Python 3](https://www.python.org/)
 - [PostgreSQL 13.0 or later](https://www.postgresql.org/)
@@ -22,14 +25,19 @@ Our instagram clone is a modern web app which gives users full functionality to 
 
 ## Getting Started
 
+### Prerequisites
+
+Before you continue, ensure you have installed the following requirements:
+- [Python 3](https://www.python.org/)
+- [PostgreSQL 13.0 or later](https://www.postgresql.org/)
+
 ### Setup
 
-1. Make sure all the requirements mentioned above are installed
-2. Clone the repository 
+1. Clone the repository 
     ```sh
     $ git clone https://github.com/LujainKhalaf/SOEN341.git
     ```
-3. Create a virtualenv and activate it
+2. Create a virtualenv and activate it
     ```sh
     $ cd SOEN341
 
@@ -37,21 +45,21 @@ Our instagram clone is a modern web app which gives users full functionality to 
     $ py -3 -m venv venv
     $ venv\Scripts\activate
     ```
-4. Instal all packages
+3. Instal all packages
     ```sh
     $ pip install -r requirements.txt
     ```
-5. Setup a local PostgreSQL database
-6. Copy `.env.sample`, rename to `.env` and edit the following lines
+4. Setup a local PostgreSQL database
+5. Copy `.env.sample`, rename to `.env` and edit the following lines
     ```
     DB_TYPE="postgresql"
     DB_HOST="localhost"
     DB_PORT="5432"
     DB_USERNAME="your_username"
     DB_PASSWORD="your_password"
-    DB_DATABASE="soen-341"
+    DB_DATABASE="soengram"
     ```
-7. Start application
+6. Start application
     ```sh
     $ flask run
     ```

@@ -4,11 +4,11 @@
 
 ## About this Project
 
-Social media platforms provide instant gratification and analytical data among users - businesses, celebrities, influencers and everyday individuals - as they are able to gauge engagement and impact through their posts and comments received by other users. Follower count is a measure by which users are gauge their popularity among other users on the platform. Soengram provides users all these tools by allowing users to easily interact with others through posting photos on their account timeline and spark conversation through commenting on posts. Users are also able to stay up to date and informed by following friends, family and favorite celebrities and influencers.
+Social media platforms provide instant gratification and analytical data among users - businesses, celebrities, influencers and everyday individuals - as they are able to gauge engagement and impact through their posts and comments received by other users. Follower count is a measure by which users can gauge their popularity among other users on the platform. Soengram provides users all these tools by allowing users to easily interact with others through posting photos on their account timeline and spark conversation through commenting on posts. Users are also able to stay up to date and informed by following friends, family and favorite celebrities and influencers.
 
 ### Objective
 
-Develop a photo sharing social networking website where businesses, celebrities, influencers and regular everyday individuals can post photos, commnet on posts and follow other users.
+Develop a photo sharing social networking website where businesses, celebrities, influencers and regular everyday individuals can post photos, comment on posts and follow other users.
 
 ### Features
 

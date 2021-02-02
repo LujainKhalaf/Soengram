@@ -13,14 +13,14 @@ Our instagram clone is a modern web app which gives users full functionality to 
 - Follow other users on the platform
 - Comment on other users posts
 
-## Getting Started
-
-### Requirements
+## Built With
 
 - [Python 3](https://www.python.org/)
+- [PostgreSQL 13.0 or later](https://www.postgresql.org/)
 - [Flask 1.1.2](https://flask.palletsprojects.com/en/1.1.x/)
-- [PostgreSQL >= 13.0](https://www.postgresql.org/)
 - [Jinga 2.11.2](https://jinja.palletsprojects.com/en/2.11.x/)
+
+## Getting Started
 
 ### Setup
 
@@ -35,18 +35,34 @@ Our instagram clone is a modern web app which gives users full functionality to 
 
     # Windows
     $ py -3 -m venv venv
-    $ venv\Scripts\activate.bat
+    $ venv\Scripts\activate
     ```
 4. Instal all packages
     ```sh
     $ pip install -r requirements.txt
     ```
 5. Setup a local PostgreSQL database
-6. Copy `.env.sample`, rename to `.env` and change any values as needed.
+6. Copy `.env.sample`, rename to `.env` and edit the following lines
+    ```
+    DB_TYPE="postgresql"
+    DB_HOST="localhost"
+    DB_PORT="5432"
+    DB_USERNAME="your_username"
+    DB_PASSWORD="your_password"
+    DB_DATABASE="soen-341"
+    ```
 7. Start application
     ```sh
     $ flask run
     ```
+
+### Running the Tests
+
+Run all tests with the following command in the project virtual environment.
+
+```
+$ pytest
+```
 
 ## Contributing
 
@@ -61,4 +77,3 @@ See `CONTRIBUTING.md` detailing basic guidlines for pushing new code to the repo
 - Fadi Albasha [(@fadi-albasha)](https://github.com/fadi-albasha)
 - Lujain Khalaf [(@lujainkhalaf)](https://github.com/LujainKhalaf)
 - David Lemme [(@David)](https://github.com/davrine)
-

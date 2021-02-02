@@ -66,7 +66,7 @@ $ pytest
 
 ## Contributing
 
-See `CONTRIBUTING.md` detailing basic guidlines for pushing new code to the repo and a basic workflow example.
+See [CONTRIBUTING.md](CONTRIBUTING.md) detailing basic guidlines for pushing new code to the repo and a basic workflow example.
 
 ## Team
 

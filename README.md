@@ -35,7 +35,7 @@ Before you continue, ensure you have installed the following requirements:
 
 1. Clone the repository 
     ```sh
-    $ git clone https://github.com/LujainKhalaf/SOEN341.git
+    $ git clone https://github.com/LujainKhalaf/Soengram.git
     ```
 2. Create a virtualenv and activate it
     ```sh

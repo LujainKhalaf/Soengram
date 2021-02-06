@@ -1,6 +1,7 @@
 from flask import Flask
-from app import index
+from app.controllers import index_controller, auth_controller
 from app.extensions import db, migrate
+
 
 def create_app():
     app = Flask(__name__)
@@ -15,9 +16,8 @@ def create_app():
 def register_extensions(app):
     db.init_app(app)
     migrate.init_app(app, db)
-    return None
 
 
 def register_blueprints(app):
-    app.register_blueprint(index.index_controller.bp)
-    return None
+    app.register_blueprint(index_controller.index_routes)
+    app.register_blueprint(auth_controller.auth_routes, url_prefix='/auth')

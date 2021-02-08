@@ -24,3 +24,7 @@ class User(db.Model):
     @staticmethod
     def get_by_email(email: str) -> User:
         return User.query.filter_by(email=email).first()
+
+    @staticmethod
+    def get_by_user_id(user_id: int) -> User:
+        return User.query.get(user_id)

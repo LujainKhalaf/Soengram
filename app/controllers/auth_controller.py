@@ -7,7 +7,7 @@ from app.utils.validation import is_email_valid
 auth_routes = Blueprint('auth_routes', __name__)
 
 
-@auth_routes.route('/signup', methods=['POST'])
+@auth_routes.route('/signup', methods=['POST', 'GET'])
 def sign_up() -> Tuple[str, int]:
     if request.method == 'POST':
         full_name, username, email, password = request.form.values()

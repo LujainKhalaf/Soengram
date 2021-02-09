@@ -68,7 +68,7 @@ Before you continue, ensure you have installed the following requirements:
    $ flask db migrate
    $ flask db upgrade
    ```
-6. Start application
+8. Start application
     ```sh
     $ flask run
     ```

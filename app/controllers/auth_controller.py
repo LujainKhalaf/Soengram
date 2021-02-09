@@ -22,3 +22,14 @@ def sign_up() -> Tuple[str, int]:
 
     if request.method == 'GET':
         return render_template('signup.html')
+
+
+@auth_routes.route('/signin', methods=['POST'])
+def sign_in() -> Tuple[str, int]:
+    if request.method == 'POST':
+        email, password = request.form.values()
+
+        if not is_email_valid(email):
+            return '', 400
+
+        return auth_service.sign_in(email, password)

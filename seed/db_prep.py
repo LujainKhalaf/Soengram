@@ -5,7 +5,7 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 
 load_dotenv()
-conn_postgres = psycopg2.connect(
+conn = psycopg2.connect(
     database=os.getenv('postgres'),
     user=os.getenv('DB_USERNAME'),
     password=os.getenv('DB_PASSWORD'),
@@ -13,9 +13,9 @@ conn_postgres = psycopg2.connect(
     port=os.getenv('DB_PORT')
 )
 
-conn_postgres.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
-cur = conn_postgres.cursor()
+cur = conn.cursor()
 
 cur.execute('''
     DROP DATABASE IF EXISTS soengram;
@@ -25,5 +25,6 @@ cur.execute('''
     CREATE DATABASE soengram;
 ''')
 
-conn_postgres.commit()
-conn_postgres.close()
+conn.commit()
+cur.close()
+conn.close()

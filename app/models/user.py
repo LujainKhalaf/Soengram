@@ -1,3 +1,4 @@
+from __future__ import annotations
 from app.extensions import db
 
 
@@ -11,3 +12,15 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     full_name = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return f'<User username={self.username}>'
+
+    @staticmethod
+    def insert(user: User) -> None:
+        db.session.add(user)
+        db.session.commit()
+
+    @staticmethod
+    def get_by_email(email: str) -> User:
+        return User.query.filter_by(email=email).first()

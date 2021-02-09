@@ -11,7 +11,8 @@ class User(db.Model):
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     full_name = db.Column(db.String(50), nullable=False)
-    created_at = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime, nullable=False)
+    posts = db.relationship('Post', backref='user', lazy='select')
 
     def __repr__(self):
         return f'<User username={self.username}>'

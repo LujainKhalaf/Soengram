@@ -22,6 +22,10 @@ def sign_in(email: str, password: str) -> Tuple[str, int]:
 
         if is_authenticated:
             session['token'] = user_by_email.user_id
-            return '', 200
+            return '', 204
 
     return '', 404
+
+
+def sign_out() -> None:
+    session.pop('token', None)

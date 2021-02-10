@@ -6,6 +6,7 @@ class Config(object):
     FLASK_APP = os.environ.get('FLASK_APP')
     FLASK_ENV = os.environ.get('FLASK_ENV')
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    POST_UPLOAD_FOLDER = os.environ.get('POST_UPLOAD_FOLDER')
 
     # Database
     SQLALCHEMY_DATABASE_URI = '{type}://{username}:{password}@{host}:{port}/{db}'.format(type=os.environ.get('DB_TYPE'),

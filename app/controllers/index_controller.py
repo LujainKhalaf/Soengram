@@ -1,4 +1,4 @@
-from flask import request, Blueprint, render_template, session
+from flask import request, Blueprint, render_template
 
 index_routes = Blueprint('index_routes', __name__)
 

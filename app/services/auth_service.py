@@ -2,7 +2,7 @@ from typing import Tuple
 from flask import session
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-from app.models.user import User
+from app.models import User
 
 
 def sign_up(user: User, password: str) -> None:

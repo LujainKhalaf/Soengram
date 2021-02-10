@@ -1,6 +1,6 @@
 from flask import session
 from functools import wraps
-from app.models.user import User
+from app.models import User
 
 
 def session_required(f):

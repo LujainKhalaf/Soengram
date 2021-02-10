@@ -41,3 +41,8 @@ class Post(db.Model):
 
     def __repr__(self):
         return f'<Post post_id={self.post_id}>'
+
+    @staticmethod
+    def insert(post: Post) -> None:
+        db.session.add(post)
+        db.session.commit()

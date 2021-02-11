@@ -1,0 +1,9 @@
+{% macro form_control(field) -%}
+    {% set css = "form-control" %}
+
+    {% if field.errors %}
+        {% set css = css + " is-invalid" %}
+    {% endif %}
+
+    {{ field(class=css, placeholder=field.label.text, required=false) }}
+{%- endmacro %}

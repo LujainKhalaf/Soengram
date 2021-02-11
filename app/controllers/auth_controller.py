@@ -1,5 +1,7 @@
 from typing import Tuple
 from flask import request, Blueprint, render_template
+
+from app.forms.signup_form import SignupForm
 from app.models.user import User
 from app.services import auth_service
 from app.utils.validation import is_email_valid
@@ -10,6 +12,8 @@ auth_routes = Blueprint('auth_routes', __name__)
 
 @auth_routes.route('/signup', methods=['POST', 'GET'])
 def sign_up() -> Tuple[str, int]:
+    form = SignupForm();
+
     if request.method == 'POST':
         full_name, username, email, password = request.form.values()
 
@@ -22,7 +26,7 @@ def sign_up() -> Tuple[str, int]:
         return render_template('index.html', message='Hello World!')
 
     if request.method == 'GET':
-        return render_template('signup.html')
+        return render_template('/account/signup.html', form=form)
 
 
 @auth_routes.route('/signin', methods=['POST'])

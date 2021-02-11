@@ -7,3 +7,73 @@ body {
     font-size: 14px;
     line-height: 18px;
 }
+
+a {
+    text-decoration: none;
+}
+
+button {
+    background-color: #0095F6;
+}
+
+.center {
+    display: block;
+    position: relative;
+    top: 50%;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+/*********************************/
+/* Account                       */
+/*********************************/
+
+.blk-acct-acs {
+    width: 350px;
+    border: 1px solid #dbdbdb;
+    background-color: white;
+}
+
+.signup {
+    padding: 0 0 34px 0;
+}
+
+.signup-title {
+    margin: 22px auto 12px;
+    text-align: center;
+}
+
+.signup-subtitle {
+    color: #8e8e8e;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 40px 10px;
+    text-align: center;
+}
+
+.signup-form {
+    padding: 0 40px 0 40px;
+    margin-top: 30px;
+}
+
+.signup-form .form-control {
+    margin-top: 5px;
+    height: 36px;
+    font-size: 12px;
+    background-color: #FAFAFA;
+    border-radius: 3px;
+}
+
+.signup-form .row .btn {
+    margin-top: 15px;
+    width: 268px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.signup-signin {
+    margin-top: 10px;
+    height: 60px;
+}

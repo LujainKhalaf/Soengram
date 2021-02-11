@@ -1,3 +1,4 @@
+from typing import Any
 from flask import request, Blueprint, render_template, redirect, url_for, flash
 from app.services import post_service
 from app.utils.session_decorators import session_required
@@ -8,7 +9,7 @@ post_routes = Blueprint('post_routes', __name__)
 
 @post_routes.route('/post', methods=['GET', 'POST'])
 @session_required
-def create_post(user_id):
+def create_post(user_id: int) -> Any:
     if request.method == 'GET':
         return render_template('create_post.html', message='Hello World!')
 
@@ -18,6 +19,9 @@ def create_post(user_id):
             flash('A valid image is required to make a post')
             return redirect(request.url)
 
-        post_service.create_post(request, user_id)
+        file = request.files['post_image']
+
+        post = post_service.post_builder(request, user_id)
+        post_service.create_post(post, file)
 
         return redirect(url_for("index_routes.index"))

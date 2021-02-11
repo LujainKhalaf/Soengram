@@ -59,7 +59,20 @@ Before you continue, ensure you have installed the following requirements:
     DB_PASSWORD="your_password"
     DB_DATABASE="soengram"
     ```
-6. Start application
+6. Prep the db by running this command in the root of the project
+   ```sh
+   $ python3 ./seed/db_prep.py
+   ```
+7. Make the db migrations
+   ```sh
+   $ flask db migrate
+   $ flask db upgrade
+   ```
+8. Seed test data
+   ```sh
+   $ python3 ./seed/seed.py
+   ```
+9. Start application
     ```sh
     $ flask run
     ```

@@ -33,11 +33,12 @@ for user in users:
 
 conn.commit()
 
+folder_dir = os.getenv('POST_UPLOAD_FOLDER') + 'seed/'
 description_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula sollicitudin nibh, ' \
                    'ac imperdiet leo laoreet quis. Duis risus ex, facilisis sed eros vitae, semper condimentum neque '
 posts = [{
     'user_id': ((i+1) // 2),
-    'image_url': f'static/{((i+1) // 2)}/{i}',
+    'image_url': f'{folder_dir}1.jpg',
     'description': description_text
 } for i in range(1, 21)]
 

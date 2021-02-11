@@ -1,7 +1,5 @@
 import re
-from app.utils.file import get_file_extension
-
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+from app.utils.file import get_file_extension, FORM_POST_IMAGE, ALLOWED_EXTENSIONS
 
 
 def is_email_valid(email: str) -> bool:
@@ -11,7 +9,7 @@ def is_email_valid(email: str) -> bool:
 
 
 def is_post_image_in_request(files) -> bool:
-    return 'post_image' not in files or files['post_image'].filename == ''
+    return FORM_POST_IMAGE not in files or files[FORM_POST_IMAGE].filename == ''
 
 
 def is_file_allowed(filename) -> bool:
@@ -19,4 +17,4 @@ def is_file_allowed(filename) -> bool:
 
 
 def is_post_image_valid(files) -> bool:
-    return is_post_image_in_request(files) and is_file_allowed(files['post_image'].filename)
+    return is_post_image_in_request(files) and is_file_allowed(files[FORM_POST_IMAGE].filename)

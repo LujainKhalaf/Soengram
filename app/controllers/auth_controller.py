@@ -1,5 +1,6 @@
 from typing import Tuple
 from flask import request, Blueprint, render_template
+from app.models import User
 from app.services import auth_service
 from app.utils.validation import is_email_valid
 from app.utils.session_decorators import session_required
@@ -15,7 +16,8 @@ def sign_up() -> Tuple[str, int]:
         if not is_email_valid(email):
             return render_template('signup.html', error='Invalid email address')
 
-        auth_service.sign_up(full_name, username, email, password)
+        user = User(full_name=full_name, username=username, email=email)
+        auth_service.sign_up(user, password)
 
         return render_template('index.html', message='Hello World!')
 

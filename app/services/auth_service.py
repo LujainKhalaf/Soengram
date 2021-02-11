@@ -5,16 +5,11 @@ from datetime import datetime
 from app.models import User
 
 
-def sign_up(full_name: str, username: str, email: str, password: str) -> None:
+def sign_up(user: User, password: str) -> None:
     hashed_password = generate_password_hash(password)
+    user.password = hashed_password
 
-    user = User(
-        full_name=full_name,
-        username=username,
-        email=email,
-        password=hashed_password,
-        created_at=datetime.now()
-    )
+    user.created_at = datetime.now()
 
     User.insert(user)
 

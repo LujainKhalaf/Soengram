@@ -28,7 +28,8 @@ button {
 /* Account                       */
 /*********************************/
 
-.blk-acct-acs {
+.container.signup,
+.container.signup-signin {
     width: 350px;
     border: 1px solid #dbdbdb;
     background-color: white;
@@ -36,6 +37,11 @@ button {
 
 .signup {
     padding: 0 0 34px 0;
+}
+
+.signup-signin {
+    margin-top: 10px;
+    height: 60px;
 }
 
 .signup-title {
@@ -71,9 +77,4 @@ button {
     border-radius: 5px;
     font-size: 12px;
     font-weight: bold;
-}
-
-.signup-signin {
-    margin-top: 10px;
-    height: 60px;
 }

@@ -1,9 +1,9 @@
 from __future__ import annotations
+
 from app.extensions import db
 
 
 class User(db.Model):
-
     __tablename__ = 'user'
 
     user_id = db.Column(db.Integer, primary_key=True)
@@ -28,3 +28,7 @@ class User(db.Model):
     @staticmethod
     def get_by_user_id(user_id: int) -> User:
         return User.query.get(user_id)
+
+    @staticmethod
+    def get_by_username(username: str) -> User:
+        return User.query.filter_by(username=username).first()

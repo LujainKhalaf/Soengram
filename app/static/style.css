@@ -78,3 +78,12 @@ button {
     font-size: 12px;
     font-weight: bold;
 }
+
+.error-group > p {
+    margin: 1px;
+    padding: 1px;
+}
+
+.error-group > p:last-child {
+    padding-bottom: 9px;
+}

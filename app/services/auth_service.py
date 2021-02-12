@@ -1,15 +1,19 @@
-from typing import Tuple
-from flask import session
-from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+from typing import Tuple
+
+from flask import session
+from flask_wtf import FlaskForm
+from werkzeug.security import generate_password_hash, check_password_hash
+
 from app.models.user import User
 
 
-def sign_up(user: User, password: str) -> None:
-    hashed_password = generate_password_hash(password)
-    user.password = hashed_password
-
-    user.created_at = datetime.now()
+def sign_up(form: FlaskForm) -> None:
+    user = User(username=form.username.data,
+                email=form.email.data,
+                password=generate_password_hash(form.password.data),
+                full_name=form.full_name.data,
+                created_at=datetime.now())
 
     User.insert(user)
 

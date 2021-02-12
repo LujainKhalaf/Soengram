@@ -16,7 +16,7 @@ def create_post(user_id: int) -> Any:
 
     if request.method == 'POST':
 
-        if is_post_image_valid(request.files):
+        if not is_post_image_valid(request.files):
             flash('A valid image is required to make a post')
             return redirect(request.url)
 

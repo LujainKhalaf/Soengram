@@ -63,12 +63,6 @@ class User(db.Model):
 
         db.session.commit()
 
-    @staticmethod
-    def get_by_username(username: str) -> User:
-        return User.query.filter_by(username=username).first()
-
-
-
 
 class Post(db.Model):
     __tablename__ = 'post'

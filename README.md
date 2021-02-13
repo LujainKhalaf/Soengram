@@ -65,7 +65,6 @@ Before you continue, ensure you have installed the following requirements:
    ```
 7. Make the db migrations
    ```sh
-   $ flask db migrate
    $ flask db upgrade
    ```
 8. Seed test data

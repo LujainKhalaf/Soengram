@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% from "components/form_control.html" import form_control with context %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="container signup">
+        <h1 class="signup-title">Soengram</h1>
+        <h2 class="signup-subtitle">Sign up to see photos and videos from your friends.</h2>
+
+        <form class="signup-form" action="/account/signup" method="post">
+            {{ form.csrf_token }}
+
+            <div class="error-group">
+                {% for field in form %}
+                    {% if field.errors %}
+                        {%  for err in field.errors %}
+                            <p class="text-danger text-center">{{ err }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {%  endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form_control(form.email) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form_control(form.full_name) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form_control(form.username) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form_control(form.password) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form.sign_up(class="btn btn-primary", placeholder=form.sign_up.label.text) }}
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container signup-signin">
+        <p class="center">
+            Have an account?
+            <a href="/account/signin">Sign in</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

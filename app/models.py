@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import List
 from app.extensions import db
 
 
@@ -12,9 +13,22 @@ class User(db.Model):
     full_name = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     posts = db.relationship('Post', backref='user', lazy='select')
+    following = db.relationship(
+        'User',
+        secondary=lambda: followers,
+        primaryjoin=lambda: (followers.c.user_id == User.user_id),
+        secondaryjoin=lambda: (followers.c.following_id == User.user_id),
+        backref='followers'
+    )
 
     def __repr__(self):
         return f'<User username={self.username}>'
+
+    def get_following(self) -> List[User]:
+        return self.following
+
+    def get_followers(self) -> List[User]:
+        return self.followers
 
     @staticmethod
     def insert(user: User) -> None:
@@ -29,6 +43,26 @@ class User(db.Model):
     def get_by_user_id(user_id: int) -> User:
         return User.query.get(user_id)
 
+    @staticmethod
+    def get_by_username(username: str) -> User:
+        return User.query.filter_by(username=username).first()
+
+    @staticmethod
+    def add_to_following(user_id: int, user_id_to_follow: int) -> None:
+        user = User.get_by_user_id(user_id)
+        user_to_follow = User.get_by_user_id(user_id_to_follow)
+        user.following.append(user_to_follow)
+
+        db.session.commit()
+
+    @staticmethod
+    def remove_from_following(user_id: int, user_id_to_remove: int) -> None:
+        user = User.get_by_user_id(user_id)
+        user_to_remove = User.get_by_user_id(user_id_to_remove)
+        user.following.remove(user_to_remove)
+
+        db.session.commit()
+
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -37,7 +71,19 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
         return f'<Post post_id={self.post_id}>'
+
+    @staticmethod
+    def insert(post: Post) -> None:
+        db.session.add(post)
+        db.session.commit()
+
+
+followers = db.Table(
+    'followers',
+    db.Column('user_id', db.Integer, db.ForeignKey('user.user_id'), primary_key=True),
+    db.Column('following_id', db.Integer, db.ForeignKey('user.user_id'), primary_key=True)
+)

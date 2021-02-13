@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, Length, ValidationError
 from wtforms_validators import AlphaNumeric
 
-from app.models.user import User
+from app.models import User
 
 
 class SignupForm(FlaskForm):

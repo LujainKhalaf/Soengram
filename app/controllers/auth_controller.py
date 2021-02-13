@@ -2,6 +2,7 @@ from typing import Tuple
 
 from flask import request, Blueprint, render_template, redirect
 
+from app.forms.signup_form import SignupForm
 from app.services import auth_service
 from app.utils.session_decorators import session_required
 from app.utils.validation import is_email_valid

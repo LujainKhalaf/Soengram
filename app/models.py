@@ -1,5 +1,6 @@
 from __future__ import annotations
 from app.extensions import db
+from typing import List, Dict
 
 
 class User(db.Model):
@@ -29,6 +30,17 @@ class User(db.Model):
     def get_by_user_id(user_id: int) -> User:
         return User.query.get(user_id)
 
+    @staticmethod
+    def get_by_username(username: str) -> User:
+        return User.query.filter_by(username=username).first()
+
+    @property
+    def serialize(self) -> Dict:
+        return {
+            'full_name': self.full_name,
+            'email': self.email
+        }
+
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -41,3 +53,15 @@ class Post(db.Model):
 
     def __repr__(self):
         return f'<Post post_id={self.post_id}>'
+
+    @staticmethod
+    def get_by_user_id(user_id: int) -> List[Post]:
+        return Post.query.filter_by(user_id=user_id).all()
+
+    @property
+    def serialize(self) -> Dict:
+        return {
+            'image_url': self.image_url,
+            'description': self.description,
+            'created_at': self.created_at
+        }

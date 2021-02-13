@@ -1,5 +1,5 @@
 from flask import Flask
-from app.controllers import index_controller, auth_controller
+from app.controllers import index_controller, auth_controller, user_controller
 from app.extensions import db, migrate
 
 
@@ -21,3 +21,5 @@ def register_extensions(app):
 def register_blueprints(app):
     app.register_blueprint(index_controller.index_routes)
     app.register_blueprint(auth_controller.auth_routes, url_prefix='/auth')
+    app.register_blueprint(user_controller.user_routes, url_prefix='/user')
+

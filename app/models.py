@@ -37,7 +37,12 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
         return f'<Post post_id={self.post_id}>'
+
+    @staticmethod
+    def insert(post: Post) -> None:
+        db.session.add(post)
+        db.session.commit()

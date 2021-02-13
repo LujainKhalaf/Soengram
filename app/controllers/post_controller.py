@@ -30,7 +30,7 @@ def create_post(user_id: int) -> Any:
 
 
 @post_routes.route('/delete', methods=['POST'])
-@session_required
+@login_required
 def delete_post(user_id) -> Any:
     post_id = request.form.values()
     post = Post.get_by_post_id(post_id)

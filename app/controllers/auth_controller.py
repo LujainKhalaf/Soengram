@@ -4,7 +4,7 @@ from flask import request, Blueprint, render_template, redirect
 
 from app.forms.signup_form import SignupForm
 from app.services import auth_service
-from app.utils.session_decorators import session_required
+from app.utils.session_decorators import login_required
 from app.utils.validation import is_email_valid
 
 auth_routes = Blueprint('auth_routes', __name__)
@@ -37,7 +37,7 @@ def sign_in() -> Tuple[str, int]:
 
 
 @auth_routes.route('/signout', methods=['POST'])
-@session_required
+@login_required
 def sign_out(user_id) -> Tuple[str, int]:
     if request.method == 'POST':
         auth_service.sign_out()

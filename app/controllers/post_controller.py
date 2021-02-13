@@ -2,7 +2,7 @@ from typing import Any
 from flask import request, Blueprint, render_template, redirect, url_for, flash
 from app.services import post_service
 from app.utils.file import FORM_POST_IMAGE
-from app.utils.session_decorators import session_required
+from app.utils.session_decorators import login_required
 from app.utils.validation import is_post_image_valid
 from app.models import Post
 
@@ -10,7 +10,7 @@ post_routes = Blueprint('post_routes', __name__)
 
 
 @post_routes.route('/post', methods=['GET', 'POST'])
-@session_required
+@login_required
 def create_post(user_id: int) -> Any:
     if request.method == 'GET':
         return render_template('create_post.html', message='Hello World!')

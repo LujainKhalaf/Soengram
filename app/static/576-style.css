@@ -1,0 +1,55 @@
+@media (max-width: 576px) {
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .navbar-brand {
+        margin-left: 10px;
+    }
+
+    .navbar-profile-pic {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .navbar-toggler {
+        border: 1px solid white !important;
+        margin-right: 10px;
+    }
+
+    .nav-item.display-sm {
+        display: block;
+    }
+
+    .nav-item.display-lg,
+    .nav-item.display-md {
+        display: none;
+    }
+
+    .navbar-collapse {
+        margin-top: 13px;
+        max-width: 100%;
+    }
+
+    .container-fluid {
+        background-color: white;
+    }
+
+    .navbar-nav > li {
+        background-color: #FFFFFF;
+    }
+
+    .navbar-nav > li:not(:first-child) {
+        border-top: 1px solid #DBDBDB;
+    }
+
+    .navbar-nav > li:last-child {
+        border-bottom: 1px solid #DBDBDB;
+    }
+
+    .dropdown-item i {
+        padding-right: 10px;
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center">
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-light bg-white">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Soengram</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item display-lg display-md">
+                        {% if url_for(request.endpoint) == '/' %}
+                            <a class="nav-link" aria-current="page" href="/">
+                                <i class="bi bi-house-door-fill"></i>
+                            </a>
+                        {% else %}
+                            <a class="nav-link" aria-current="page" href="/">
+                                <i class="bi bi-house-door"></i>
+                            </a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item dropdown display-lg display-md">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="navbar-profile-pic rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow rounded" aria-labelledby="navbarDropdown">
+                            <span class="dropdown-menu-arrow"></span>
+                            <li>
+                                <a class="dropdown-item" href="/{{ session['logged_in'].username }}">
+                                    <i class="bi bi-person-circle align-top"></i>
+                                    <span class="align-middle">Profile</span>
+                                </a>
+                            </li>
+{# TODO: Uncomment when such features are added #}
+{#                            <li>#}
+{#                                <a class="dropdown-item" href="#">#}
+{#                                    <i class="bi bi-gear-wide align-top"></i>#}
+{#                                    <span class="align-middle">Settings</span>#}
+{#                                </a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <hr class="dropdown-divider">#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a class="dropdown-item" href="#">#}
+{#                                    <i class="bi bi-box-arrow-in-right align-top"></i>#}
+{#                                    <span class="align-middle">Sign Out</span>#}
+{#                                </a>#}
+{#                            </li>#}
+                        </ul>
+                    </li>
+
+                    {# Dropdown items for Mobile devices #}
+
+                    <li class="nav-item display-sm">
+                        {% if url_for(request.endpoint) == '/' %}
+                            <a class="dropdown-item" href="/">
+                                <i class="bi bi-house-door-fill"></i>
+                                <span class="align-middle">Home</span>
+                            </a>
+                        {% else %}
+                            <a class="dropdown-item" href="/">
+                                <i class="bi bi-house-door"></i>
+                                <span class="align-middle">Home</span>
+                            </a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item display-sm">
+                        <a class="dropdown-item" href="/{{ session['logged_in'].username }}">
+                            <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="navbar-profile-pic rounded-circle">
+                            <span class="align-middle" style="padding-left: 10px;">Profile</span>
+                        </a>
+                    </li>
+{# TODO: Uncomment when such features are added #}
+{#                    <li class="nav-item display-sm">#}
+{#                        <a class="dropdown-item" href="#">#}
+{#                            <i class="bi bi-gear-wide align-top"></i>#}
+{#                            <span class="align-middle">Settings</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li class="nav-item display-sm">#}
+{#                        <a class="dropdown-item" href="#">#}
+{#                            <i class="bi bi-box-arrow-in-right align-top"></i>#}
+{#                            <span class="align-middle">Sign Out</span>#}
+{#                        </a>#}
+{#                    </li>#}
+
+                    {# Dropdown items for Mobile devices #}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

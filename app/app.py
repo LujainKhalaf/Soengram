@@ -22,4 +22,4 @@ def register_blueprints(app):
     app.register_blueprint(index_controller.index_routes)
     app.register_blueprint(auth_controller.auth_routes, url_prefix='/account')
     app.register_blueprint(post_controller.post_routes)
-    app.register_blueprint(user_controller.user_routes, url_prefix='/user')
+    app.register_blueprint(user_controller.user_routes)

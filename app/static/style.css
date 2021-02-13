@@ -1,15 +1,33 @@
 /*********************************/
 /* Common                        */
 /*********************************/
+html {
+    font-family: "Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
 
 body {
     background-color: #FAFAFA;
-    font-size: 14px;
     line-height: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: white;
+    width: auto;
+    height: 55px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #DBDBDB;
 }
 
 a {
     text-decoration: none;
+}
+
+i {
+    color: black;
 }
 
 button {
@@ -22,6 +40,100 @@ button {
     top: 50%;
     text-align: center;
     transform: translateY(-50%);
+}
+
+/*********************************/
+/* Navbar                        */
+/*********************************/
+
+.navbar {
+    max-height: 55px;
+    width: 975px;
+}
+
+.navbar-brand,
+.navbar-brand:hover {
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.bi-house-door-fill,
+.bi-house-door {
+    font-size: 1.7rem
+}
+
+.navbar-profile-pic {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.dropdown-menu {
+    width: 200px;
+    font-size: 14px;
+}
+
+.dropdown-menu-arrow {
+  top: -25px;
+  left: 90.5%;
+  width: 0;
+  height: 0;
+  position: relative;
+}
+
+.dropdown-menu-arrow:before,
+.dropdown-menu-arrow:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 7px 8px;
+  border-style: solid;
+  border-color: transparent;
+  z-index: 1001;
+}
+
+.dropdown-menu-arrow:after {
+  bottom: -18px;
+  right: -8px;
+  border-bottom-color: #FFF;
+}
+
+.dropdown-menu-arrow:before {
+  bottom: -17px;
+  right: -8px;
+  border-bottom-color: rgba(0,0,0,.15);
+}
+
+.dropdown-item:first-child {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.dropdown-item:not(:first-child) {
+    padding-bottom: 8px;
+}
+
+.dropdown-item:active {
+    color: black;
+    background-color: #EBECEB;
+}
+
+.dropdown-item i {
+    padding-right: 10px;
+    font-size: 16px;
+}
+
+.nav-item.display-sm {
+    display: none;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 /*********************************/

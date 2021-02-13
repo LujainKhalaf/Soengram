@@ -81,6 +81,15 @@ class Post(db.Model):
         db.session.add(post)
         db.session.commit()
 
+    @staticmethod
+    def get_by_post_id(post_id: int) -> Post:
+        return Post.query.get(post_id)
+
+    @staticmethod
+    def delete(post: Post) -> None:
+        db.session.delete(post)
+        db.session.commit()
+
 
 followers = db.Table(
     'followers',

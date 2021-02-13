@@ -44,6 +44,10 @@ class User(db.Model):
         return User.query.get(user_id)
 
     @staticmethod
+    def get_by_username(username: str) -> User:
+        return User.query.filter_by(username=username).first()
+
+    @staticmethod
     def add_to_following(user_id: int, user_id_to_follow: int) -> None:
         user = User.get_by_user_id(user_id)
         user_to_follow = User.get_by_user_id(user_id_to_follow)
@@ -58,12 +62,6 @@ class User(db.Model):
         user.following.remove(user_to_remove)
 
         db.session.commit()
-
-    @staticmethod
-    def get_by_username(username: str) -> User:
-        return User.query.filter_by(username=username).first()
-
-
 
 
 class Post(db.Model):

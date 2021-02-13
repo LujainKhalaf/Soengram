@@ -39,7 +39,7 @@ Before you continue, ensure you have installed the following requirements:
     ```
 2. Create a virtualenv and activate it
     ```sh
-    $ cd SOEN341
+    $ cd Soengram
 
     # Windows
     $ py -3 -m venv venv

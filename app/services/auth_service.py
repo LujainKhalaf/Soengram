@@ -5,7 +5,7 @@ from flask import session
 from flask_wtf import FlaskForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app.models.user import User
+from app.models import User
 
 
 def sign_up(form: FlaskForm) -> None:

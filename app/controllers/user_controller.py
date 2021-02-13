@@ -15,5 +15,5 @@ def get_user(username) -> Any:
         is_me = user.user_id == session['token']
         return render_template('profile.html', user=user, is_me=is_me), 200
     else:
-        return '', 204
+        return '', 404
     

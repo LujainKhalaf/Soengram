@@ -16,7 +16,7 @@ def sign_up() -> Tuple[str, int]:
 
     if form.validate_on_submit():
         auth_service.sign_up(form)
-        auth_service.sign_in(form.username.data, form.password.data)
+        auth_service.sign_in(form.email.data, form.password.data)
 
         return redirect("/")
 

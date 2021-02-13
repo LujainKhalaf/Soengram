@@ -29,6 +29,10 @@ class User(db.Model):
     def get_by_user_id(user_id: int) -> User:
         return User.query.get(user_id)
 
+    @staticmethod
+    def get_by_username(username: str) -> User:
+        return User.query.filter_by(username=username).first()
+
 
 class Post(db.Model):
     __tablename__ = 'post'

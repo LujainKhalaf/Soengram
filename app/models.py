@@ -83,10 +83,6 @@ class Post(db.Model):
         db.session.add(post)
         db.session.commit()
 
-    @staticmethod
-    def get_by_user_id(user_id: int) -> List[Post]:
-        return Post.query.filter_by(user_id=user_id).all()
-
 
 followers = db.Table(
     'followers',

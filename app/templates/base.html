@@ -18,7 +18,9 @@
 
 </head>
 <body>
-    {% include "common/_header.html" %}
+    {% if session['token'] %}
+        {% include "common/_header.html" %}
+    {% endif %}
 
     <div class="container">
         {%  block content %}{% endblock %}

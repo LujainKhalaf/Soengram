@@ -8,6 +8,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User
 
 
+class LoggedInUser:
+    def __init__(self, user_id, username):
+        self.user_id = user_id
+        self.username = username
+
+
 def sign_up(form: FlaskForm) -> None:
     user = User(username=form.username.data,
                 email=form.email.data,
@@ -19,17 +25,18 @@ def sign_up(form: FlaskForm) -> None:
 
 
 def sign_in(email: str, password: str) -> Tuple[str, int]:
-    user_by_email = User.get_by_email(email)
+    user = User.get_by_email(email)
 
-    if user_by_email:
-        is_authenticated = check_password_hash(user_by_email.password, password)
+    if user:
+        is_authenticated = check_password_hash(user.password, password)
 
         if is_authenticated:
-            session['token'] = user_by_email.user_id
+            logged_in_user = LoggedInUser(user.user_id, user.username)
+            session['logged_in'] = logged_in_user.__dict__
             return '', 204
 
     return '', 404
 
 
 def sign_out() -> None:
-    session.pop('token', None)
+    session.pop('logged_in', None)

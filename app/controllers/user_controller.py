@@ -1,14 +1,14 @@
 from typing import Any
 from flask import Blueprint, render_template, session
 from app.models import User
-from app.utils.session_decorators import session_required
+from app.utils.session_decorators import login_required
 
 
 user_routes = Blueprint('user_routes', __name__)
 
 
 @user_routes.route('/<username>', methods=['GET'])
-@session_required
+@login_required
 def get_user(user_id, username) -> Any:
     user = User.get_by_username(username)
     if user:

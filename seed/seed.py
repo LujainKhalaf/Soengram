@@ -35,8 +35,11 @@ for index, user in enumerate(users):
         VALUES ('{user['username']}', '{user['email']}', '{hashed_password}', '{user['full_name']}', '{created_at}')
     ''')
 
+conn.commit()
+
+for index in range(1, 21):
     posts = [{
-        'user_id': index+1,
+        'user_id': index,
         'image_url': f'{folder_dir}1.jpg',
         'description': description_text
     } for i in range(1, 21)]
@@ -47,6 +50,15 @@ for index, user in enumerate(users):
             INSERT
             INTO post (user_id, image_url, description, created_at)
             VALUES ('{post['user_id']}', '{post['image_url']}', '{post['description']}', '{created_at}')
+        ''')
+
+    following_ids = range(1, 10)
+
+    for following_id in following_ids:
+        cur.execute(f'''
+            INSERT
+            INTO followers (user_id, following_id)
+            VALUES ('{index}', '{following_id}')
         ''')
 
 conn.commit()

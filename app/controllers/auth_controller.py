@@ -6,7 +6,6 @@ from app.forms.signup_form import SignupForm
 from app.forms.signin_form import SigninForm
 from app.services import auth_service
 from app.utils.session_decorators import login_required, not_logged_in_required
-from app.utils.validation import is_email_valid
 
 auth_routes = Blueprint('auth_routes', __name__)
 
@@ -32,22 +31,7 @@ def sign_in() -> Any:
         return auth_service.sign_in(form.email.data, form.password.data)
 
     return render_template('account/signin.html', form=form)
-"""
-@not_logged_in_required
-def sign_in() -> Any:
-    if request.method == 'GET':
-        return render_template('account/signin.html')
 
-    # TODO: Refactor to follow the same structure as def sign_up()
-    if request.method == 'POST':
-        email, password = request.form.values()
-
-        # TODO: No longer needed with Flask-WTF library handling such validation.
-        if not is_email_valid(email):
-            return redirect(url_for(".sign_in"))
-
-        return auth_service.sign_in(email, password)
-"""
 
 @auth_routes.route('/signout', methods=['POST'])
 @login_required

@@ -16,11 +16,11 @@
 
             <div class="error-group">
                 {% for field in form %}
-                {% if field.errors %}
-                {% for err in field.errors %}
-                <p class="text-danger text-center">{{ err }}</p>
-                {% endfor %}
-                {% endif %}
+                    {% if field.errors %}
+                        {% for err in field.errors %}
+                            <p class="text-danger text-center">{{ err }}</p>
+                        {% endfor %}
+                    {% endif %}
                 {% endfor %}
             </div>
 
@@ -29,8 +29,8 @@
                     {{ form_control(form.email) }}
                 </div>
             </div>
-            
-            
+
+
             <div class="row">
                 <div class="col-lg-12">
                     {{ form_control(form.password) }}
@@ -45,8 +45,8 @@
     </div>
     <div class="container signup-signin">
         <p class="center">
-            Don't have an account?
-            <a href="/account/signup">Sign in</a>
+            Already have an account?
+            <a href="/account/signup">Sign up</a>
         </p>
     </div>
 </div>

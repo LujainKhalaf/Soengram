@@ -11,7 +11,7 @@ def get_file_extension(filename) -> str:
 
 
 def get_app_root_dir() -> str:
-    return join(dirname(realpath('app.py')), 'app/')
+    return join(dirname(realpath('app.py')), 'app')
 
 
 def get_image_url_dir(image_url) -> str:

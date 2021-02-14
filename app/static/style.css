@@ -144,7 +144,7 @@ button {
 /*********************************/
 /* Sign Up & Sign In             */
 /*********************************/
-
+.container.signin,
 .container.signup,
 .container.signup-signin {
     width: 350px;
@@ -152,7 +152,9 @@ button {
     background-color: white;
 }
 
-.signup {
+
+.signup,
+.signin {
     padding: 0 0 34px 0;
 }
 
@@ -161,12 +163,14 @@ button {
     height: 60px;
 }
 
-.signup-title {
+.signup-title,
+.signin-title {
     margin: 22px auto 12px;
     text-align: center;
 }
 
-.signup-subtitle {
+.signup-subtitle,
+.signin-subtitle {
     color: #8e8e8e;
     font-size: 17px;
     font-weight: 600;
@@ -175,12 +179,14 @@ button {
     text-align: center;
 }
 
-.signup-form {
+.signup-form,
+.signin-form {
     padding: 0 40px 0 40px;
     margin-top: 30px;
 }
 
-.signup-form .form-control {
+.signup-form .form-control,
+.signin-form .form-control {
     margin-top: 5px;
     height: 36px;
     font-size: 12px;
@@ -188,7 +194,8 @@ button {
     border-radius: 3px;
 }
 
-.signup-form .row .btn {
+.signup-form .row .btn,
+.signin-form .row .btn {
     margin-top: 15px;
     width: 268px;
     border-radius: 5px;

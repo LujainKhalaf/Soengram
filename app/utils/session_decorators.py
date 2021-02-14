@@ -9,7 +9,7 @@ def login_required(f):
         if 'logged_in' in session:
             does_user_session_exist = bool(User.get_by_user_id(session.get('logged_in')['user_id']))
             if does_user_session_exist:
-                return f(session.get('logged_in'), *args, **kwargs)
+                return f(session.get('logged_in').get('user_id'), *args, **kwargs)
 
         return '', 404
 

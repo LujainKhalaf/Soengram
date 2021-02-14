@@ -13,7 +13,6 @@ def get_user(user_id, username) -> Any:
     user = User.get_by_username(username)
     if user:
         is_me = user.user_id == user_id
-        return render_template('profile.html', user=user, is_me=is_me), 200
+        return render_template('account/profile.html', user=user, is_me=is_me), 200
     else:
         return '', 404
-    

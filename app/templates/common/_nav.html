@@ -8,15 +8,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item display-lg display-md">
-                        {% if url_for(request.endpoint) == '/' %}
-                            <a class="nav-link" aria-current="page" href="/">
-                                <i class="bi bi-house-door-fill"></i>
-                            </a>
-                        {% else %}
-                            <a class="nav-link" aria-current="page" href="/">
-                                <i class="bi bi-house-door"></i>
-                            </a>
-                        {% endif %}
+{#                        {% if url_for(request.endpoint) == '/' %}#}
+{#                            <a class="nav-link" aria-current="page" href="/">#}
+{#                                <i class="bi bi-house-door-fill"></i>#}
+{#                            </a>#}
+{#                        {% else %}#}
+{#                            <a class="nav-link" aria-current="page" href="/">#}
+{#                                <i class="bi bi-house-door"></i>#}
+{#                            </a>#}
+{#                        {% endif %}#}
                     </li>
                     <li class="nav-item dropdown display-lg display-md">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -52,17 +52,17 @@
                     {# Dropdown items for Mobile devices #}
 
                     <li class="nav-item display-sm">
-                        {% if url_for(request.endpoint) == '/' %}
-                            <a class="dropdown-item" href="/">
-                                <i class="bi bi-house-door-fill"></i>
-                                <span class="align-middle">Home</span>
-                            </a>
-                        {% else %}
-                            <a class="dropdown-item" href="/">
-                                <i class="bi bi-house-door"></i>
-                                <span class="align-middle">Home</span>
-                            </a>
-                        {% endif %}
+{#                        {% if url_for(request.endpoint) == '/' %}#}
+{#                            <a class="dropdown-item" href="/">#}
+{#                                <i class="bi bi-house-door-fill"></i>#}
+{#                                <span class="align-middle">Home</span>#}
+{#                            </a>#}
+{#                        {% else %}#}
+{#                            <a class="dropdown-item" href="/">#}
+{#                                <i class="bi bi-house-door"></i>#}
+{#                                <span class="align-middle">Home</span>#}
+{#                            </a>#}
+{#                        {% endif %}#}
                     </li>
                     <li class="nav-item display-sm">
                         <a class="dropdown-item" href="/{{ session['logged_in'].username }}">

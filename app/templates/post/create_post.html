@@ -8,11 +8,10 @@
 
 
     <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-        <div class="container signin">
-            <h1 class="signin-title">Soengram</h1>
-            <h2 class="signin-subtitle">Sign In to see photos and videos from your friends.</h2>
+        <div class="container create_post">
+            <h1 class="create_post-title">Soengram</h1>
 
-            <form class="signin-form" action="post" method="post" enctype="multipart/form-data">
+            <form class="create_post-form" action="post" method="post" enctype="multipart/form-data">
                 {{ form.csrf_token }}
 
                 <div class="error-group">
@@ -27,7 +26,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        {{ form_control(form.description) }}
+                        {{form.description(rows="5", class_="w-100") }}
                     </div>
                 </div>
 
@@ -44,12 +43,7 @@
                 </div>
             </form>
         </div>
-        <div class="container signup-signin">
-            <p class="center">
-                Don't have an account?
-                <a href="/account/signup">Sign up</a>
-            </p>
-        </div>
+        
     </div>
 
 

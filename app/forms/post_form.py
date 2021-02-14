@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
+from wtforms.widgets import TextArea
 
 
 class PostForm(FlaskForm):
@@ -10,7 +11,7 @@ class PostForm(FlaskForm):
         FileAllowed(['jpg', 'png'], 'Images only!')
     ])
 
-    description = StringField("Caption", validators=[
+    description = StringField("Caption", widget=TextArea(), validators=[
         DataRequired(message="Caption Required"),
     ])
 

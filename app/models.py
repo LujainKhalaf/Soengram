@@ -30,6 +30,15 @@ class User(db.Model):
     def get_followers(self) -> List[User]:
         return self.followers
 
+    def serialize_as_follower(self):
+        return {
+            'user_id': self.user_id,
+            'username': self.username,
+            'email': self.email,
+            'full_name': self.full_name,
+            'created_at': self.created_at
+        }
+
     @staticmethod
     def insert(user: User) -> None:
         db.session.add(user)

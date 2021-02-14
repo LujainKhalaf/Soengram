@@ -15,6 +15,10 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
+folder_dir = os.getenv('POST_UPLOAD_FOLDER') + 'seed/'
+description_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula sollicitudin nibh, ' \
+                   'ac imperdiet leo laoreet quis. Duis risus ex, facilisis sed eros vitae, semper condimentum neque '
+
 users = [{
     'username': f'user{i}',
     'email': f'user{i}@test.com',
@@ -22,7 +26,7 @@ users = [{
     'password': f'!Test{i}'
 } for i in range(1, 21)]
 
-for user in users:
+for index, user in enumerate(users):
     hashed_password = generate_password_hash(user['password'])
     created_at = datetime.now()
     cur.execute(f'''
@@ -31,24 +35,19 @@ for user in users:
         VALUES ('{user['username']}', '{user['email']}', '{hashed_password}', '{user['full_name']}', '{created_at}')
     ''')
 
-conn.commit()
+    posts = [{
+        'user_id': index+1,
+        'image_url': f'{folder_dir}1.jpg',
+        'description': description_text
+    } for i in range(1, 21)]
 
-folder_dir = os.getenv('POST_UPLOAD_FOLDER') + 'seed/'
-description_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula sollicitudin nibh, ' \
-                   'ac imperdiet leo laoreet quis. Duis risus ex, facilisis sed eros vitae, semper condimentum neque '
-posts = [{
-    'user_id': ((i+1) // 2),
-    'image_url': f'{folder_dir}1.jpg',
-    'description': description_text
-} for i in range(1, 21)]
-
-for post in posts:
-    created_at = datetime.now()
-    cur.execute(f'''
-        INSERT
-        INTO post (user_id, image_url, description, created_at)
-        VALUES ('{post['user_id']}', '{post['image_url']}', '{post['description']}', '{created_at}')
-    ''')
+    for post in posts:
+        created_at = datetime.now()
+        cur.execute(f'''
+            INSERT
+            INTO post (user_id, image_url, description, created_at)
+            VALUES ('{post['user_id']}', '{post['image_url']}', '{post['description']}', '{created_at}')
+        ''')
 
 conn.commit()
 cur.close()

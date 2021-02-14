@@ -52,7 +52,8 @@ for index in range(1, 21):
             VALUES ('{post['user_id']}', '{post['image_url']}', '{post['description']}', '{created_at}')
         ''')
 
-    following_ids = range(1, 10)
+for index in range(1, 11):
+    following_ids = range(11, 21)
 
     for following_id in following_ids:
         cur.execute(f'''

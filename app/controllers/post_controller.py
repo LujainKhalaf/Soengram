@@ -2,7 +2,6 @@ from typing import Any
 from flask import request, Blueprint, render_template, redirect
 from app.services import post_service
 from app.utils.session_decorators import login_required, get_url_for_profile
-from app.utils.validation import is_file_allowed
 from app.models import Post
 from app.forms.post_form import PostForm
 
@@ -17,8 +16,6 @@ def create_post(user_id: int) -> Any:
     if form.validate_on_submit():
 
         file = form.post_image.data
-        if not is_file_allowed(file.filename):
-            return redirect(request.url)
 
         post = post_service.post_builder(form, user_id)
         post_service.create_post(post, file)

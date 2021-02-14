@@ -6,45 +6,41 @@
 
 {% block content %}
 
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="container create_post">
+        <h1 class="create_post-title">Upload post</h1>
+        <form class="create_post-form" action="/post" method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token }}
 
-    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-        <div class="container create_post">
-            <h1 class="create_post-title">Soengram</h1>
+            <div class="error-group">
+                {% for field in form %}
+                    {% if field.errors %}
+                        {% for err in field.errors %}
+                            <p class="text-danger text-center">{{ err }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
 
-            <form class="create_post-form" action="post" method="post" enctype="multipart/form-data">
-                {{ form.csrf_token }}
-
-                <div class="error-group">
-                    {% for field in form %}
-                        {% if field.errors %}
-                            {% for err in field.errors %}
-                                <p class="text-danger text-center">{{ err }}</p>
-                            {% endfor %}
-                        {% endif %}
-                    {% endfor %}
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form_control(form.description) }}
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        {{form.description(rows="5", class_="w-100") }}
-                    </div>
-                </div>
+            </div>
 
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        {{ form_control(form.post_image) }}
-                    </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form_control(form.post_image) }}
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        {{ form.submit(class="btn btn-primary", placeholder=form.submit.label.text) }}
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    {{ form.submit(class="btn btn-primary", placeholder=form.submit.label.text) }}
                 </div>
-            </form>
-        </div>
-        
+            </div>
+        </form>
     </div>
-
+</div>
 
 {% endblock %}

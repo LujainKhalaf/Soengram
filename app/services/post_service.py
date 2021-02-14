@@ -3,7 +3,7 @@ import uuid
 
 from app.forms.post_form import PostForm
 from app.models import Post
-from app.utils.file import get_image_url_dir, FORM_POST_IMAGE
+from app.utils.file import get_image_url_dir
 from datetime import datetime
 from app.utils.file import get_file_extension, get_image_url
 

@@ -60,7 +60,7 @@ Before you continue, ensure you have installed the following requirements:
     DB_DATABASE="soengram"
    
    # Windows
-   POST_UPLOAD_FOLDER = '\\static\\post_images\\'
+   POST_UPLOAD_FOLDER = '\static\post_images\'
     ```
 6. Prep the db by running this command in the root of the project
    ```sh

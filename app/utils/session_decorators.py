@@ -9,14 +9,14 @@ def does_user_have_session() -> bool:
 
 
 def get_url_for_profile() -> str:
-    return url_for("user_routes.get_user", username=session.get('logged_in').get('username'))
+    return url_for('user_routes.get_user', username=session.get('logged_in').get('username'))
 
 
 def login_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         if does_user_have_session():
-            return f(session.get('logged_in'), *args, **kwargs)
+            return f(session.get('logged_in').get('user_id'), *args, **kwargs)
 
         return redirect(url_for("auth_routes.sign_in"))
 

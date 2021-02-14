@@ -13,7 +13,7 @@ post_routes = Blueprint('post_routes', __name__)
 @login_required
 def create_post(user_id: int) -> Any:
     if request.method == 'GET':
-        return render_template('create_post.html')
+        return render_template('post/create_post.html')
 
     if request.method == 'POST':
 

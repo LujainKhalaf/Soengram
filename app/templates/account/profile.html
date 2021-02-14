@@ -1,55 +1,72 @@
 {% extends "base.html" %}
 
-{% block title %}{{user.full_name}}{% endblock %}
+{% block title %}{{ user.full_name }}{% endblock %}
 
 {% block content %}
 
+    <div class="container">
 
-	<div class="container">
+        <div class="profile d-flex">
 
-		<div class="profile d-flex">
+            <div class="profile-image">
 
-			<div class="profile-image">
-
-				<img src="static/assets/default-profile-picture.png" alt="">
-
-			</div>
-
-            <div class="mt-3">
-			<div class="profile-user-settings d-flex align-item-center">
-
-                <h1 class="profile-user-name"><pre> {{ user.username }}</pre></h1>
-
-                {% if is_me%}
-				<button class="btn profile-edit-btn">Edit Profile</button>
-                {% endif %}
-
-
-			</div>
-
-			<div class="profile-stats">
-
-				<ul>
-					<li><span class="profile-stat-count"></span> {{user.posts|length}} posts</li>
-					<li><span class="profile-stat-count"></span> {{user.followers|length}} followers</li>
-					<li><span class="profile-stat-count"></span> {{user.following|length}} following</li>
-				</ul>
-
-			</div>
-
-			<div class="profile-bio">
-
-				<p class="profile-real-name">{{ user.full_name }}</p>
-
-			</div>
+                <img src="static/assets/default-profile-picture.png" alt="">
 
             </div>
 
-		</div>
-		<!-- End of profile section -->
+            <div class="mt-3">
+                <div class="profile-user-settings d-flex align-item-center">
 
-	</div>
-	<!-- End of container -->
+                    <h1 class="profile-user-name">
+                        <pre> {{ user.username }}</pre>
+                    </h1>
 
+                    {% if is_me %}
+                        <button class="btn profile-edit-btn">Edit Profile</button>
+                    {% endif %}
+
+
+                </div>
+
+                <div class="profile-stats">
+
+                    <ul>
+                        <li><span class="profile-stat-count"></span> {{ user.posts|length }} posts</li>
+                        <li><span class="profile-stat-count"></span> {{ user.followers|length }} followers</li>
+                        <li><span class="profile-stat-count"></span> {{ user.following|length }} following</li>
+                    </ul>
+
+                </div>
+
+                <div class="profile-bio">
+
+                    <p class="profile-real-name">{{ user.full_name }}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- End of profile section -->
+
+    </div>
+    <!-- End of container -->
+
+    <div class="d-flex flex-column min-vh-100 align-items-center" style="padding-top: 2%">
+        <div class="row" style="width: 40%; align-self: center; min-width: 475px">
+            {% for post in user.posts %}
+                <div class="col-4 d-flex flex-column align-items-center posts-grid-item"
+                     id="post-grid-item-{{ post.post_id }}">
+                    {% if is_me %}
+                        <button class="btn_delete_post" data-post-id="{{ post.post_id }}" onclick="deletePost(this);">
+                            <img src="static/assets/delete-post-icon.png" width="10px" height="10px">
+                        </button>
+                    {% endif %}
+                    <img src="{{ post.image_url }}" width="150" height="150">
+                    <p>{{ post.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

@@ -1,1 +1,56 @@
 {% extends "base.html" %}
+
+{% from "components/form_control.html" import form_control with context %}
+
+{% block title %}Add a Picture{% endblock %}
+
+{% block content %}
+
+
+    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+        <div class="container signin">
+            <h1 class="signin-title">Soengram</h1>
+            <h2 class="signin-subtitle">Sign In to see photos and videos from your friends.</h2>
+
+            <form class="signin-form" action="post" method="post" enctype="multipart/form-data">
+                {{ form.csrf_token }}
+
+                <div class="error-group">
+                    {% for field in form %}
+                        {% if field.errors %}
+                            {% for err in field.errors %}
+                                <p class="text-danger text-center">{{ err }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ form_control(form.description) }}
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ form_control(form.post_image) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ form.submit(class="btn btn-primary", placeholder=form.submit.label.text) }}
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container signup-signin">
+            <p class="center">
+                Don't have an account?
+                <a href="/account/signup">Sign up</a>
+            </p>
+        </div>
+    </div>
+
+
+{% endblock %}

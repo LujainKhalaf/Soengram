@@ -1,4 +1,4 @@
-from app.utils.validation import is_email_valid, is_post_image_in_request, is_file_allowed
+from app.utils.validation import is_email_valid, is_file_allowed
 
 
 def test_should_return_true_for_emails() -> None:
@@ -29,36 +29,6 @@ class FileMock:
 
     def __init__(self, filename):
         self.filename = filename
-
-
-def test_should_return_true_for_files() -> None:
-    files = {
-        'post_image': FileMock('filename.png')
-    }
-
-    result = is_post_image_in_request(files)
-
-    assert result is True
-
-
-def test_should_return_false_if_constant_not_in_dict() -> None:
-    files = {
-        'different_key': FileMock('filename.png')
-    }
-
-    result = is_post_image_in_request(files)
-
-    assert result is False
-
-
-def test_should_return_false_if_filename_is_empty() -> None:
-    files = {
-        'post_image': FileMock('')
-    }
-
-    result = is_post_image_in_request(files)
-
-    assert result is False
 
 
 def test_should_return_false_if_no_extension_in_filename() -> None:

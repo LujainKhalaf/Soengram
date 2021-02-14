@@ -8,13 +8,6 @@ def is_email_valid(email: str) -> bool:
     return bool(re.match(regex, email))
 
 
-def is_post_image_in_request(files) -> bool:
-    return FORM_POST_IMAGE in files and files[FORM_POST_IMAGE].filename != ''
-
-
 def is_file_allowed(filename) -> bool:
     return '.' in filename and get_file_extension(filename) in ALLOWED_EXTENSIONS
 
-
-def is_post_image_valid(files) -> bool:
-    return is_post_image_in_request(files) and is_file_allowed(files[FORM_POST_IMAGE].filename)

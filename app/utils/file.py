@@ -15,7 +15,7 @@ def get_app_root_dir() -> str:
 
 
 def get_image_url_dir(image_url) -> str:
-    return join(get_app_root_dir(), image_url)
+    return get_app_root_dir() + image_url
 
 
 def get_image_url(filename) -> str:

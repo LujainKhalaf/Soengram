@@ -1,17 +1,12 @@
 from datetime import datetime
-from typing import Tuple
+from typing import Any
 
-from flask import session
+from flask import session, redirect, url_for
 from flask_wtf import FlaskForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app.models import User
-
-
-class LoggedInUser:
-    def __init__(self, user_id, username):
-        self.user_id = user_id
-        self.username = username
+from app.utils.session_decorators import get_url_for_profile
 
 
 def sign_up(form: FlaskForm) -> None:
@@ -24,18 +19,16 @@ def sign_up(form: FlaskForm) -> None:
     User.insert(user)
 
 
-def sign_in(email: str, password: str) -> Tuple[str, int]:
+def sign_in(email: str, password: str) -> Any:
     user = User.get_by_email(email)
 
     if user:
         is_authenticated = check_password_hash(user.password, password)
-
         if is_authenticated:
-            logged_in_user = LoggedInUser(user.user_id, user.username)
-            session['logged_in'] = logged_in_user.__dict__
-            return '', 204
+            session['logged_in'] = dict(user_id=user.user_id, username=user.username)
+            return redirect(get_url_for_profile())
 
-    return '', 404
+    return redirect(url_for("auth_routes.sign_in"))
 
 
 def sign_out() -> None:

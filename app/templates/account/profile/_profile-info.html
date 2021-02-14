@@ -9,14 +9,14 @@
         <div class="profile-stats">
             <ul>
                 <li><span class="profile-stat-count">{{ user.posts|length }}</span> posts</li>
-                <li><a href="#" class="profile-stat-count">{{ user.followers|length }}</a> followers</li>
-                <li><a href="#" class="profile-stat-count">{{ user.following|length }}</a> following</li>
+                <li><a href="#"><span class="profile-stat-count">{{ user.followers|length }}</span> followers</a></li>
+                <li><a href="#"><span class="profile-stat-count">{{ user.following|length }}</span> following</a></li>
             </ul>
         </div>
         <div class="profile-bio">
             <p class="profile-full-name">{{ user.full_name }}</p>
 {# TODO: Remove once profile description is implemented. Uncomment for display testing purposes.               #}
-{#          <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at neque quis quam condimentum consectetur. Suspendisse nibh magna, varius ac lectus non, consectetur consequat erat. In eu ipsum interdum, tincidunt purus at, viverra metus. Vivamus facilisis tempus elit id suscipit. Aenean eget pharetra tortor. Nam aliquam erat vel sollicitudin vulputate. Nulla sed elit eu quam sodales facilisis. Nam accumsan massa ac mauris porta, non semper neque maximus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>#}
+          <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at neque quis quam condimentum consectetur. Suspendisse nibh magna, varius ac lectus non, consectetur consequat erat. In eu ipsum interdum, tincidunt purus at, viverra metus. Vivamus facilisis tempus elit id suscipit. Aenean eget pharetra tortor. Nam aliquam erat vel sollicitudin vulputate. Nulla sed elit eu quam sodales facilisis. Nam accumsan massa ac mauris porta, non semper neque maximus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>
         </div>
     </div>
 </div>

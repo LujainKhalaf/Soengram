@@ -351,3 +351,27 @@ button {
 /*.gallery-item-delete {*/
 /*    margin-left: 2.2rem;*/
 /*}*/
+
+.no-posts-yet,
+.upload-first-photo {
+    margin: auto;
+    padding-top: 25px;
+}
+
+.no-posts-yet i {
+    font-size: 46px;
+    text-align: center;
+}
+
+.upload-first-photo i {
+    font-size: 42px;
+    text-align: center;
+}
+
+.no-posts-yet-title,
+.upload-first-photo-title {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 300;
+}

@@ -46,12 +46,14 @@
 {#                            <li>#}
 {#                                <hr class="dropdown-divider">#}
 {#                            </li>#}
-{#                            <li>#}
-{#                                <a class="dropdown-item" href="#">#}
-{#                                    <i class="bi bi-box-arrow-in-right align-top"></i>#}
-{#                                    <span class="align-middle">Sign Out</span>#}
-{#                                </a>#}
-{#                            </li>#}
+                            <li>
+                                <form method=post action=account/signout>
+                                    <button class="dropdown-item">
+                                        <i class="bi bi-box-arrow-in-right align-top"></i>
+                                        <span class="align-middle">Sign Out</span>
+                                    </button>
+                                </form>
+                            </li>   
                         </ul>
                     </li>
 
@@ -83,12 +85,12 @@
 {#                            <span class="align-middle">Settings</span>#}
 {#                        </a>#}
 {#                    </li>#}
-{#                    <li class="nav-item display-sm">#}
-{#                        <a class="dropdown-item" href="#">#}
-{#                            <i class="bi bi-box-arrow-in-right align-top"></i>#}
-{#                            <span class="align-middle">Sign Out</span>#}
-{#                        </a>#}
-{#                    </li>#}
+                    <li class="nav-item display-sm">
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-box-arrow-in-right align-top"></i>
+                            <span class="align-middle">Sign Out</span>
+                        </a>
+                    </li>
 
                     {# Dropdown items for Mobile devices #}
                 </ul>

@@ -4,25 +4,14 @@
 
 {% block content %}
 
+    {# Acknowledgement:
+        Some HTML and CSS code structure was taken from https://codepen.io/GeorgePark/pen/VXrwOP
+    #}
+
     {% include "account/profile/_profile-info.html" %}
-{#d-flex flex-column min-vh-100 align-items-center#}
-    <div class="row">
-        <div class="" style="padding-top: 2%; border: 1px solid red;">
-            <div class="row" style="width: 40%; align-self: center; min-width: 475px">
-                {% for post in user.posts %}
-                    <div class="col-4 d-flex flex-column align-items-center posts-grid-item"
-                         id="post-grid-item-{{ post.post_id }}">
-                        {% if is_me %}
-                            <button class="btn_delete_post" data-post-id="{{ post.post_id }}" onclick="deletePost(this);">
-                                <img src="static/assets/delete-post-icon.png" width="10px" height="10px">
-                            </button>
-                        {% endif %}
-                        <img src="{{ post.image_url }}" width="150" height="150">
-    {#                    <p>{{ post.description }}</p>#}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
+
+    <hr/>
+
+    {% include "account/profile/_post-gallery.html" %}
 
 {% endblock %}

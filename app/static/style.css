@@ -22,6 +22,10 @@ header {
     border-bottom: 1px solid #DBDBDB;
 }
 
+footer {
+    height: 40px;
+}
+
 a {
     text-decoration: none;
 }
@@ -252,12 +256,13 @@ button {
 }
 
 /*********************************/
-/* User Profile                  */
+/* Profile - Info                */
 /*********************************/
 
 .profile-info {
     height: auto;
     font-size: 16px;
+    padding-bottom: 5px;
 }
 
 .profile-image > img {
@@ -299,7 +304,6 @@ button {
 }
 
 .profile-stat-count {
-    padding-right: 4px;
     font-weight: bold;
 }
 
@@ -318,27 +322,99 @@ button {
 }
 
 /*********************************/
-/* Delete post button styling    */
+/* Profile - Post Gallery        */
 /*********************************/
-.btn_delete_post {
+
+.post-gallery {
+    margin: auto;
+}
+
+.post-gallery > .col {
+    margin-top: 25px;
+}
+
+.gallery-image {
+    width: 293px;
+    height: 293px;
+    /* TODO: Uncomment and remove above width and height when implementing responsiveness*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    object-fit: cover;
+}
+
+.gallery-item {
+    position: relative;
+    width: 293px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.gallery-item:hover .gallery-item-info,
+.gallery-item:focus .gallery-item-info {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 3px;
-    right: 15px;
-    width: 20px;
-    height: 20px;
-    background-color: darkgrey;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
+    top: 0;
+    width: 293px;
+    height: 293px;
+    /* TODO: Uncomment and remove above width and height when implementing responsiveness*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
-.btn_delete_post:hover {
-    background-color: black;
+.gallery-item-info ul li .fas {
+    color: #FFFFFF;
 }
 
-.posts-grid-item{
+.gallery-item-info {
+    display: none;
+}
+
+.gallery-item-info > ul {
+    display: block;
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.gallery-item-info li {
+    display: inline-block;
+    font-size: 20px !important;
+}
+
+ /*TODO: Uncomment when implementing comments*/
+/*.gallery-item-delete {*/
+/*    margin-left: 2.2rem;*/
+/*}*/
+
+.no-posts-yet,
+.upload-first-photo {
+    margin: auto;
+    padding-top: 25px;
+}
+
+.no-posts-yet i {
+    font-size: 46px;
+    text-align: center;
+}
+
+.upload-first-photo i {
+    font-size: 42px;
+    text-align: center;
+}
+
+.no-posts-yet-title,
+.upload-first-photo-title {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.posts-grid-item {
     position: relative;
 }

@@ -1,0 +1,13 @@
+{# Params:
+    - visibility: String "visible" or "invisible" (lowercase)
+#}
+{% macro upload_first_photo(visibility) -%}
+
+    <div id="upload-first" class="upload-first-photo {{ visibility }}">
+        <div style="text-align: center">
+            <a href="/post"><i class="bi bi-plus-square"></i></a>
+        </div>
+        <h1 class="upload-first-photo-title">Upload your first photo</h1>
+    </div>
+
+{%- endmacro %}

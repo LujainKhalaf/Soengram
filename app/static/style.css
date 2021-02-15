@@ -2,7 +2,7 @@
 /* Common                        */
 /*********************************/
 html {
-    font-family: "Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
 }
 
@@ -42,6 +42,11 @@ button {
     transform: translateY(-50%);
 }
 
+.container.content {
+    max-width: 975px;
+    margin-top: 30px;
+}
+
 /*********************************/
 /* Navbar                        */
 /*********************************/
@@ -77,36 +82,36 @@ button {
 }
 
 .dropdown-menu-arrow {
-  top: -25px;
-  left: 90.5%;
-  width: 0;
-  height: 0;
-  position: relative;
+    top: -25px;
+    left: 90.5%;
+    width: 0;
+    height: 0;
+    position: relative;
 }
 
 .dropdown-menu-arrow:before,
 .dropdown-menu-arrow:after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-width: 7px 8px;
-  border-style: solid;
-  border-color: transparent;
-  z-index: 1001;
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 7px 8px;
+    border-style: solid;
+    border-color: transparent;
+    z-index: 1001;
 }
 
 .dropdown-menu-arrow:after {
-  bottom: -18px;
-  right: -8px;
-  border-bottom-color: #FFF;
+    bottom: -18px;
+    right: -8px;
+    border-bottom-color: #FFF;
 }
 
 .dropdown-menu-arrow:before {
-  bottom: -17px;
-  right: -8px;
-  border-bottom-color: rgba(0,0,0,.15);
+    bottom: -17px;
+    right: -8px;
+    border-bottom-color: rgba(0, 0, 0, .15);
 }
 
 .dropdown-item:first-child {
@@ -140,7 +145,7 @@ button {
 }
 
 /*********************************/
-/* Account                       */
+/* Sign Up & Sign In             */
 /*********************************/
 .container.signin,
 .container.signup,
@@ -244,4 +249,96 @@ button {
     border-radius: 5px;
     font-size: 12px;
     font-weight: bold;
+}
+
+/*********************************/
+/* User Profile                  */
+/*********************************/
+
+.profile-info {
+    height: auto;
+    font-size: 16px;
+}
+
+.profile-image > img {
+    width: 150px;
+    height: 150px;
+}
+
+.profile-user-name {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.profile-stats {
+    margin-top: 25px;
+    padding-left: 0;
+}
+
+.profile-stats > ul {
+    display: block;
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.profile-stats li {
+    display: inline-block;
+    margin-right: 40px;
+}
+
+.profile-stats li a {
+    color: black;
+}
+
+.profile-stats li:last-child {
+    margin-right: 0;
+}
+
+.profile-stat-count {
+    padding-right: 4px;
+    font-weight: bold;
+}
+
+.profile-bio {
+    padding-right: 40px;
+    margin-top: 25px;
+    line-height: 1.5;
+}
+
+.profile-full-name {
+    font-weight: bold;
+}
+
+.profile-description {
+    margin-top: -5px;
+}
+
+/*********************************/
+/* Delete post button styling    */
+/*********************************/
+.btn_delete_post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 3px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    background-color: darkgrey;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.btn_delete_post:hover {
+    background-color: black;
+}
+
+.posts-grid-item{
+    position: relative;
 }

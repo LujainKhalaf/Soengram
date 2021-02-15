@@ -41,28 +41,31 @@ def get_following(_, username: str) -> Any:
     return jsonify(following=following)
 
 
-@user_routes.route('/follow', methods=['POST'])
+@user_routes.route('/follow', methods=['GET', 'POST'])
 @login_required
-def follow_user(user_id: int) -> Any:
-    user_id_to_follow: int = request.form.values()
-    if user_id_to_follow == user_id:
-        return '', 400
+def follow_user_api(user_id: int) -> Any:
     try:
+        user_id_to_follow = int(request.args.get('id'))
+    except ValueError:
+        return '', 404
+    user = User.get_by_user_id(user_id)
+    user_to_follow = User.get_by_user_id(user_id_to_follow)
+    if user and user_to_follow and user_id != user_id_to_follow:
         User.add_to_following(user_id, user_id_to_follow)
-        return '', 204
-    except Exception:
-        return '', 404
+        return jsonify(user_id=user_id, user_id_to_follow=user_id_to_follow, following=True)
+    return '', 404
 
 
-@user_routes.route('/unfollow', methods=['POST'])
+@user_routes.route('/unfollow', methods=['GET', 'POST'])
 @login_required
-def unfollow_user(user_id: int) -> Any:
-    user_id_to_remove: int = request.form.values()
-    if user_id_to_remove == user_id:
-        return '', 400
+def unfollow_user_api(user_id: int) -> Any:
     try:
-        User.remove_from_following(user_id, user_id_to_remove)
-        return '', 200
-    except Exception:
+        user_id_to_remove = int(request.args.get('id'))
+    except ValueError:
         return '', 404
-
+    user = User.get_by_user_id(user_id)
+    user_to_remove = User.get_by_user_id(user_id_to_remove)
+    if user and user_to_remove and user_id != user_id_to_remove:
+        User.remove_from_following(user_id, user_id_to_remove)
+        return jsonify(user_id=user_id, user_id_to_remove=user_id_to_remove, following=False)
+    return '', 404

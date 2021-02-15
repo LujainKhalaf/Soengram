@@ -12,17 +12,23 @@
                             <a class="nav-link" aria-current="page" href="/">
                                 <i class="bi bi-house-door-fill"></i>
                             </a>
+                            
                         {% else %}
                             <a class="nav-link" aria-current="page" href="/">
                                 <i class="bi bi-house-door"></i>
                             </a>
                         {% endif %}
-                        <li class="nav-item display-lg display-md">
+                    </li>
+                    <li class="nav-item display-lg display-md">
+                        {% if request.endpoint == 'index_routes.index' %}
                             <a class="nav-link" aria-current="page" href="/post">
                                 <i class="bi bi-plus-square"></i>
                             </a>
-                        
-                        
+                        {% else %}
+                            <a class="nav-link" aria-current="page" href="/">
+                                <i class="bi bi-plus-square-fill"></i>
+                            </a>
+                        {%endif%}
                     </li>
                     <li class="nav-item dropdown display-lg display-md">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -43,15 +49,17 @@
 {#                                    <span class="align-middle">Settings</span>#}
 {#                                </a>#}
 {#                            </li>#}
-{#                            <li>#}
-{#                                <hr class="dropdown-divider">#}
-{#                            </li>#}
-{#                            <li>#}
-{#                                <a class="dropdown-item" href="#">#}
-{#                                    <i class="bi bi-box-arrow-in-right align-top"></i>#}
-{#                                    <span class="align-middle">Sign Out</span>#}
-{#                                </a>#}
-{#                            </li>#}
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form method=post action=account/signout>
+                                    <button class="dropdown-item">
+                                        <i class="bi bi-box-arrow-in-right align-top"></i>
+                                        <span class="align-middle">Sign Out</span>
+                                    </button>
+                                </form>
+                            </li>   
                         </ul>
                     </li>
 
@@ -83,12 +91,14 @@
 {#                            <span class="align-middle">Settings</span>#}
 {#                        </a>#}
 {#                    </li>#}
-{#                    <li class="nav-item display-sm">#}
-{#                        <a class="dropdown-item" href="#">#}
-{#                            <i class="bi bi-box-arrow-in-right align-top"></i>#}
-{#                            <span class="align-middle">Sign Out</span>#}
-{#                        </a>#}
-{#                    </li>#}
+                    <li class="nav-item display-sm">
+                        <form method=post action=account/signout>
+                            <button class="dropdown-item" href="#">
+                             <i class="bi bi-box-arrow-in-right align-top"></i>
+                                <span class="align-middle">Sign Out</span>
+                            </button>
+                        </form>
+                    </li>
 
                     {# Dropdown items for Mobile devices #}
                 </ul>

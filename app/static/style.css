@@ -71,6 +71,7 @@ button {
 .bi-house-door {
     font-size: 1.7rem
 }
+.bi-plus-square-fill,
 .bi-plus-square {
     font-size: 1.7rem
 }
@@ -130,6 +131,10 @@ button {
 .dropdown-item:active {
     color: black;
     background-color: #EBECEB;
+}
+
+button.dropdown-item:focus {
+outline: 0;
 }
 
 .dropdown-item i {

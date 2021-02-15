@@ -1,0 +1,23 @@
+<div class="row row-cols-3 post-gallery">
+
+    {% for post in user.posts %}
+        <div class="col" id="post-grid-item-{{ post.post_id }}">
+            <div class="gallery-item" >
+                <img src="{{ post.image_url }}" class="gallery-image" alt="">
+                <div class="gallery-item-info">
+                    <ul>
+    {#                TODO: Uncomment when implementing comments #}
+    {#                    <li class="gallery-item-comments"><i class="fas fa-comment" aria-hidden="true"></i> 2</li>#}
+                        {% if is_me %}
+                            <li class="gallery-item-delete" data-post-id="{{ post.post_id }}" onclick="deletePost(this);"><i class="fas fa-trash" aria-hidden="true"></i>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{# TODO: Post description in post Boostrap modal #}
+{#                        <p>{{ post.description }}</p>#}
+
+</div>

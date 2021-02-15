@@ -36,13 +36,28 @@ conn.commit()
 folder_dir = os.getenv('POST_UPLOAD_FOLDER') + 'seed/'
 description_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula sollicitudin nibh, ' \
                    'ac imperdiet leo laoreet quis. Duis risus ex, facilisis sed eros vitae, semper condimentum neque '
-posts = [{
-    'user_id': ((i+1) // 2),
+
+user1_posts = [{
+    'user_id': 1,
+    'image_url': f'{folder_dir}{i}.jpg',
+    'description': description_text
+} for i in range(2, 14)]
+
+for post in user1_posts:
+    created_at = datetime.now()
+    cur.execute(f'''
+        INSERT
+        INTO post (user_id, image_url, description, created_at)
+        VALUES ('{post['user_id']}', '{post['image_url']}', '{post['description']}', '{created_at}')
+    ''')
+
+other_user_posts = [{
+    'user_id': i,
     'image_url': f'{folder_dir}1.jpg',
     'description': description_text
-} for i in range(1, 21)]
+} for i in range(2, 21)]
 
-for post in posts:
+for post in other_user_posts:
     created_at = datetime.now()
     cur.execute(f'''
         INSERT

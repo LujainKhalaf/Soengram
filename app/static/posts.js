@@ -8,7 +8,7 @@ async function deletePost(e) {
     });
     const gridItem = await document.getElementById(`post-grid-item-${postId}`);
     gridItem.parentNode.removeChild(gridItem);
-
+  
     let postCount = parseInt(document.getElementById("profile-post-count").innerText);
     let updatedPostCount = postCount-1;
 
@@ -17,5 +17,4 @@ async function deletePost(e) {
     if (updatedPostCount == 0) {
         document.getElementById("upload-first").classList.remove("invisible")
     }
-
 }

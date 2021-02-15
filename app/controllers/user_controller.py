@@ -1,5 +1,5 @@
 from typing import Any
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, request
 from app.models import User
 from app.utils.session_decorators import login_required
 
@@ -39,3 +39,33 @@ def get_following(_, username: str) -> Any:
 
     following = [following.serialize_as_follower() for following in user.get_following()]
     return jsonify(following=following)
+
+
+@user_routes.route('/follow', methods=['GET', 'POST'])
+@login_required
+def follow_user_api(user_id: int) -> Any:
+    try:
+        user_id_to_follow = int(request.args.get('id'))
+    except ValueError:
+        return '', 404
+    user = User.get_by_user_id(user_id)
+    user_to_follow = User.get_by_user_id(user_id_to_follow)
+    if user and user_to_follow and user_id != user_id_to_follow:
+        User.add_to_following(user_id, user_id_to_follow)
+        return jsonify(user_id=user_id, user_id_to_follow=user_id_to_follow, following=True)
+    return '', 404
+
+
+@user_routes.route('/unfollow', methods=['GET', 'POST'])
+@login_required
+def unfollow_user_api(user_id: int) -> Any:
+    try:
+        user_id_to_remove = int(request.args.get('id'))
+    except ValueError:
+        return '', 404
+    user = User.get_by_user_id(user_id)
+    user_to_remove = User.get_by_user_id(user_id_to_remove)
+    if user and user_to_remove and user_id != user_id_to_remove:
+        User.remove_from_following(user_id, user_id_to_remove)
+        return jsonify(user_id=user_id, user_id_to_remove=user_id_to_remove, following=False)
+    return '', 404

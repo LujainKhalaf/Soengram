@@ -1,7 +1,9 @@
 from typing import Any
 import uuid
+
+from app.forms.post_form import PostForm
 from app.models import Post
-from app.utils.file import get_image_url_dir, FORM_POST_IMAGE
+from app.utils.file import get_image_url_dir
 from datetime import datetime
 from app.utils.file import get_file_extension, get_image_url
 
@@ -16,9 +18,9 @@ def upload_post_image(file: Any, image_url: str) -> None:
     file.save(get_image_url_dir(image_url))
 
 
-def post_builder(request: Any, user_id: int) -> Post:
-    file = request.files[FORM_POST_IMAGE]
-    description = request.form.get('description')
+def post_builder(form: PostForm, user_id: int) -> Post:
+    file = form.post_image.data
+    description = form.description.data
 
     filename = f'{uuid.uuid1().hex}.{get_file_extension(file.filename)}'
     image_url = get_image_url(filename)

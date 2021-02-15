@@ -71,6 +71,9 @@ button {
 .bi-house-door {
     font-size: 1.7rem
 }
+.bi-plus-square {
+    font-size: 1.7rem
+}
 
 .navbar-profile-pic {
     width: 1.7rem;
@@ -156,7 +159,6 @@ button {
     background-color: white;
 }
 
-
 .signup,
 .signin {
     padding: 0 0 34px 0;
@@ -214,6 +216,43 @@ button {
 
 .error-group > p:last-child {
     padding-bottom: 9px;
+}
+
+/*********************************/
+/* Create Post                   */
+/*********************************/
+
+.container.create_post {
+    width: 350px;
+    border: 1px solid #dbdbdb;
+    background-color: white;
+    padding: 0 0 34px 0;
+}
+
+.create_post-title {
+    margin: 22px auto 12px;
+    text-align: center;
+}
+
+.create_post-form {
+    padding: 0 40px 0 40px;
+    margin-top: 30px;
+}
+
+.create_post-form .form-control {
+    margin-top: 5px;
+    height: 36px;
+    font-size: 12px;
+    background-color: #FAFAFA;
+    border-radius: 3px;
+}
+
+.create_post-form .row .btn {
+    margin-top: 15px;
+    width: 268px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 /*********************************/
@@ -283,7 +322,7 @@ button {
 }
 
 /*********************************/
-/* Profile - Post Gallery         */
+/* Profile - Post Gallery        */
 /*********************************/
 
 .post-gallery {
@@ -374,4 +413,8 @@ button {
     text-align: center;
     font-size: 28px;
     font-weight: 300;
+}
+
+.posts-grid-item {
+    position: relative;
 }

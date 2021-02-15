@@ -2,8 +2,7 @@ from os.path import join, dirname, realpath
 from config import Config
 
 
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-FORM_POST_IMAGE = 'post_image'
+ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif']
 
 
 def get_file_extension(filename) -> str:

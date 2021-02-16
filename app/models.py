@@ -12,7 +12,12 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     full_name = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-    posts = db.relationship('Post', backref='user', lazy='select')
+    posts = db.relationship(
+        'Post',
+        backref='user',
+        lazy='select',
+        order_by='desc(Post.created_at)'
+    )
     following = db.relationship(
         'User',
         secondary=lambda: followers,

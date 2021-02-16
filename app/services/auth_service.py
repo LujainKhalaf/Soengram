@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Any
 
-from flask import session, redirect, url_for
+from flask import session, redirect, url_for, flash
 from flask_wtf import FlaskForm
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -27,7 +27,7 @@ def sign_in(email: str, password: str) -> Any:
         if is_authenticated:
             session['logged_in'] = dict(user_id=user.user_id, username=user.username)
             return redirect(get_url_for_profile())
-
+    flash('Incorrect username and/or password.')
     return redirect(url_for("auth_routes.sign_in"))
 
 

@@ -62,7 +62,7 @@ def unfollow_user(user_id: int) -> Any:
         return '', 400
     try:
         User.remove_from_following(user_id, user_id_to_remove)
-        return '', 204
+        return '', 200
     except Exception:
         return '', 404
 

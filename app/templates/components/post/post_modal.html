@@ -1,0 +1,33 @@
+{% from "components/post/post_comment.html" import post_comment with context %}
+
+{# Params:
+    - user: User
+    - post: Post
+#}
+{% macro post_modal(user, post) -%}
+    <div class="modal fade" id="post-modal-{{ post.post_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-post-image">
+                            <img src="{{ post.image_url }}" class="modal-image" alt="">
+                        </div>
+                        <div class="modal-post-user-info">
+                            <div class="modal-post-user-link">
+                                <a href="/{{ user.username }}">
+                                    <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-profile-pic rounded-circle">
+                                    <span class="post-username align-middle">{{ user.username }}</span>
+                                </a>
+                            </div>
+                        <hr />
+                        {# Post Description #}
+                        {{ post_comment(user, post.description) }}
+
+                        {# TODO: Add post comments here using post_comment component. Must implement Bootstrap modal scrollable functionality #}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{%- endmacro %}

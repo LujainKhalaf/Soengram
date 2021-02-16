@@ -1,11 +1,12 @@
-{% from "account/profile/upload_first_photo.html" import upload_first_photo with context %}
+{% from "components/post/upload_first_post.html" import upload_first_post with context %}
+{% from "components/post/post_modal.html" import post_modal with context %}
 
 <div class="row row-cols-3 post-gallery">
 
 {% if user.posts|length > 0 %}
     {% for post in user.posts %}
         <div class="col" id="post-grid-item-{{ post.post_id }}">
-            <div class="gallery-item" >
+            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#post-modal-{{ post.post_id }}">
                 <img src="{{ post.image_url }}" class="gallery-image" alt="">
                 <div class="gallery-item-info">
                     <ul>
@@ -18,11 +19,15 @@
                 </div>
             </div>
         </div>
+
+        <!-- Post Modal -->
+        {{ post_modal(user, post) }}
+
     {% endfor %}
-    {{ upload_first_photo("invisible") }}
+    {{ upload_first_post("invisible") }}
 {% else %}
     {% if is_me %}
-        {{ upload_first_photo("visible") }}
+        {{ upload_first_post("visible") }}
     {% else %}
         <div id="no-posts" class="no-posts-yet">
             <div style="text-align: center">
@@ -33,7 +38,6 @@
     {% endif %}
 {% endif %}
 
-{# TODO: Post description in post Boostrap modal #}
-{#                        <p>{{ post.description }}</p>#}
+
 
 </div>

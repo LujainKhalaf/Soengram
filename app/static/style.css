@@ -38,6 +38,11 @@ button {
     background-color: #0095F6;
 }
 
+hr {
+    height: 1px;
+    color: #a6a6a6;
+}
+
 .center {
     display: block;
     position: relative;
@@ -423,3 +428,75 @@ outline: 0;
 .posts-grid-item {
     position: relative;
 }
+
+.modal-body{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.modal-dialog {
+    max-width: 900px;
+}
+
+.modal-image {
+    width: 570px;
+    height: 570px;
+}
+
+.modal-post-image {
+    display: inline-block;
+}
+
+.modal-post-user-info {
+    width: 330px;
+    height: 570px;
+    padding: 0;
+    margin-left: -6px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.modal-post-user-link {
+    padding: 20px 0 6px 16px;;
+}
+
+.post-comment {
+    padding: 6px 0 14px 16px;
+    vertical-align: top;
+}
+
+.post-comment-text {
+    display: inline-block;
+    margin-left: 10px;
+    width: 258px;
+    vertical-align: top;
+}
+
+
+.post-profile-pic,
+.post-comment-profile-pic {
+    width: 32px;
+    height: 32px;
+}
+
+.post-username {
+    padding-left: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.post-comment-username {
+    color: black;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.post-username:hover,
+.post-comment-username:hover {
+    text-decoration: underline;
+}
+
+
+
+
+

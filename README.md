@@ -22,6 +22,8 @@ Develop a photo sharing social networking website where businesses, celebrities,
 - [PostgreSQL 13.0 or later](https://www.postgresql.org/)
 - [Flask 1.1.2](https://flask.palletsprojects.com/en/1.1.x/)
 - [Jinga 2.11.2](https://jinja.palletsprojects.com/en/2.11.x/)
+- [Font Awesome 6](https://fontawesome.com)
+- [BootStrap 5](https://getbootstrap.com)
 
 ## Getting Started
 
@@ -90,6 +92,14 @@ $ pytest
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) detailing basic guidlines for pushing new code to the repo and a basic workflow example.
+
+
+## Acknowledgments
+
+Soengram is an educational non-profitable project based on the social networking service [Instagram](https://instagram.com). The design and functionalities are adapted from Instagram to meet project requirements. This web application is not hosted for commercial use, but rather for academic purposes.
+
+Copyright © 2021 Soengram Site Adapted from Instagram Customized by Soengram Team
+
 
 ## Team
 

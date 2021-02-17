@@ -1,6 +1,6 @@
 from typing import Any
 
-from flask import request, Blueprint, render_template, redirect, url_for
+from flask import request, Blueprint, render_template, redirect, url_for, flash
 
 from app.forms.signup_form import SignupForm
 from app.forms.signin_form import SigninForm
@@ -27,8 +27,11 @@ def sign_up() -> Any:
 def sign_in() -> Any:
     form = SigninForm()
 
-    if form.validate_on_submit():
-        return auth_service.sign_in(form.email.data, form.password.data)
+    if form.is_submitted():
+        try:
+            return auth_service.sign_in(form.email.data, form.password.data)
+        except Exception:
+            flash('Incorrect username and/or password.')
 
     return render_template('account/signin.html', form=form)
 

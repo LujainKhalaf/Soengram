@@ -15,13 +15,6 @@
             {{ form.csrf_token }}
 
             <div class="error-group">
-                {% for field in form %}
-                    {% if field.errors %}
-                        {% for err in field.errors %}
-                            <p class="text-danger text-center">{{ err }}</p>
-                        {% endfor %}
-                    {% endif %}
-                {% endfor %}
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         {% for message in messages %}

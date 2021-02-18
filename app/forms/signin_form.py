@@ -27,4 +27,4 @@ class SigninForm(FlaskForm):
         user = User.get_by_email(email.data)
 
         if not user :
-            raise ValidationError(f"Email {email.data} incorrect.")
+            raise ValidationError('Incorrect username and/or password.')

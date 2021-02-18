@@ -27,7 +27,7 @@ def sign_in(email: str, password: str) -> Any:
         if is_authenticated:
             session['logged_in'] = dict(user_id=user.user_id, username=user.username)
             return redirect(get_url_for_profile())
-
+    raise Exception('Incorrect username and/or password.')
     return redirect(url_for("auth_routes.sign_in"))
 
 

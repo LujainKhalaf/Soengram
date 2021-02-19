@@ -12,3 +12,6 @@ build/
 *.swp
 *~
 .env
+app/static/post_images/*.jpg
+app/static/post_images/*.png
+app/static/post_images/*.jpeg

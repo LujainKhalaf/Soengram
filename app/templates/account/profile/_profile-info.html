@@ -8,11 +8,7 @@
         <div class="profile-user-settings ">
             <h2 class="profile-user-name">{{ user.username }}
                 {% if not is_me %}
-                    {% if session.get("logged_in").get("username") in user.followers|map(attribute="username") %}
-                        {{ follow_button(true, user) }}
-                    {% else %}
-                        {{ follow_button(false, user) }}
-                    {% endif %}
+                    {{ follow_button(session.get("logged_in").get("username") in user.followers|map(attribute="username"), user) }}
                 {% endif %}
             </h2>
         </div>

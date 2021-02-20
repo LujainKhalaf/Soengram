@@ -1,5 +1,8 @@
 from __future__ import annotations
 from typing import List
+
+from werkzeug.security import check_password_hash
+
 from app.extensions import db
 
 
@@ -76,6 +79,13 @@ class User(db.Model):
         user.following.remove(user_to_remove)
 
         db.session.commit()
+
+    @staticmethod
+    def is_authenticated(user_by_email: User, password: User) -> bool:
+        if not user_by_email:
+            return False
+
+        return check_password_hash(user_by_email.password, password)
 
 
 class Post(db.Model):

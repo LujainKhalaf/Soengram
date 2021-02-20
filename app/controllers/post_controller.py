@@ -14,11 +14,7 @@ def create_post(user_id: int) -> Any:
     form = PostForm()
 
     if form.validate_on_submit():
-
-        file = form.post_image.data
-
-        post = post_service.post_builder(form, user_id)
-        post_service.create_post(post, file)
+        post_service.create_post(user_id, form)
 
         return redirect(get_url_for_profile())
 

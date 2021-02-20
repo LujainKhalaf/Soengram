@@ -10,7 +10,7 @@ class PostForm(FlaskForm):
     DESCRIPTION_LENGTH_MAX = 2_200
 
     post_image = FileField(
-        'image',
+        'Image',
         render_kw={'style': 'height: auto'},
         validators=[
             FileRequired(message='Must attach a photo'),

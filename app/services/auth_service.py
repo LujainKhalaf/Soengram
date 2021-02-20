@@ -24,7 +24,7 @@ def sign_out() -> None:
     session.pop('logged_in', None)
 
 
-def user_builder(form: SignupForm):
+def user_builder(form: SignupForm) -> User:
     return User(
         username=form.username.data,
         email=form.email.data,

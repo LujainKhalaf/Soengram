@@ -27,7 +27,7 @@ def follow_user(user_id: int, user_id_to_follow: int) -> JSONResponse:
         return jsonify('Invalid parameters'), 400
 
     User.add_to_following(user_id, user_id_to_follow)
-    return '', 204
+    return jsonify(''), 204
 
 
 def unfollow_user(user_id: int, user_id_to_remove: int) -> JSONResponse:
@@ -35,4 +35,4 @@ def unfollow_user(user_id: int, user_id_to_remove: int) -> JSONResponse:
         return jsonify('Invalid parameters'), 400
 
     User.remove_from_following(user_id, user_id_to_remove)
-    return '', 204
+    return jsonify(''), 204

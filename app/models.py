@@ -116,7 +116,7 @@ class Post(db.Model):
         db.session.commit()
 
     @staticmethod
-    def is_post_owned_by_user(post: Post, user_id: int):
+    def is_post_owned_by_user(post: Post, user_id: int) -> bool:
         return post and post.user_id == user_id
 
 

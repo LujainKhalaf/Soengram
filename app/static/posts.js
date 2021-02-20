@@ -6,8 +6,8 @@ async function deletePost(e) {
     // Close Bootstrap modal
     $(`#post-modal-${postId}`).modal('hide')
 
-    await fetch('/delete', {
-        method: 'POST',
+    await fetch('/delete-post', {
+        method: 'DELETE',
         body: formData
     });
 

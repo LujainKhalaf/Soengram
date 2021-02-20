@@ -1,0 +1,14 @@
+{# Params:
+    - user: User
+    - comment: String
+#}
+{% macro post_comment(user, comment) -%}
+    <div class="post-comment">
+        <div style="display: inline-block;">
+            <a href="/{{ user.username }}"><img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-comment-profile-pic rounded-circle"></a>
+        </div>
+        <div class="post-comment-text">
+            <a href="/{{ user.username }}"><span class="post-comment-username">{{ user.username }}</span></a> {{ comment }}
+        </div>
+    </div>
+{%- endmacro %}

@@ -12,15 +12,11 @@
                     <ul>
     {#                TODO: Uncomment when implementing comments #}
     {#                    <li class="gallery-item-comments"><i class="fas fa-comment" aria-hidden="true"></i> 2</li>#}
-                        {% if is_me %}
-                            <li class="gallery-item-delete" data-post-id="{{ post.post_id }}" onclick="deletePost(this);"><i class="fas fa-trash" aria-hidden="true"></i>
-                        {% endif %}
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Post Modal -->
         {{ post_modal(user, post) }}
 
     {% endfor %}
@@ -30,7 +26,7 @@
         {{ upload_first_post("visible") }}
     {% else %}
         <div id="no-posts" class="no-posts-yet">
-            <div style="text-align: center">
+            <div>
                 <i class="bi bi-camera"></i>
             </div>
             <h1 class="no-posts-yet-title">No Posts Yet</h1>

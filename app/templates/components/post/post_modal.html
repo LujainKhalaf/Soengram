@@ -18,7 +18,11 @@
                                     <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-profile-pic rounded-circle">
                                     <span class="post-username align-middle">{{ user.username }}</span>
                                 </a>
+                                {% if is_me %}
+                                    <i class="fa fa-trash-alt" aria-hidden="true" data-post-id="{{ post.post_id }}" onclick="deletePost(this);"></i>
+                                {% endif %}
                             </div>
+
                         <hr />
                         {# Post Description #}
                         {{ post_comment(user, post.description) }}

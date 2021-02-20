@@ -396,11 +396,6 @@ outline: 0;
     font-size: 20px !important;
 }
 
- /*TODO: Uncomment when implementing comments*/
-/*.gallery-item-delete {*/
-/*    margin-left: 2.2rem;*/
-/*}*/
-
 .no-posts-yet,
 .upload-first-photo {
     margin: auto;
@@ -457,7 +452,18 @@ outline: 0;
 }
 
 .modal-post-user-link {
-    padding: 20px 0 6px 16px;;
+    padding: 20px 0 6px 16px;
+}
+
+.modal-post-user-link .fa-trash-alt {
+    font-size: 18px;
+    color: red;
+    margin-right: 11px;
+    float: right;
+}
+
+.modal-post-user-link .fa-trash-alt:hover {
+    cursor: pointer;
 }
 
 .post-comment {
@@ -471,7 +477,6 @@ outline: 0;
     width: 258px;
     vertical-align: top;
 }
-
 
 .post-profile-pic,
 .post-comment-profile-pic {
@@ -495,8 +500,3 @@ outline: 0;
 .post-comment-username:hover {
     text-decoration: underline;
 }
-
-
-
-
-

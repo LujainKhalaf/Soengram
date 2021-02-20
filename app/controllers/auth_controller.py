@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, redirect, url_for
 from app.forms.signup_form import SignupForm
 from app.forms.signin_form import SigninForm
 from app.services import auth_service
-from app.utils.session_decorators import login_required, not_logged_in_required, get_url_for_profile
+from app.utils.session import login_required, not_logged_in_required, get_url_for_profile
 
 auth_routes = Blueprint('auth_routes', __name__)
 

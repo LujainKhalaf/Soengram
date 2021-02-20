@@ -1,6 +1,6 @@
 from flask import request, Blueprint, render_template
 
-from app.utils.session_decorators import login_required
+from app.utils.session import login_required
 
 index_routes = Blueprint('index_routes', __name__)
 

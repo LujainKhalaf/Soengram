@@ -34,13 +34,13 @@ class User(db.Model):
         return f'<User username={self.username}>'
 
     def serialize(self) -> SerializedUser:
-        return {
-            'user_id': self.user_id,
-            'username': self.username,
-            'email': self.email,
-            'full_name': self.full_name,
-            'created_at': self.created_at
-        }
+        return SerializedUser(
+            user_id=self.user_id,
+            username=self.username,
+            email=self.email,
+            full_name=self.full_name,
+            created_at=self.created_at
+        )
 
     def get_following(self) -> List[SerializedUser]:
         return [follower.serialize() for follower in self.following]

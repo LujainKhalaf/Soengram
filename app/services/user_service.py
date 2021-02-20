@@ -1,11 +1,10 @@
-from typing import Tuple, Any
-
 from flask import jsonify
 
 from app.models import User
+from app.utils.entities import JSONResponse
 
 
-def get_followers(username: str) -> Tuple[Any, int]:
+def get_followers(username: str) -> JSONResponse:
     user = User.get_by_username(username)
 
     if not user:
@@ -14,7 +13,7 @@ def get_followers(username: str) -> Tuple[Any, int]:
     return jsonify(followers=user.get_followers()), 200
 
 
-def get_following(username: str) -> Tuple[Any, int]:
+def get_following(username: str) -> JSONResponse:
     user = User.get_by_username(username)
 
     if not user:
@@ -23,7 +22,7 @@ def get_following(username: str) -> Tuple[Any, int]:
     return jsonify(following=user.get_following()), 200
 
 
-def follow_user(user_id: int, user_id_to_follow: int) -> Tuple[Any, int]:
+def follow_user(user_id: int, user_id_to_follow: int) -> JSONResponse:
     if user_id_to_follow == user_id:
         return jsonify('Invalid parameters'), 400
 
@@ -31,7 +30,7 @@ def follow_user(user_id: int, user_id_to_follow: int) -> Tuple[Any, int]:
     return '', 204
 
 
-def unfollow_user(user_id: int, user_id_to_remove: int) -> Tuple[Any, int]:
+def unfollow_user(user_id: int, user_id_to_remove: int) -> JSONResponse:
     if user_id_to_remove == user_id:
         return jsonify('Invalid parameters'), 400
 

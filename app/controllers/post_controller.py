@@ -1,7 +1,7 @@
 from typing import Any
 from flask import request, Blueprint, render_template, redirect
 from app.services import post_service
-from app.utils.session_decorators import login_required, get_url_for_profile
+from app.utils.session import login_required, get_url_for_profile
 from app.forms.post_form import CreatePostForm
 
 post_routes = Blueprint('post_routes', __name__)

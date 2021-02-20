@@ -1,10 +1,11 @@
-from typing import Any, Tuple
+from typing import Any
 import uuid
 
 from flask import jsonify
 
 from app.forms.post_form import CreatePostForm
 from app.models import Post
+from app.utils.entities import JSONResponse
 from app.utils.file import get_image_url_dir
 from datetime import datetime
 from app.utils.file import get_file_extension, get_image_url
@@ -17,7 +18,7 @@ def create_post(user_id: int, form: CreatePostForm) -> None:
     upload_post_image(form.post_image.data, post.image_url)
 
 
-def delete_post(user_id: int, post_id: int) -> Tuple[str, int]:
+def delete_post(user_id: int, post_id: int) -> JSONResponse:
     post = Post.get_by_post_id(post_id)
 
     if not Post.is_post_owned_by_user(post, user_id):

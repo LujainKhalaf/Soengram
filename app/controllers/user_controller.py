@@ -12,7 +12,7 @@ def get_user(user_id: int, username: str) -> Any:
     user = User.get_by_username(username)
     if user:
         is_me = user.user_id == user_id
-        return render_template('account/profile/base.html', user=user, is_me=is_me, followers=get_followers(username))
+        return render_template('account/profile/base.html', user=user, is_me=is_me)
     else:
         return '', 404
 
@@ -65,4 +65,3 @@ def unfollow_user(user_id: int) -> Any:
         return '', 204
     except Exception:
         return '', 404
-

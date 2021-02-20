@@ -1,6 +1,6 @@
 from typing import Any
 
-from flask import request, Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for
 
 from app.forms.signup_form import SignupForm
 from app.forms.signin_form import SigninForm
@@ -40,6 +40,5 @@ def sign_in() -> Any:
 @auth_routes.route('/signout', methods=['POST'])
 @login_required
 def sign_out(_) -> Any:
-    if request.method == 'POST':
-        auth_service.sign_out()
-        return redirect(url_for(".sign_in"))
+    auth_service.sign_out()
+    return redirect(url_for(".sign_in"))

@@ -4,6 +4,7 @@ from typing import List
 from werkzeug.security import check_password_hash
 
 from app.extensions import db
+from app.utils.entities import SerializedUser
 
 
 class User(db.Model):
@@ -32,13 +33,7 @@ class User(db.Model):
     def __repr__(self):
         return f'<User username={self.username}>'
 
-    def get_following(self) -> List[User]:
-        return self.following
-
-    def get_followers(self) -> List[User]:
-        return self.followers
-
-    def serialize_as_follower(self):
+    def serialize(self) -> SerializedUser:
         return {
             'user_id': self.user_id,
             'username': self.username,
@@ -46,6 +41,12 @@ class User(db.Model):
             'full_name': self.full_name,
             'created_at': self.created_at
         }
+
+    def get_following(self) -> List[SerializedUser]:
+        return [follower.serialize() for follower in self.following]
+
+    def get_followers(self) -> List[SerializedUser]:
+        return [follower.serialize() for follower in self.followers]
 
     @staticmethod
     def insert(user: User) -> None:

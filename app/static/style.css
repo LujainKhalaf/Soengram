@@ -71,6 +71,7 @@ button {
 .bi-house-door {
     font-size: 1.7rem
 }
+
 .bi-plus-square-fill,
 .bi-plus-square {
     font-size: 1.7rem
@@ -134,7 +135,7 @@ button {
 }
 
 button.dropdown-item:focus {
-outline: 0;
+    outline: 0;
 }
 
 .dropdown-item i {
@@ -326,6 +327,16 @@ outline: 0;
     margin-top: -5px;
 }
 
+#follow-button {
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    background-color: cornflowerblue;
+    color: ghostwhite;
+    padding: 3px 10px;
+}
+
 /*********************************/
 /* Profile - Post Gallery        */
 /*********************************/
@@ -391,7 +402,7 @@ outline: 0;
     font-size: 20px !important;
 }
 
- /*TODO: Uncomment when implementing comments*/
+/*TODO: Uncomment when implementing comments*/
 /*.gallery-item-delete {*/
 /*    margin-left: 2.2rem;*/
 /*}*/

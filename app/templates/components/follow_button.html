@@ -3,18 +3,7 @@
     - user: User
 #}
 {% macro follow_button(following, user) -%}
-    {% if following %}
-        {% set css = "btn btn-following" %}
-    {% else %}
-        {% set css = "btn btn-primary" %}
-    {% endif %}
-
-    <button id="follow-button" class="btn {{ css }} shadow-none" onclick="follow(this)"
-            this-user-id="{{ user.user_id }}">
-        {% if following %}
-            Following
-        {% else %}
-            Follow
-        {% endif %}
+    <button id="follow-button" class="btn {{ 'btn-following' if following else 'btn-primary' }} shadow-none" onclick="follow(this)" this-user-id="{{ user.user_id }}">
+        {{ 'Following' if following else 'Follow' }}
     </button>
 {%- endmacro %}

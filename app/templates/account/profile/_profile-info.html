@@ -1,3 +1,5 @@
+{% from "components/follow_button.html" import follow_button with context %}
+
 <div class="row profile-info">
     <div class="profile-image col-3">
         <img src="static/assets/default-profile-picture.png" class="rounded-circle mx-auto d-block" alt="">
@@ -5,24 +7,28 @@
     <div class="col-9">
         <div class="profile-user-settings ">
             <h2 class="profile-user-name">{{ user.username }}
-{#                <form action="/follow" method="post">#}
-                    <button title="Follow" id="follow-button" onclick="follow(this)" user-id="{{ user.user_id }}">
-                        Follow
-                    </button>
-{#                </form>#}
+                {% if not is_me %}
+                    {% if session.get("logged_in").get("username") in user.followers|map(attribute="username") %}
+                        {{ follow_button(true, user) }}
+                    {% else %}
+                        {{ follow_button(false, user) }}
+                    {% endif %}
+                {% endif %}
             </h2>
         </div>
         <div class="profile-stats">
             <ul>
                 <li><span id="profile-post-count" class="profile-stat-count">{{ user.posts|length }}</span> posts</li>
-                <li><a href="#"><span class="profile-stat-count">{{ user.followers|length }}</span> followers</a></li>
+                <li><a href="#"><span class="profile-stat-count"
+                                      id="follow-button-follower-count">{{ user.followers|length }}</span> followers</a>
+                </li>
                 <li><a href="#"><span class="profile-stat-count">{{ user.following|length }}</span> following</a></li>
             </ul>
         </div>
         <div class="profile-bio">
             <p class="profile-full-name">{{ user.full_name }}</p>
-{# TODO: Remove once profile description is implemented. Uncomment for display testing purposes.               #}
-{#          <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at neque quis quam condimentum consectetur. Suspendisse nibh magna, varius ac lectus non, consectetur consequat erat. In eu ipsum interdum, tincidunt purus at, viverra metus. Vivamus facilisis tempus elit id suscipit. Aenean eget pharetra tortor. Nam aliquam erat vel sollicitudin vulputate. Nulla sed elit eu quam sodales facilisis. Nam accumsan massa ac mauris porta, non semper neque maximus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>#}
+            {# TODO: Remove once profile description is implemented. Uncomment for display testing purposes.               #}
+            {#          <p class="profile-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at neque quis quam condimentum consectetur. Suspendisse nibh magna, varius ac lectus non, consectetur consequat erat. In eu ipsum interdum, tincidunt purus at, viverra metus. Vivamus facilisis tempus elit id suscipit. Aenean eget pharetra tortor. Nam aliquam erat vel sollicitudin vulputate. Nulla sed elit eu quam sodales facilisis. Nam accumsan massa ac mauris porta, non semper neque maximus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;</p>#}
 
         </div>
     </div>

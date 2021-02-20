@@ -38,6 +38,11 @@ button {
     background-color: #0095F6;
 }
 
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .center {
     display: block;
     position: relative;
@@ -327,14 +332,17 @@ button.dropdown-item:focus {
     margin-top: -5px;
 }
 
-#follow-button {
-    border-radius: 8px;
-    border: none;
-    text-align: center;
-    font-size: 18px;
-    background-color: cornflowerblue;
-    color: ghostwhite;
-    padding: 3px 10px;
+.profile-user-settings .btn {
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.btn-following {
+    background-color: transparent;
+    border-color: black;
+    color: black;
 }
 
 /*********************************/

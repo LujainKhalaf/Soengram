@@ -114,6 +114,10 @@ class Post(db.Model):
         db.session.delete(post)
         db.session.commit()
 
+    @staticmethod
+    def is_post_owned_by_user(post: Post, user_id: int):
+        return post and post.user_id == user_id
+
 
 followers = db.Table(
     'followers',

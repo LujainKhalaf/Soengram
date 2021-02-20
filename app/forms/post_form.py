@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Length
 from app.utils.file import ALLOWED_EXTENSIONS
 
 
-class PostForm(FlaskForm):
+class CreatePostForm(FlaskForm):
     DESCRIPTION_LENGTH_MAX = 2_200
 
     post_image = FileField(

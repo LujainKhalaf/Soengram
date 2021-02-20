@@ -20,22 +20,25 @@ async function deletePost(e) {
 }
 
 async function follow(e) {
-    let status = document.getElementById("follow-button").innerText;
-    const thisUserId = await e.getAttribute('this-user-id');
+    const userId = await e.getAttribute('this-user-id');
     const formData = new FormData();
-    formData.append('user_id', thisUserId);
+    formData.append('user_id', userId);
 
-    if (status == "Follow") {
-        await fetch('http://127.0.0.1:5000/follow', {method: 'POST', body: formData});
-        document.getElementById("follow-button").innerText = "Following";
-        document.getElementById("follow-button").title = "Following";
-        document.getElementById("follow-button").className = document.getElementById("follow-button").className.replace("btn-primary", "btn-following");
-        document.getElementById("follow-button-follower-count").innerText = (parseInt(document.getElementById("follow-button-follower-count").innerText.valueOf()) + 1).toString();
+    const followButton = document.getElementById('follow-button');
+    const isFollowing = followButton.innerText === 'Follow';
+    if (isFollowing) {
+        await fetch('/follow', {method: 'POST', body: formData});
+        followButton.innerText = 'Following';
+        followButton.title = 'Following';
+        followButton.className = 'btn btn-following';
     } else {
-        await fetch('http://127.0.0.1:5000/unfollow', {method: 'POST', body: formData});
-        document.getElementById("follow-button").innerText = "Follow";
-        document.getElementById("follow-button").title = "Follow";
-        document.getElementById("follow-button").className = document.getElementById("follow-button").className.replace("btn-following", "btn-primary");
-        document.getElementById("follow-button-follower-count").innerText = (parseInt(document.getElementById("follow-button-follower-count").innerText.valueOf()) - 1).toString();
+        await fetch('/unfollow', {method: 'POST', body: formData});
+        followButton.innerText = 'Follow';
+        followButton.title = 'Follow';
+        followButton.className = 'btn btn-primary';
     }
+
+    const followerCount = document.getElementById('follow-button-follower-count');
+    const currentCount = parseInt(followerCount.innerText)
+    followerCount.innerText = isFollowing ? `${currentCount + 1}` : `${currentCount - 1}`;
 }

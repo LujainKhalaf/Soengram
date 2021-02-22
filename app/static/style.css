@@ -41,6 +41,7 @@ button {
 .btn:focus {
     outline: none;
     box-shadow: none;
+}
 
   hr {
     height: 1px;
@@ -337,6 +338,7 @@ button.dropdown-item:focus {
 }
 
 .profile-user-settings .btn {
+    margin-top: -9px;
     margin-left: 10px;
     border-radius: 5px;
     font-size: 12px;

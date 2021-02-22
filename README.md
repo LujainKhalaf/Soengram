@@ -47,7 +47,7 @@ Before you continue, ensure you have installed the following requirements:
     $ py -3 -m venv venv
     $ venv\Scripts\activate
     ```
-3. Instal all packages
+3. Install all packages
     ```sh
     $ pip install -r requirements.txt
     ```

@@ -47,7 +47,7 @@ Before you continue, ensure you have installed the following requirements:
     $ py -3 -m venv venv
     $ venv\Scripts\activate
     ```
-3. Instal all packages
+3. Install all packages
     ```sh
     $ pip install -r requirements.txt
     ```
@@ -98,7 +98,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) detailing basic guidlines for pushing new
 
 Soengram is an educational non-profitable project based on the social networking service [Instagram](https://instagram.com). The design and functionalities are adapted from Instagram to meet project requirements. This web application is not hosted for commercial use, but rather for academic purposes.
 
-Copyright © 2021 Soengram Site Adapted from Instagram Customized by Soengram Team
+Copyright © 2021 Soengram adapted from Instagram and customized by Soengram team
 
 
 ## Team

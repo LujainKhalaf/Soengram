@@ -13,11 +13,12 @@ async function deletePost(e) {
     const gridItem = await document.getElementById(`post-grid-item-${postId}`);
     gridItem.parentNode.removeChild(gridItem);
 
+
     var modalItem = document.getElementById(`post-modal-${postId}`);
     modalItem.parentNode.removeChild(modalItem)
 
     let postCount = parseInt(document.getElementById("profile-post-count").innerText);
-    let updatedPostCount = postCount-1;
+    let updatedPostCount = postCount - 1;
 
     document.getElementById('profile-post-count').innerText = updatedPostCount;
 

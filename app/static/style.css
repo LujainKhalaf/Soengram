@@ -23,7 +23,8 @@ header {
 }
 
 footer {
-    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 a {
@@ -38,7 +39,12 @@ button {
     background-color: #0095F6;
 }
 
-hr {
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+  hr {
     height: 1px;
     color: #a6a6a6;
 }
@@ -76,6 +82,7 @@ hr {
 .bi-house-door {
     font-size: 1.7rem
 }
+
 .bi-plus-square-fill,
 .bi-plus-square {
     font-size: 1.7rem
@@ -139,7 +146,7 @@ hr {
 }
 
 button.dropdown-item:focus {
-outline: 0;
+    outline: 0;
 }
 
 .dropdown-item i {
@@ -327,6 +334,25 @@ outline: 0;
     font-weight: bold;
 }
 
+
+.profile-description {
+    margin-top: -5px;
+}
+
+.profile-user-settings .btn {
+    margin-top: -9px;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.btn-following {
+    background-color: transparent;
+    border-color: black;
+    color: black;
+}
+
 /*********************************/
 /* Profile - Post Gallery        */
 /*********************************/
@@ -391,6 +417,11 @@ outline: 0;
     display: inline-block;
     font-size: 20px !important;
 }
+
+/*TODO: Uncomment when implementing comments*/
+/*.gallery-item-delete {*/
+/*    margin-left: 2.2rem;*/
+/*}*/
 
 .no-posts-yet,
 .upload-first-photo {

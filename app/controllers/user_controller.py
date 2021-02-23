@@ -65,4 +65,3 @@ def unfollow_user(user_id: int) -> Any:
         return '', 204
     except Exception:
         return '', 404
-

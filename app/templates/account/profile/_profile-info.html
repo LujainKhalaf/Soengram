@@ -1,15 +1,23 @@
+{% from "components/follow_button.html" import follow_button with context %}
+
 <div class="row profile-info">
     <div class="profile-image col-3">
         <img src="static/assets/default-profile-picture.png" class="rounded-circle mx-auto d-block" alt="">
     </div>
     <div class="col-9">
         <div class="profile-user-settings ">
-            <h2 class="profile-user-name">{{ user.username }}</h2>
+            <h2 class="profile-user-name">{{ user.username }}
+                {% if not is_me %}
+                    {{ follow_button(session.get("logged_in").get("username") in user.followers|map(attribute="username"), user) }}
+                {% endif %}
+            </h2>
         </div>
         <div class="profile-stats">
             <ul>
                 <li><span id="profile-post-count" class="profile-stat-count">{{ user.posts|length }}</span> posts</li>
-                <li><a href="#"><span class="profile-stat-count">{{ user.followers|length }}</span> followers</a></li>
+                <li><a href="#"><span class="profile-stat-count"
+                                      id="follow-button-follower-count">{{ user.followers|length }}</span> followers</a>
+                </li>
                 <li><a href="#"><span class="profile-stat-count">{{ user.following|length }}</span> following</a></li>
             </ul>
         </div>

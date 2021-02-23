@@ -25,7 +25,7 @@ class PostForm(FlaskForm):
             DataRequired(message='Caption Required'),
             Length(
                 max=DESCRIPTION_LENGTH_MAX,
-                message=f"Caption must be less than {DESCRIPTION_LENGTH_MAX} characters long."
+                message=f"Caption cannot be more than {DESCRIPTION_LENGTH_MAX} characters long."
             )
         ]
     )

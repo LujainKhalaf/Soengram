@@ -22,7 +22,7 @@ async function deletePost(e) {
 
     document.getElementById('profile-post-count').innerText = updatedPostCount;
 
-    if (updatedPostCount == 0) {
+    if (updatedPostCount === 0) {
         document.getElementById("upload-first").classList.remove("invisible")
     }
 }

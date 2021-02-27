@@ -19,7 +19,7 @@ def sign_up(form: SignupForm) -> None:
 def sign_in(form: SigninForm) -> None:
     user = User.get_by_email(form.email.data)
 
-    session[SESSION_KEY] = user_session_builder(user)
+    session[SESSION_KEY] = vars(user_session_builder(user))
 
 
 def sign_out() -> None:

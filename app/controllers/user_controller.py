@@ -35,7 +35,7 @@ def get_following(_, username: str) -> Any:
 @login_required
 def follow_user(user_id: int) -> Any:
     try:
-        user_id_to_follow = request.form.get('user_id_to_follow')
+        user_id_to_follow = request.form.get('user_id')
         return user_service.follow_user(user_id, user_id_to_follow)
     except Exception:
         return jsonify('User not found'), 404
@@ -45,7 +45,7 @@ def follow_user(user_id: int) -> Any:
 @login_required
 def unfollow_user(user_id: int) -> Any:
     try:
-        user_id_to_remove = request.form.get('user_id_to_remove')
+        user_id_to_remove = request.form.get('user_id')
         return user_service.unfollow_user(user_id, user_id_to_remove)
     except Exception:
         return jsonify('User not found'), 404

@@ -113,6 +113,12 @@ class Post(db.Model):
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2200), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
+    comments = db.relationship(
+        'Comment',
+        backref='post',
+        lazy='select',
+        order_by='desc(Comment.created_at)'
+    )
     user = db.relationship(
         'User',
         back_populates='posts',
@@ -139,6 +145,24 @@ class Post(db.Model):
     @staticmethod
     def is_post_owned_by_user(post: Post, user_id: int) -> bool:
         return post and post.user_id == user_id
+
+
+class Comment(db.Model):
+    __tablename__ = 'comment'
+
+    comment_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.post_id'), nullable=False)
+    comment_text = db.Column(db.String(2200), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False)
+    user = db.relationship(
+        'User',
+        backref='comment',
+        lazy='select'
+    )
+
+    def __repr__(self):
+        return f'<Post post_id={self.comment_id}>'
 
 
 followers = db.Table(

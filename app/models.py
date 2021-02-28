@@ -89,25 +89,9 @@ class User(db.Model):
         return check_password_hash(user_by_email.password, password)
 
     @staticmethod
-    def build_partial_user_by_user_id(user_id: int) -> User:
-        raw_user = User.get_by_user_id(user_id)
-        return User(
-            user_id=raw_user.user_id,
-            username=raw_user.username,
-            email=raw_user.email,
-            full_name=raw_user.full_name,
-            created_at=raw_user.created_at
-        )
-
-    @staticmethod
     def get_feed_by_user_id(user_id: int) -> List[Post]:
         query = f'''
-            SELECT
-                post_id,
-                post.user_id,
-                image_url,
-                description,
-                created_at
+            SELECT post_id
             FROM post
             JOIN followers f ON post.user_id = f.following_id
             WHERE {user_id} = f.user_id
@@ -117,16 +101,7 @@ class User(db.Model):
 
         raw_feed = db.session.execute(query)
 
-        def __build_post(row: Any) -> Post:
-            post_dict = dict(row.items())
-            user = User.build_partial_user_by_user_id(post_dict.get('user_id'))
-
-            return Post(
-                **post_dict,
-                user=user
-            )
-
-        return [__build_post(row) for row in raw_feed]
+        return [Post.get_by_post_id(row[0]) for row in raw_feed]
 
 
 class Post(db.Model):

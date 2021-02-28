@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import List
+from typing import List, Any
 
 from werkzeug.security import check_password_hash
 
@@ -18,7 +18,7 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     posts = db.relationship(
         'Post',
-        backref='user',
+        back_populates='user',
         lazy='select',
         order_by='desc(Post.created_at)'
     )
@@ -89,6 +89,17 @@ class User(db.Model):
         return check_password_hash(user_by_email.password, password)
 
     @staticmethod
+    def build_partial_user_by_user_id(user_id: int) -> User:
+        raw_user = User.get_by_user_id(user_id)
+        return User(
+            user_id=raw_user.user_id,
+            username=raw_user.username,
+            email=raw_user.email,
+            full_name=raw_user.full_name,
+            created_at=raw_user.created_at
+        )
+
+    @staticmethod
     def get_feed_by_user_id(user_id: int) -> List[Post]:
         query = f'''
             SELECT
@@ -106,7 +117,16 @@ class User(db.Model):
 
         raw_feed = db.session.execute(query)
 
-        return [Post(**dict(post.items())) for post in raw_feed]
+        def __build_post(row: Any) -> Post:
+            post_dict = dict(row.items())
+            user = User.build_partial_user_by_user_id(post_dict.get('user_id'))
+
+            return Post(
+                **post_dict,
+                user=user
+            )
+
+        return [__build_post(row) for row in raw_feed]
 
 
 class Post(db.Model):
@@ -117,6 +137,11 @@ class Post(db.Model):
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2200), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
+    user = db.relationship(
+        'User',
+        back_populates='posts',
+        lazy='select'
+    )
 
     def __repr__(self):
         return f'<Post post_id={self.post_id}>'

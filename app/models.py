@@ -99,9 +99,10 @@ class User(db.Model):
             LIMIT 50
         '''
 
-        raw_feed = db.session.execute(query)
+        # will be an iterable of rows with 1 element being the post_id
+        rows = db.session.execute(query)
 
-        return [Post.get_by_post_id(row[0]) for row in raw_feed]
+        return [Post.get_by_post_id(row[0]) for row in rows]
 
 
 class Post(db.Model):

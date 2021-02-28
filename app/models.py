@@ -16,7 +16,7 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     full_name = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-    posts = db.relationship(
+    posts: List[Post] = db.relationship(
         'Post',
         back_populates='user',
         lazy='select',
@@ -113,16 +113,16 @@ class Post(db.Model):
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2200), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
+    user = db.relationship(
+        'User',
+        back_populates='posts',
+        lazy='select'
+    )
     comments: List[Comment] = db.relationship(
         'Comment',
         backref='post',
         lazy='select',
         order_by='desc(Comment.created_at)'
-    )
-    user = db.relationship(
-        'User',
-        back_populates='posts',
-        lazy='select'
     )
 
     def __repr__(self):

@@ -7,9 +7,7 @@ from app.utils.entities import JSONResponse
 
 
 def get_feed(user_id: int) -> List[Post]:
-    feed = User.get_feed_by_user_id(user_id)
-
-    return feed
+    return User.get_feed_by_user_id(user_id)
 
 
 def get_followers(username: str) -> JSONResponse:

@@ -113,7 +113,7 @@ class Post(db.Model):
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2200), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-    comments = db.relationship(
+    comments: List[Comment] = db.relationship(
         'Comment',
         backref='post',
         lazy='select',
@@ -157,7 +157,7 @@ class Comment(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     user = db.relationship(
         'User',
-        backref='comment',
+        backref='comments',
         lazy='select'
     )
 

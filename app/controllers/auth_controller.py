@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, redirect, url_for
 from app.forms.signup_form import SignupForm
 from app.forms.signin_form import SigninForm
 from app.services import auth_service
-from app.utils.session import login_required, not_logged_in_required, get_url_for_profile
+from app.utils.session import login_required, not_logged_in_required
 
 auth_routes = Blueprint('auth_routes', __name__)
 
@@ -19,7 +19,7 @@ def sign_up() -> Any:
         auth_service.sign_up(form)
         auth_service.sign_in(form)
 
-        return redirect(get_url_for_profile())
+        return redirect(url_for('user_routes.get_feed'))
 
     return render_template('account/signup.html', form=form)
 
@@ -32,7 +32,7 @@ def sign_in() -> Any:
     if form.validate_on_submit():
         auth_service.sign_in(form)
 
-        return redirect(get_url_for_profile())
+        return redirect(url_for('user_routes.get_feed'))
 
     return render_template('account/signin.html', form=form)
 

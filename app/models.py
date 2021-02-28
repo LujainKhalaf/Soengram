@@ -88,6 +88,26 @@ class User(db.Model):
 
         return check_password_hash(user_by_email.password, password)
 
+    @staticmethod
+    def get_feed_by_user_id(user_id: int) -> List[Post]:
+        query = f'''
+            SELECT
+                post_id,
+                post.user_id,
+                image_url,
+                description,
+                created_at
+            FROM post
+            JOIN followers f ON post.user_id = f.following_id
+            WHERE {user_id} = f.user_id
+            ORDER BY post.created_at DESC
+            LIMIT 50
+        '''
+
+        raw_feed = db.session.execute(query)
+
+        return [Post(**dict(post.items())) for post in raw_feed]
+
 
 class Post(db.Model):
     __tablename__ = 'post'

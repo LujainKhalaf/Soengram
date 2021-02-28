@@ -7,6 +7,10 @@
 <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
     {% for post in feed %}
         <img src={{ post.image_url }}>
+        {{ post.user.email }}
+        {%  for comment in post.comments %}
+            {{ comment.comment_text }}
+        {% endfor %}
     {% endfor %}
 </div>
 

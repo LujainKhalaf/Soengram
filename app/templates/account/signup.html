@@ -17,11 +17,11 @@
             <div class="error-group">
                 {% for field in form %}
                     {% if field.errors %}
-                        {%  for err in field.errors %}
+                        {% for err in field.errors %}
                             <p class="text-danger text-center">{{ err }}</p>
                         {% endfor %}
                     {% endif %}
-                {%  endfor %}
+                {% endfor %}
             </div>
 
             <div class="row">

@@ -4,17 +4,17 @@ async function deletePost(e) {
     formData.append('post_id', postId);
 
     // Close Bootstrap modal
-    $('#post-modal-'+postId).modal('hide')
+    $(`#post-modal-${postId}`).modal('hide')
 
-    await fetch('/delete', {
-        method: 'POST',
+    await fetch('/delete-post', {
+        method: 'DELETE',
         body: formData
     });
+
     const gridItem = await document.getElementById(`post-grid-item-${postId}`);
     gridItem.parentNode.removeChild(gridItem);
 
-
-    var modalItem = document.getElementById(`post-modal-${postId}`);
+    const modalItem = document.getElementById(`post-modal-${postId}`);
     modalItem.parentNode.removeChild(modalItem)
 
     let postCount = parseInt(document.getElementById("profile-post-count").innerText);
@@ -22,7 +22,7 @@ async function deletePost(e) {
 
     document.getElementById('profile-post-count').innerText = updatedPostCount;
 
-    if (updatedPostCount == 0) {
+    if (updatedPostCount === 0) {
         document.getElementById("upload-first").classList.remove("invisible")
     }
 }

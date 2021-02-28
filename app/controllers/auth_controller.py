@@ -1,11 +1,11 @@
 from typing import Any
 
-from flask import request, Blueprint, render_template, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for
 
 from app.forms.signup_form import SignupForm
 from app.forms.signin_form import SigninForm
 from app.services import auth_service
-from app.utils.session_decorators import login_required, not_logged_in_required
+from app.utils.session import login_required, not_logged_in_required, get_url_for_profile
 
 auth_routes = Blueprint('auth_routes', __name__)
 
@@ -17,7 +17,9 @@ def sign_up() -> Any:
 
     if form.validate_on_submit():
         auth_service.sign_up(form)
-        return auth_service.sign_in(form.email.data, form.password.data)
+        auth_service.sign_in(form)
+
+        return redirect(get_url_for_profile())
 
     return render_template('account/signup.html', form=form)
 
@@ -27,11 +29,10 @@ def sign_up() -> Any:
 def sign_in() -> Any:
     form = SigninForm()
 
-    if form.is_submitted():
-        try:
-            return auth_service.sign_in(form.email.data, form.password.data)
-        except Exception:
-            flash('Incorrect username and/or password.')
+    if form.validate_on_submit():
+        auth_service.sign_in(form)
+
+        return redirect(get_url_for_profile())
 
     return render_template('account/signin.html', form=form)
 
@@ -39,6 +40,5 @@ def sign_in() -> Any:
 @auth_routes.route('/signout', methods=['POST'])
 @login_required
 def sign_out(_) -> Any:
-    if request.method == 'POST':
-        auth_service.sign_out()
-        return redirect(url_for(".sign_in"))
+    auth_service.sign_out()
+    return redirect(url_for(".sign_in"))

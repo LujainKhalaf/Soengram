@@ -1,35 +1,43 @@
 from datetime import datetime
-from typing import Any
 
-from flask import session, redirect, url_for
-from flask_wtf import FlaskForm
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import session
+from werkzeug.security import generate_password_hash
 
+from app.forms.signin_form import SigninForm
+from app.forms.signup_form import SignupForm
 from app.models import User
-from app.utils.session_decorators import get_url_for_profile
+from app.utils.entities import UserSession
+from app.utils.session import SESSION_KEY
 
 
-def sign_up(form: FlaskForm) -> None:
-    user = User(username=form.username.data,
-                email=form.email.data,
-                password=generate_password_hash(form.password.data),
-                full_name=form.full_name.data,
-                created_at=datetime.now())
+def sign_up(form: SignupForm) -> None:
+    user = user_builder(form)
 
     User.insert(user)
 
 
-def sign_in(email: str, password: str) -> Any:
-    user = User.get_by_email(email)
+def sign_in(form: SigninForm) -> None:
+    user = User.get_by_email(form.email.data)
 
-    if user:
-        is_authenticated = check_password_hash(user.password, password)
-        if is_authenticated:
-            session['logged_in'] = dict(user_id=user.user_id, username=user.username)
-            return redirect(get_url_for_profile())
-    raise Exception('Incorrect username and/or password.')
-    return redirect(url_for("auth_routes.sign_in"))
+    session[SESSION_KEY] = vars(user_session_builder(user))
 
 
 def sign_out() -> None:
-    session.pop('logged_in', None)
+    session.pop(SESSION_KEY, None)
+
+
+def user_builder(form: SignupForm) -> User:
+    return User(
+        username=form.username.data,
+        email=form.email.data,
+        password=generate_password_hash(form.password.data),
+        full_name=form.full_name.data,
+        created_at=datetime.now()
+    )
+
+
+def user_session_builder(user: User) -> UserSession:
+    return UserSession(
+        user_id=user.user_id,
+        username=user.username
+    )

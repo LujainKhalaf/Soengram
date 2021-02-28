@@ -1,6 +1,10 @@
 from __future__ import annotations
 from typing import List
+
+from werkzeug.security import check_password_hash
+
 from app.extensions import db
+from app.utils.entities import SerializedUser
 
 
 class User(db.Model):
@@ -29,20 +33,20 @@ class User(db.Model):
     def __repr__(self):
         return f'<User username={self.username}>'
 
-    def get_following(self) -> List[User]:
-        return self.following
+    def serialize(self) -> SerializedUser:
+        return SerializedUser(
+            user_id=self.user_id,
+            username=self.username,
+            email=self.email,
+            full_name=self.full_name,
+            created_at=self.created_at
+        )
 
-    def get_followers(self) -> List[User]:
-        return self.followers
+    def get_following(self) -> List[SerializedUser]:
+        return [follower.serialize() for follower in self.following]
 
-    def serialize_as_follower(self):
-        return {
-            'user_id': self.user_id,
-            'username': self.username,
-            'email': self.email,
-            'full_name': self.full_name,
-            'created_at': self.created_at
-        }
+    def get_followers(self) -> List[SerializedUser]:
+        return [follower.serialize() for follower in self.followers]
 
     @staticmethod
     def insert(user: User) -> None:
@@ -77,6 +81,13 @@ class User(db.Model):
 
         db.session.commit()
 
+    @staticmethod
+    def is_authenticated(user_by_email: User, password: User) -> bool:
+        if not user_by_email:
+            return False
+
+        return check_password_hash(user_by_email.password, password)
+
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -103,6 +114,10 @@ class Post(db.Model):
     def delete(post: Post) -> None:
         db.session.delete(post)
         db.session.commit()
+
+    @staticmethod
+    def is_post_owned_by_user(post: Post, user_id: int) -> bool:
+        return post and post.user_id == user_id
 
 
 followers = db.Table(

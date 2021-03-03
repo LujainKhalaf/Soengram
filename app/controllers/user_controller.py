@@ -1,8 +1,9 @@
 from typing import Any
 from flask import Blueprint, render_template, jsonify, request
 from app.models import User
-from app.utils.session import login_required
+from app.utils.session import login_required, set_user_feed_offset, get_feed_offset
 from app.services import user_service
+from app.models import Post
 
 user_routes = Blueprint('user_routes', __name__)
 
@@ -10,10 +11,17 @@ user_routes = Blueprint('user_routes', __name__)
 @user_routes.route('/', methods=['GET'])
 @login_required
 def get_feed(user_id: int) -> Any:
+    set_user_feed_offset(Post.BASE_FEED_OFFSET)
     feed = user_service.get_feed(user_id)
     user = User.get_by_user_id(user_id)
 
     return render_template('feed.html', feed=feed, user=user)
+
+
+@user_routes.route('/next-feed', methods=['GET'])
+@login_required
+def get_next_feed(user_id: int) -> Any:
+    return user_service.get_feed_with_offset(user_id)
 
 
 @user_routes.route('/<username>', methods=['GET'])

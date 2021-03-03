@@ -109,7 +109,7 @@ class Post(db.Model):
     __tablename__ = 'post'
 
     BASE_FEED_OFFSET = 0
-    FEED_OFFSET_INCREMENT = 10
+    FEED_OFFSET_INCREMENT = 50
 
     post_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)

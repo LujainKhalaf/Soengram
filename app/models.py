@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import List
+from typing import List, Any
 
 from werkzeug.security import check_password_hash
 
@@ -16,9 +16,9 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     full_name = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
-    posts = db.relationship(
+    posts: List[Post] = db.relationship(
         'Post',
-        backref='user',
+        back_populates='user',
         lazy='select',
         order_by='desc(Post.created_at)'
     )
@@ -88,6 +88,22 @@ class User(db.Model):
 
         return check_password_hash(user_by_email.password, password)
 
+    @staticmethod
+    def get_feed_by_user_id(user_id: int) -> List[Post]:
+        query = f'''
+            SELECT post_id
+            FROM post
+            JOIN followers f ON post.user_id = f.following_id
+            WHERE {user_id} = f.user_id
+            ORDER BY post.created_at DESC
+            LIMIT 50
+        '''
+
+        # will be an iterable of rows with 1 element being the post_id
+        rows = db.session.execute(query)
+
+        return [Post.get_by_post_id(row[0]) for row in rows]
+
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -97,6 +113,17 @@ class Post(db.Model):
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2200), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
+    user = db.relationship(
+        'User',
+        back_populates='posts',
+        lazy='select'
+    )
+    comments: List[Comment] = db.relationship(
+        'Comment',
+        backref='post',
+        lazy='select',
+        order_by='desc(Comment.created_at)'
+    )
 
     def __repr__(self):
         return f'<Post post_id={self.post_id}>'
@@ -118,6 +145,24 @@ class Post(db.Model):
     @staticmethod
     def is_post_owned_by_user(post: Post, user_id: int) -> bool:
         return post and post.user_id == user_id
+
+
+class Comment(db.Model):
+    __tablename__ = 'comment'
+
+    comment_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('post.post_id'), nullable=False)
+    comment_text = db.Column(db.String(2200), nullable=False)
+    created_at = db.Column(db.DateTime, nullable=False)
+    user = db.relationship(
+        'User',
+        backref='comments',
+        lazy='select'
+    )
+
+    def __repr__(self):
+        return f'<Post post_id={self.comment_id}>'
 
 
 followers = db.Table(

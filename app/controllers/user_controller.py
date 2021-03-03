@@ -7,6 +7,14 @@ from app.services import user_service
 user_routes = Blueprint('user_routes', __name__)
 
 
+@user_routes.route('/', methods=['GET'])
+@login_required
+def get_feed(user_id: int) -> Any:
+    feed = user_service.get_feed(user_id)
+
+    return render_template('feed.html', feed=feed)
+
+
 @user_routes.route('/<username>', methods=['GET'])
 @login_required
 def get_user(user_id: int, username: str) -> Any:

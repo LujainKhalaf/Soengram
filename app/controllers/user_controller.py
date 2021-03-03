@@ -11,8 +11,9 @@ user_routes = Blueprint('user_routes', __name__)
 @login_required
 def get_feed(user_id: int) -> Any:
     feed = user_service.get_feed(user_id)
+    user = User.get_by_user_id(user_id)
 
-    return render_template('feed.html', feed=feed)
+    return render_template('feed.html', feed=feed, user=user)
 
 
 @user_routes.route('/<username>', methods=['GET'])

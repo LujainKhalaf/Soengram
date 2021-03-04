@@ -19,6 +19,9 @@ header {
     height: 55px;
     margin: 0;
     padding: 0;
+}
+
+nav {
     border-bottom: 1px solid #DBDBDB;
 }
 
@@ -75,6 +78,10 @@ button {
 
 .navbar {
     max-height: 55px;
+    width: auto;
+}
+
+.navbar > .container-fluid {
     width: 975px;
 }
 

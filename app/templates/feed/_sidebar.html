@@ -1,0 +1,13 @@
+<div class="sidebar">
+    <div class="sidebar-profile-pic">
+        <a href="/{{ user.username }}">
+            <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class=" rounded-circle">
+        </a>
+    </div>
+    <div class="sidebar-user-info align-middle">
+        <a href="/{{ user.username }}" class="sidebar-username">{{ user.username }}</a><br>
+        <span class="sidebar-fullname ">{{ user.full_name }}</span>
+    </div>
+
+    {% include "common/_footer.html" %}
+</div>

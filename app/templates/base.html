@@ -32,9 +32,12 @@
         {% block content %}{% endblock %}
     </div>
 
-    <div class="container">
-        {% include "common/_footer.html" %}
-    </div>
+{#    TODO: Fix to only show at the bottom of a page/window #}
+    {% if request.endpoint != 'user_routes.get_feed' %}
+        <div class="container">
+            {% include "common/_footer.html" %}
+        </div>
+    {% endif %}
 
 
     </body>

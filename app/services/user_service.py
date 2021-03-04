@@ -1,13 +1,25 @@
 from typing import List
 
-from flask import jsonify
+from flask import jsonify, render_template
 
 from app.models import User, Post
 from app.utils.entities import JSONResponse
+from app.utils.session import get_feed_offset, increment_user_feed_offset
 
 
 def get_feed(user_id: int) -> List[Post]:
-    return User.get_feed_by_user_id(user_id)
+    return User.get_feed_by_user_id(user_id, get_feed_offset())
+
+
+def get_feed_with_offset(user_id: int) -> JSONResponse:
+    increment_user_feed_offset()
+    feed = get_feed(user_id)
+
+    if len(feed) == 0:
+        return jsonify('No posts found'), 404
+
+    # rendering the html to be implemented when view is created
+    return render_template('feed.html', feed=feed), 200
 
 
 def get_followers(username: str) -> JSONResponse:

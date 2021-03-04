@@ -1,18 +1,33 @@
 from flask import session, redirect, url_for
 from functools import wraps
 
-from app.models import User
+from app.models import User, Post
 from app.utils.entities import UserSession
 
 
 SESSION_KEY = 'logged_in'
+FEED_OFFSET_KEY = 'feed_offset'
 
 
 def get_user_session() -> UserSession:
+    session_dict = session.get(SESSION_KEY)
+
     return UserSession(
-        user_id=session.get(SESSION_KEY).get('user_id'),
-        username=session.get(SESSION_KEY).get('username')
+        user_id=session_dict.get('user_id'),
+        username=session_dict.get('username')
     )
+
+
+def get_feed_offset() -> int:
+    return session.get(FEED_OFFSET_KEY, 0)
+
+
+def increment_user_feed_offset() -> None:
+    set_user_feed_offset(get_feed_offset() + Post.FEED_OFFSET_INCREMENT)
+
+
+def set_user_feed_offset(offset: int) -> None:
+    session[FEED_OFFSET_KEY] = offset
 
 
 def does_user_have_session() -> bool:

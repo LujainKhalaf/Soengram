@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import List, Any
+from typing import List
 
 from werkzeug.security import check_password_hash
 
@@ -89,14 +89,14 @@ class User(db.Model):
         return check_password_hash(user_by_email.password, password)
 
     @staticmethod
-    def get_feed_by_user_id(user_id: int) -> List[Post]:
+    def get_feed_by_user_id(user_id: int, offset: int) -> List[Post]:
         query = f'''
             SELECT post_id
             FROM post
             JOIN followers f ON post.user_id = f.following_id
             WHERE {user_id} = f.user_id
             ORDER BY post.created_at DESC
-            LIMIT 50
+            OFFSET {offset} LIMIT {Post.FEED_OFFSET_INCREMENT}
         '''
 
         # will be an iterable of rows with 1 element being the post_id
@@ -107,6 +107,9 @@ class User(db.Model):
 
 class Post(db.Model):
     __tablename__ = 'post'
+
+    BASE_FEED_OFFSET = 0
+    FEED_OFFSET_INCREMENT = 50
 
     post_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)

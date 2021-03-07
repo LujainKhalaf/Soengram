@@ -4,8 +4,8 @@ from datetime import datetime, date
 jinga = Blueprint('jinga', __name__)
 
 
-@jinga.app_template_filter('dateformat')
-def date_format(value):
+@jinga.app_template_filter('postdateformat')
+def post_date_format(value):
     if value is None:
         return ""
 

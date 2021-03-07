@@ -18,19 +18,25 @@
             <a href="/{{ user.username }}"><span class="post-comment-username">{{ user.username }}</span></a>
 
             <span id="comment-{{ comment.id|string }}" class="show-read-more">
-                {% if postDisplayType == "card" and comment.text|length > MIN_SHOW_MORE_CHARACTER_LENGTH %}
-                    {{ comment.text[:MIN_SHOW_MORE_CHARACTER_LENGTH].rstrip() + '...' }}
-                    <a href="javascript:void(0);" onclick="commentReadMore(this)" class="read-more"> more</a>
-                    <span class="more-text">{{ comment.text }}</span>
-                {% else %}
+                {% if postDisplayType == "card" %}
+                    {% if comment.text|length > MIN_SHOW_MORE_CHARACTER_LENGTH %}
+                        {{ comment.text[:MIN_SHOW_MORE_CHARACTER_LENGTH].rstrip() + '...' }}
+                        <a href="javascript:void(0);" onclick="commentReadMore(this)" class="read-more"> more</a>
+                        <span class="more-text">{{ comment.text }}</span>
+                    {% else %}
+                        {{ comment.text }}
+                    {% endif %}
+                {% elif postDisplayType == "modal" %}
                     {% if commentType == "postDescription" %}
                         {{ comment.text }}
                         <div class="card-post-date">
-                            <span>{{ comment.created_at|dateformat|uppercase }}</span>
+                            <span>{{ comment.created_at|postdateformat|uppercase }}</span>
                         </div>
                     {% else %}
                         {{ comment.text }}
                     {% endif %}
+                {% else %}
+                    {{ comment.text }}
                 {% endif %}
             </span>
 

@@ -3,7 +3,9 @@
 {% block content %}
     <div class="row feed">
         {% if feed|length > 0 %}
-            {% include "feed/_post-feed.html" %}
+            <div class="posts">
+                {% include "feed/_post-feed.html" %}
+            </div>
 
             {% include "feed/_sidebar.html" %}
         {% else %}

@@ -27,6 +27,14 @@ async function deletePost(e) {
     }
 }
 
+$('.posts').infiniteScroll({
+    path: function() {
+            return `/next-feed`;
+    },
+    append: '.card',
+    history: false
+});
+
 function commentReadMore(e) {
     const splicedCommentElement = e.parentElement;
     const fullCommentElement = $("#" + splicedCommentElement.getAttribute("id") + "> span.more-text");

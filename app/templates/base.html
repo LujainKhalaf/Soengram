@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='576-style.css') }}">
 
     <!-- JS (Bootstrap and regular) -->
-    <script src="{{ url_for('static', filename='posts.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"></script>
@@ -42,5 +41,8 @@
                 {% include "common/_footer.html" %}
             </div>
         {% endif %}
+
+        <script src="{{ url_for('static', filename='infinite-scroll.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='posts.js') }}"></script>
     </body>
 </html>

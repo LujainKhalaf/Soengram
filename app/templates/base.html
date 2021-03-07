@@ -23,22 +23,19 @@
     <script src="https://kit.fontawesome.com/fed9caabf6.js" crossorigin="anonymous"></script>
 
 </head>
-<body>
-    {% if session.get('logged_in') %}
-        {% include "common/_header.html" %}
-    {% endif %}
+    <body>
+        {% if session.get('logged_in') %}
+            {% include "common/_header.html" %}
+        {% endif %}
 
-    <div class="container content">
-        {% block content %}{% endblock %}
-    </div>
-
-{#    TODO: Fix to only show at the bottom of a page/window #}
-    {% if request.endpoint != 'user_routes.get_feed' %}
-        <div class="container">
-            {% include "common/_footer.html" %}
+        <div class="container content">
+            {% block content %}{% endblock %}
         </div>
-    {% endif %}
 
-
+        {% if request.endpoint != 'user_routes.get_feed' %}
+            <div class="container">
+                {% include "common/_footer.html" %}
+            </div>
+        {% endif %}
     </body>
 </html>

@@ -45,8 +45,9 @@ i {
     color: black;
 }
 
-button {
-    background-color: #0095F6;
+.btn-primary {
+    background-color: #0095F6 !important;
+    border-color: #0095F6 !important;
 }
 
 .btn:focus {
@@ -54,7 +55,7 @@ button {
     box-shadow: none;
 }
 
-  hr {
+hr {
     height: 1px;
     color: #a6a6a6;
 }
@@ -70,6 +71,10 @@ button {
 .container.content {
     max-width: 975px;
     margin-top: 30px;
+}
+
+.display-inline-block {
+    display: inline-block;
 }
 
 /*********************************/
@@ -363,7 +368,7 @@ button.dropdown-item:focus {
 
 .btn-following {
     background-color: transparent;
-    border-color: black;
+    border-color: #DBDBDB;
     color: black;
 }
 
@@ -472,7 +477,7 @@ button.dropdown-item:focus {
 }
 
 .modal-dialog {
-    max-width: 900px;
+    max-width: 902px;
 }
 
 .modal-image {
@@ -488,9 +493,10 @@ button.dropdown-item:focus {
     width: 330px;
     height: 570px;
     padding: 0;
-    margin-left: -6px;
+    margin-left: -4px;
     display: inline-block;
     vertical-align: top;
+    border-left: 1px solid #E9E9E9;
 }
 
 .modal-post-user-link {
@@ -508,16 +514,24 @@ button.dropdown-item:focus {
     cursor: pointer;
 }
 
-.post-comment {
+.modal .post-comment {
     padding: 6px 0 14px 16px;
     vertical-align: top;
 }
 
-.post-comment-text {
+.modal .post-comment-text {
     display: inline-block;
     margin-left: 10px;
     width: 258px;
     vertical-align: top;
+}
+
+.modal .card-post-date {
+    padding: 4px 15px 0 0;
+}
+
+.modal-post-user-link {
+    padding: 20px 0 6px 16px;
 }
 
 .post-profile-pic,
@@ -535,7 +549,6 @@ button.dropdown-item:focus {
 .post-comment-username {
     color: black;
     font-weight: bold;
-    padding-right: 5px;
 }
 
 .post-username:hover,
@@ -568,12 +581,10 @@ button.dropdown-item:focus {
 }
 
 .feed .posts {
-    /*border: 1px solid blue;*/
     width: 650px;
 }
 
 .feed .sidebar {
-    /*border: 1px solid red;*/
     width: 325px;
     margin-left: 650px;
     padding: 20px 0 6px 10px;
@@ -593,7 +604,6 @@ button.dropdown-item:focus {
     display: inline-block;
     max-width: 230px;
     margin-left: 15px;
-    /*border: 1px solid blue;*/
 }
 
 .feed .sidebar-username {
@@ -616,4 +626,66 @@ button.dropdown-item:focus {
     padding-right: 5px;
     font-size: 12px !important;
     text-align: left;
+}
+
+.card {
+    width: 600px;
+    background-color: white;
+    border-color: #DBDBDB;
+    margin-left: 0;
+}
+
+.card:not(:last-child) {
+    margin-bottom: 60px;
+}
+
+.card:last-child {
+    margin-bottom: 30px;
+}
+
+.card-header {
+    background-color: white;
+}
+
+.card-img {
+    width: 598px;
+    height: 600px;
+}
+
+.card-body {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #DBDBDB;
+}
+
+.card-header-user-info {
+    padding: 8px 0 8px 0;
+}
+
+.card-comments {
+    margin-top: 15px;
+}
+
+.card-comments .post-comment,
+.card-comments-all,
+.card-post-date {
+    padding: 4px 15px 0 15px;
+    vertical-align: top;
+}
+
+.card-comments-all {
+    color: #8E8E8E;
+}
+
+.card-post-date {
+    font-size: 10px !important;
+    color: #8E8E8E;
+}
+
+.read-more {
+    color: #8E8E8E;
+}
+
+.show-read-more .more-text{
+    display: none;
 }

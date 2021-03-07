@@ -26,3 +26,16 @@ async function deletePost(e) {
         document.getElementById("upload-first").classList.remove("invisible")
     }
 }
+
+function commentReadMore(e) {
+    const splicedCommentElement = e.parentElement;
+    const fullCommentElement = $("#" + splicedCommentElement.getAttribute("id") + "> span.more-text");
+
+    // Remove "... more"
+    e.remove();
+
+    const fullCommentText = fullCommentElement.text();
+    fullCommentElement.remove();
+
+    splicedCommentElement.innerText = fullCommentText
+}

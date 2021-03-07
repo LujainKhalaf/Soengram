@@ -5,7 +5,7 @@
     - post: Post
 #}
 {% macro post_modal(user, post) -%}
-    <div class="modal fade" id="post-modal-{{ post.post_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="post-modal-{{ post.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -19,15 +19,15 @@
                                     <span class="post-username align-middle">{{ user.username }}</span>
                                 </a>
                                 {% if is_me %}
-                                    <i class="fa fa-trash-alt" aria-hidden="true" data-post-id="{{ post.post_id }}" onclick="deletePost(this);"></i>
+                                    <i class="fa fa-trash-alt" aria-hidden="true" data-post-id="{{ post.id }}" onclick="deletePost(this);"></i>
                                 {% endif %}
                             </div>
 
                         <hr />
                         {# Post Description #}
-                        {{ post_comment(user, post.description) }}
+                        {{ post_comment(user, post, "postDescription", "modal") }}
 
-                        {# TODO: Add post comments here using post_comment component. Must implement Bootstrap modal scrollable functionality #}
+                        {# TODO: Display comments using post_comment component. Must implement Bootstrap modal scrollable functionality #}
 
                         </div>
                     </div>

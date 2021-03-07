@@ -1,1 +1,7 @@
-<div class="posts"></div>
+{% from "components/post/post_card.html" import post_card with context %}
+
+<div class="posts">
+    {% for post in feed %}
+        {{ post_card(post) }}
+    {% endfor %}
+</div>

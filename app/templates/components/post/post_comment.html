@@ -1,14 +1,40 @@
 {# Params:
     - user: User
-    - comment: String
+    - comment: Post or Comment
+    - commentType: String "postDescription" or "userComment"
+    - postDisplayTyp: String "card" or "modal"
 #}
-{% macro post_comment(user, comment) -%}
+{% macro post_comment(user, comment, commentType, postDisplayType) -%}
+    {% set MIN_SHOW_MORE_CHARACTER_LENGTH = 120 %}
+
     <div class="post-comment">
-        <div style="display: inline-block;">
-            <a href="/{{ user.username }}"><img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-comment-profile-pic rounded-circle"></a>
-        </div>
+        {% if postDisplayType == "modal" %}
+            <div class="display-inline-block">
+                <a href="/{{ user.username }}"><img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-comment-profile-pic rounded-circle"></a>
+            </div>
+        {% endif %}
+
         <div class="post-comment-text">
-            <a href="/{{ user.username }}"><span class="post-comment-username">{{ user.username }}</span></a> {{ comment }}
+            <a href="/{{ user.username }}"><span class="post-comment-username">{{ user.username }}</span></a>
+
+            <span id="comment-{{ comment.id|string }}" class="show-read-more">
+                {% if postDisplayType == "card" and comment.text|length > MIN_SHOW_MORE_CHARACTER_LENGTH %}
+                    {{ comment.text[:MIN_SHOW_MORE_CHARACTER_LENGTH].rstrip() + '...' }}
+                    <a href="javascript:void(0);" onclick="commentReadMore(this)" class="read-more"> more</a>
+                    <span class="more-text">{{ comment.text }}</span>
+                {% else %}
+                    {% if commentType == "postDescription" %}
+                        {{ comment.text }}
+                        <div class="card-post-date">
+                            <span>{{ comment.created_at|dateformat|uppercase }}</span>
+                        </div>
+                    {% else %}
+                        {{ comment.text }}
+                    {% endif %}
+                {% endif %}
+            </span>
+
         </div>
+
     </div>
 {%- endmacro %}

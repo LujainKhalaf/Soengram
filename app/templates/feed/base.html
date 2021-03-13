@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row feed">
+        {% if feed|length > 0 %}
+            <div class="posts">
+                {% include "feed/_post-feed.html" %}
+            </div>
+
+            {% include "feed/_sidebar.html" %}
+        {% else %}
+            <div class="not-following">
+                <div>
+                    <i class="bi bi-person-plus"></i>
+                </div>
+                <h1 class="not-following-title">Your activity feed is empty</h1>
+                <h2 class="not-following-desc">Follow users to see their recent posts.</h2>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

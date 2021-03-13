@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import List
 
+from sqlalchemy.orm import synonym
 from werkzeug.security import check_password_hash
 
 from app.extensions import db
@@ -109,12 +110,14 @@ class Post(db.Model):
     __tablename__ = 'post'
 
     BASE_FEED_OFFSET = 0
-    FEED_OFFSET_INCREMENT = 50
+    FEED_OFFSET_INCREMENT = 10
 
     post_id = db.Column(db.Integer, primary_key=True)
+    id = synonym('post_id')
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2200), nullable=False)
+    text = synonym('description')
     created_at = db.Column(db.DateTime, nullable=False)
     user = db.relationship(
         'User',
@@ -154,9 +157,11 @@ class Comment(db.Model):
     __tablename__ = 'comment'
 
     comment_id = db.Column(db.Integer, primary_key=True)
+    id = synonym('comment_id')
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('post.post_id'), nullable=False)
     comment_text = db.Column(db.String(2200), nullable=False)
+    text = synonym(comment_text)
     created_at = db.Column(db.DateTime, nullable=False)
     user = db.relationship(
         'User',

@@ -1,0 +1,41 @@
+{% from "components/post/post_comment.html" import post_comment with context %}
+
+{# Params:
+    - post: Post
+#}
+{% macro post_card(post) -%}
+    <div id="card-{{ post.id }}" class="card col-12">
+        <div class="card-header">
+            <div class="card-header-user-info">
+                <a href="/{{ post.user.username }}">
+                    <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-profile-pic rounded-circle">
+                    <span class="post-username align-middle">{{ post.user.username }}</span>
+                </a>
+            </div>
+        </div>
+        <img class="card-img rounded-0" src="{{ post.image_url }}">
+        <div class="card-body">
+            <div class="card-comments">
+                {{ post_comment(post.user, post, "postDescription", "card") }}
+
+                {% if post.comments|length > 2 %}
+                    <div class="card-comments-all">
+                    {# TODO: Open post modal on click #}
+                        <span>View all {{ post.comments|length }} comments</span>
+                    </div>
+                {% endif %}
+
+                {# TODO: Display comments using post_comment component (max of 2) #}
+
+                <div class="card-post-date">
+                    <span>{{ post.created_at|postdateformat|uppercase }}</span>
+                </div>
+            </div>
+            <hr>
+            <div class="card-add-comment">
+                {# TODO: Add a comment input #}
+            </div>
+        </div>
+    </div>
+{%- endmacro %}
+

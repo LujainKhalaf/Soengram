@@ -19,12 +19,22 @@ header {
     height: 55px;
     margin: 0;
     padding: 0;
+}
+
+nav {
     border-bottom: 1px solid #DBDBDB;
 }
 
 footer {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #C7C7C7;
+}
+
+footer a,
+footer a:hover {
+    color: #C7C7C7;
 }
 
 a {
@@ -35,8 +45,9 @@ i {
     color: black;
 }
 
-button {
-    background-color: #0095F6;
+.btn-primary {
+    background-color: #0095F6 !important;
+    border-color: #0095F6 !important;
 }
 
 .btn:focus {
@@ -44,7 +55,7 @@ button {
     box-shadow: none;
 }
 
-  hr {
+hr {
     height: 1px;
     color: #a6a6a6;
 }
@@ -62,12 +73,20 @@ button {
     margin-top: 30px;
 }
 
+.display-inline-block {
+    display: inline-block;
+}
+
 /*********************************/
 /* Navbar                        */
 /*********************************/
 
 .navbar {
     max-height: 55px;
+    width: auto;
+}
+
+.navbar > .container-fluid {
     width: 975px;
 }
 
@@ -152,6 +171,10 @@ button.dropdown-item:focus {
 .dropdown-item i {
     padding-right: 10px;
     font-size: 16px;
+}
+
+.display-sm .dropdown-item .navbar-profile {
+    padding-left: 10px;
 }
 
 .nav-item.display-sm {
@@ -349,7 +372,7 @@ button.dropdown-item:focus {
 
 .btn-following {
     background-color: transparent;
-    border-color: black;
+    border-color: #DBDBDB;
     color: black;
 }
 
@@ -440,7 +463,8 @@ button.dropdown-item:focus {
 }
 
 .no-posts-yet-title,
-.upload-first-photo-title {
+.upload-first-photo-title,
+.feed .not-following-title {
     margin-top: 20px;
     text-align: center;
     font-size: 28px;
@@ -457,7 +481,7 @@ button.dropdown-item:focus {
 }
 
 .modal-dialog {
-    max-width: 900px;
+    max-width: 902px;
 }
 
 .modal-image {
@@ -473,9 +497,10 @@ button.dropdown-item:focus {
     width: 330px;
     height: 570px;
     padding: 0;
-    margin-left: -6px;
+    margin-left: -4px;
     display: inline-block;
     vertical-align: top;
+    border-left: 1px solid #E9E9E9;
 }
 
 .modal-post-user-link {
@@ -493,16 +518,24 @@ button.dropdown-item:focus {
     cursor: pointer;
 }
 
-.post-comment {
+.modal .post-comment {
     padding: 6px 0 14px 16px;
     vertical-align: top;
 }
 
-.post-comment-text {
+.modal .post-comment-text {
     display: inline-block;
     margin-left: 10px;
     width: 258px;
     vertical-align: top;
+}
+
+.modal .card-post-date {
+    padding: 4px 15px 0 0;
+}
+
+.modal-post-user-link {
+    padding: 20px 0 6px 16px;
 }
 
 .post-profile-pic,
@@ -520,10 +553,143 @@ button.dropdown-item:focus {
 .post-comment-username {
     color: black;
     font-weight: bold;
-    padding-right: 5px;
 }
 
 .post-username:hover,
 .post-comment-username:hover {
     text-decoration: underline;
+}
+
+/*********************************/
+/* Feed                          */
+/*********************************/
+
+.feed .not-following {
+    width: 975px;
+}
+
+.feed .not-following {
+    margin-top: 60px;
+}
+
+.feed .not-following > div {
+    font-size: 42px;
+    text-align: center;
+}
+
+.feed .not-following-desc {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.feed .posts {
+    width: 650px;
+}
+
+.feed .sidebar {
+    width: 325px;
+    margin-left: 650px;
+    padding: 20px 0 6px 10px;
+    position: fixed;
+}
+
+.feed .sidebar-profile-pic {
+    display: inline-block;
+}
+
+.feed .sidebar-profile-pic img {
+    width: 56px;
+    height: 56px;
+}
+
+.feed .sidebar-user-info {
+    display: inline-block;
+    max-width: 230px;
+    margin-left: 15px;
+}
+
+.feed .sidebar-username {
+    overflow-wrap: break-word;
+    color: black;
+    font-weight: bold;
+}
+
+.feed .sidebar-username:hover {
+    color: black;
+}
+
+.feed .sidebar-fullname {
+    overflow-wrap: break-word;
+    color: #8e8e8e;
+}
+
+.feed .sidebar > footer {
+    margin-top: 5px;
+    padding-right: 5px;
+    font-size: 12px !important;
+    text-align: left;
+}
+
+.card {
+    width: 600px;
+    background-color: white;
+    border-color: #DBDBDB;
+    margin-left: 0;
+}
+
+.card:not(:last-child) {
+    margin-bottom: 60px;
+}
+
+.card:last-child {
+    margin-bottom: 30px;
+}
+
+.card-header {
+    background-color: white;
+}
+
+.card-img {
+    width: 598px;
+    height: 600px;
+}
+
+.card-body {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #DBDBDB;
+}
+
+.card-header-user-info {
+    padding: 8px 0 8px 0;
+}
+
+.card-comments {
+    margin-top: 15px;
+}
+
+.card-comments .post-comment,
+.card-comments-all,
+.card-post-date {
+    padding: 4px 15px 0 15px;
+    vertical-align: top;
+}
+
+.card-comments-all {
+    color: #8E8E8E;
+}
+
+.card-post-date {
+    font-size: 10px !important;
+    color: #8E8E8E;
+}
+
+.read-more {
+    color: #8E8E8E;
+}
+
+.show-read-more .more-text{
+    display: none;
 }

@@ -5,8 +5,8 @@
 
 {% if user.posts|length > 0 %}
     {% for post in user.posts %}
-        <div class="col" id="post-grid-item-{{ post.post_id }}">
-            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#post-modal-{{ post.post_id }}">
+        <div class="col" id="post-grid-item-{{ post.id }}">
+            <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#post-modal-{{ post.id }}">
                 <img src="{{ post.image_url }}" class="gallery-image" alt="">
                 <div class="gallery-item-info">
                     <ul>

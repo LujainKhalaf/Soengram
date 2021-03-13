@@ -100,6 +100,10 @@ Soengram is an educational non-profitable project based on the social networking
 
 Copyright © 2021 Soengram adapted from Instagram and customized by Soengram team
 
+### Libraries
+
+This project uses the following libraries:
+- [Infinite Scroll](https://infinite-scroll.com/), available under the [GNU GPL license v3](https://www.gnu.org/licenses/gpl-3.0.html) containing the following [notices and atrtibutions](https://infinite-scroll.com/license.html).
 
 ## Team
 

@@ -172,6 +172,24 @@ class Comment(db.Model):
     def __repr__(self):
         return f'<Post post_id={self.comment_id}>'
 
+    @staticmethod
+    def insert(comment: Comment) -> None:
+        db.session.add(comment)
+        db.session.commit()
+
+    @staticmethod
+    def get_by_comment_id(comment_id: int) -> Post:
+        return Comment.query.get(comment_id)
+
+    @staticmethod
+    def delete(comment: Comment) -> None:
+        db.session.delete(comment)
+        db.session.commit()
+
+    @staticmethod
+    def is_comment_owned_by_user(comment: Comment, user_id: int) -> bool:
+        return comment and comment.user_id == user_id
+
 
 followers = db.Table(
     'followers',

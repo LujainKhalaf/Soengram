@@ -8,10 +8,12 @@ from app.utils.file import ALLOWED_EXTENSIONS
 
 class CreatePostForm(FlaskForm):
     DESCRIPTION_LENGTH_MAX = 2_200
+    ALLOWED_EXTENSIONS = set([ 'png', 'jpg', 'jpeg', 'gif'])
+
 
     post_image = FileField(
         'Image',
-        render_kw={'style': 'height: auto'},
+        render_kw={'style': 'height: auto', 'onchange':'previewImage(event)', 'accept': 'image/*'},
         validators=[
             FileRequired(message='Must attach a photo'),
             FileAllowed(ALLOWED_EXTENSIONS, 'File type not allowed')

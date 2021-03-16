@@ -35,6 +35,18 @@ $('.posts').infiniteScroll({
     history: false
 });
 
+function previewImage(event) {
+
+    // document.getElementById('description').className = "col-lg-4"; 
+    // document.getElementById('your-image').className = "col-lg-4";
+
+    
+
+    var preview = document.getElementById('your-image');
+    preview.src = URL.createObjectURL(event.target.files[0]);
+    preview.style.display = "block";
+};
+
 function commentReadMore(e) {
     const splicedCommentElement = e.parentElement;
     const fullCommentElement = $("#" + splicedCommentElement.getAttribute("id") + "> span.more-text");

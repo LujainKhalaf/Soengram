@@ -1,0 +1,30 @@
+<div class="post-comment">
+    {% if postDisplayType == "modal" %}
+        <div class="display-inline-block">
+            <a href="/{{ user.username }}"><img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-comment-profile-pic rounded-circle"></a>
+        </div>
+    {% endif %}
+
+    <div class="post-comment-text">
+        <a href="/{{ user.username }}"><span class="post-comment-username">{{ user.username }}</span></a>
+
+        <span id="comment-{{ comment.id|string }}" class="show-read-more">
+                {% if postDisplayType == "card" %}
+                    {{ comment.comment_text }}
+                {% elif postDisplayType == "modal" %}
+                    {% if commentType == "postDescription" %}
+                        {{ comment.comment_text }}
+                        <div class="card-post-date">
+                            <span>{{ comment.created_at|postdateformat|uppercase }}</span>
+                        </div>
+                    {% else %}
+                        {{ comment.comment_text }}
+                    {% endif %}
+                {% else %}
+                    {{ comment.comment_text }}
+                {% endif %}
+            </span>
+
+    </div>
+
+</div>

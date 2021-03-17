@@ -13,22 +13,33 @@
                             <img src="{{ post.image_url }}" class="modal-image" alt="">
                         </div>
                         <div class="modal-post-user-info">
-                            <div class="modal-post-user-link">
-                                <a href="/{{ user.username }}">
-                                    <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-profile-pic rounded-circle">
-                                    <span class="post-username align-middle">{{ user.username }}</span>
-                                </a>
-                                {% if is_me %}
-                                    <i class="fa fa-trash-alt" aria-hidden="true" data-post-id="{{ post.id }}" onclick="deletePost(this);"></i>
-                                {% endif %}
+                            <div class="d-flex flex-column h-100">
+                                <div class="modal-post-user-link">
+                                    <a href="/{{ user.username }}">
+                                        <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-profile-pic rounded-circle">
+                                        <span class="post-username align-middle">{{ user.username }}</span>
+                                    </a>
+                                    {% if is_me %}
+                                        <i class="fa fa-trash-alt" aria-hidden="true" data-post-id="{{ post.id }}" onclick="deletePost(this);"></i>
+                                    {% endif %}
+                                </div>
+
+                                <hr />
+                                {# Post Description #}
+                                {{ post_comment(user, post, "postDescription", "modal") }}
+
+                                <div class="comment-container" id="comment-container-{{ post.id }}">
+                                    {% for comment in post.comments %}
+                                        {{ post_comment(comment.user, comment, "userComment", "card") }}
+                                    {% endfor %}
+                                </div>
+
+                                {# TODO: Display comments using post_comment component. Must implement Bootstrap modal scrollable functionality #}
+                                <div class="form-group mt-auto d-flex flex-row align-items-between mb-3 mx-3">
+                                    <input type="text" class="form-control" id="comment-input-{{ post.id }}" placeholder="Add a comment...">
+                                    <button type="submit" class="btn btn-primary submit-comment-btn" onclick="addComment(this)" data-post-id={{ post.id }}>Post</button>
+                                </div>
                             </div>
-
-                        <hr />
-                        {# Post Description #}
-                        {{ post_comment(user, post, "postDescription", "modal") }}
-
-                        {# TODO: Display comments using post_comment component. Must implement Bootstrap modal scrollable functionality #}
-
                         </div>
                     </div>
                 </div>

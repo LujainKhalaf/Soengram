@@ -2,7 +2,7 @@
     - user: User
     - comment: Post or Comment
     - commentType: String "postDescription" or "userComment"
-    - postDisplayTyp: String "card" or "modal"
+    - postDisplayType: String "card" or "modal"
 #}
 {% macro post_comment(user, comment, commentType, postDisplayType) -%}
     {% set MIN_SHOW_MORE_CHARACTER_LENGTH = 120 %}
@@ -19,24 +19,24 @@
 
             <span id="comment-{{ comment.id|string }}" class="show-read-more">
                 {% if postDisplayType == "card" %}
-                    {% if comment.text|length > MIN_SHOW_MORE_CHARACTER_LENGTH %}
-                        {{ comment.text[:MIN_SHOW_MORE_CHARACTER_LENGTH].rstrip() + '...' }}
+                    {% if comment.comment_text|length > MIN_SHOW_MORE_CHARACTER_LENGTH %}
+                        {{ comment.comment_text[:MIN_SHOW_MORE_CHARACTER_LENGTH].rstrip() + '...' }}
                         <a href="javascript:void(0);" onclick="commentReadMore(this)" class="read-more"> more</a>
-                        <span class="more-text">{{ comment.text }}</span>
+                        <span class="more-text">{{ comment.comment_text }}</span>
                     {% else %}
-                        {{ comment.text }}
+                        {{ comment.comment_text }}
                     {% endif %}
                 {% elif postDisplayType == "modal" %}
                     {% if commentType == "postDescription" %}
-                        {{ comment.text }}
+                        {{ comment.comment_text }}
                         <div class="card-post-date">
                             <span>{{ comment.created_at|postdateformat|uppercase }}</span>
                         </div>
                     {% else %}
-                        {{ comment.text }}
+                        {{ comment.comment_text }}
                     {% endif %}
                 {% else %}
-                    {{ comment.text }}
+                    {{ comment.comment_text }}
                 {% endif %}
             </span>
 

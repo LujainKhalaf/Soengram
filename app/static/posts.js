@@ -47,3 +47,27 @@ function commentReadMore(e) {
 
     splicedCommentElement.innerText = fullCommentText
 }
+
+async function addComment(e) {
+    const postId = await e.getAttribute('data-post-id');
+    console.log(postId)
+    const comment = await document.getElementById(`comment-input-${postId}`);
+    console.log(comment)
+    const commentText = comment.value;
+
+    console.log(commentText);
+
+    const formData = new FormData();
+    formData.append('comment', commentText);
+    formData.append('post_id', postId);
+
+    const res = await fetch('/add-comment', {method: 'POST', body: formData})
+    const commentHTML = await res.text();
+
+    const commentList = document.getElementById(`comment-container-${postId}`);
+    const div = document.createElement('div');
+    div.innerHTML = commentHTML.trim();
+    commentList.prepend(div);
+
+    comment.value = '';
+}

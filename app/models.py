@@ -170,7 +170,7 @@ class Comment(db.Model):
     )
 
     def __repr__(self):
-        return f'<Post post_id={self.comment_id}>'
+        return f'<Comment comment_id={self.comment_id}>'
 
     @staticmethod
     def insert(comment: Comment) -> None:

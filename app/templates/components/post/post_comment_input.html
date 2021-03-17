@@ -1,0 +1,9 @@
+{# Params:
+    - post: Post
+#}
+{% macro post_comment_input(post, component) -%}
+    <div class="form-group mt-auto d-flex flex-row align-items-between mb-3 mx-3">
+        <input type="text" class="form-control" id="comment-input-{{ post.id }}-{{ component }}" placeholder="Add a comment...">
+        <button type="submit" class="btn btn-primary submit-comment-btn" onclick="addComment(this)" data-post-id={{ post.id }} data-component={{ component }}>Post</button>
+    </div>
+{%- endmacro %}

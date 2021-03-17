@@ -679,6 +679,7 @@ button.dropdown-item:focus {
 
 .card-comments-all {
     color: #8E8E8E;
+    cursor: pointer;
 }
 
 .card-post-date {

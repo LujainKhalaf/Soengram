@@ -9,7 +9,7 @@
 
     <div class="post-comment d-flex">
         {% if postDisplayType == "modal" %}
-            <div class="display-inline-block">
+            <div class="display-inline-block comment-profile-img">
                 <a href="/{{ user.username }}"><img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-comment-profile-pic rounded-circle"></a>
             </div>
         {% endif %}

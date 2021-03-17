@@ -1,4 +1,6 @@
 {% from "components/post/post_comment.html" import post_comment with context %}
+{% from "components/post/post_modal.html" import post_modal with context %}
+{% from "components/post/post_comment_input.html" import post_comment_input with context %}
 
 {# Params:
     - post: Post
@@ -19,13 +21,20 @@
                 {{ post_comment(post.user, post, "postDescription", "card") }}
 
                 {% if post.comments|length > 2 %}
-                    <div class="card-comments-all">
-                    {# TODO: Open post modal on click #}
+                    <div class="card-comments-all" data-bs-toggle="modal" data-bs-target="#post-modal-{{ post.id }}">
                         <span>View all {{ post.comments|length }} comments</span>
+                        {{ post_modal(user, post) }}
                     </div>
                 {% endif %}
 
-                {# TODO: Display comments using post_comment component (max of 2) #}
+                <div id="comment-container-{{ post.id }}-card">
+                    {% if post.comments[0] %}
+                        {{ post_comment(user, post.comments[0], "postDescription", "card") }}
+                    {% endif %}
+                    {% if post.comments[1] %}
+                        {{ post_comment(user, post.comments[1], "postDescription", "card") }}
+                    {% endif %}
+                </div>
 
                 <div class="card-post-date">
                     <span>{{ post.created_at|postdateformat|uppercase }}</span>
@@ -33,9 +42,8 @@
             </div>
             <hr>
             <div class="card-add-comment">
-                {# TODO: Add a comment input #}
+                {{ post_comment_input(post, 'card') }}
             </div>
         </div>
     </div>
 {%- endmacro %}
-

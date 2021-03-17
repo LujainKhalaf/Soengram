@@ -699,3 +699,15 @@ button.dropdown-item:focus {
 .show-read-more .more-text{
     display: none;
 }
+
+/*********************************/
+/* Comment                       */
+/*********************************/
+
+.submit-comment-btn {
+    margin-left: 10px;
+}
+
+.comment-container {
+    overflow-y: scroll;
+}

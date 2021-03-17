@@ -21,7 +21,7 @@ def add_comment(user_id: int) -> Any:
             user=comment.user,
             comment=comment,
             commentType='userComment',
-            postDisplayType='card'
+            postDisplayType='modal'
         )
 
     return status_code

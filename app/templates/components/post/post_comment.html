@@ -19,12 +19,12 @@
 
             <span id="comment-{{ comment.id|string }}" class="show-read-more">
                 {% if postDisplayType == "card" %}
-                    {% if comment.comment_text|length > MIN_SHOW_MORE_CHARACTER_LENGTH %}
-                        {{ comment.comment_text[:MIN_SHOW_MORE_CHARACTER_LENGTH].rstrip() + '...' }}
+                    {% if comment.text|length > MIN_SHOW_MORE_CHARACTER_LENGTH %}
+                        {{ comment.text[:MIN_SHOW_MORE_CHARACTER_LENGTH].rstrip() + '...' }}
                         <a href="javascript:void(0);" onclick="commentReadMore(this)" class="read-more"> more</a>
-                        <span class="more-text">{{ comment.comment_text }}</span>
+                        <span class="more-text">{{ comment.text }}</span>
                     {% else %}
-                        {{ comment.comment_text }}
+                        {{ comment.text }}
                     {% endif %}
                 {% elif postDisplayType == "modal" %}
                     {% if commentType == "postDescription" %}
@@ -36,7 +36,7 @@
                         {{ comment.text }}
                     {% endif %}
                 {% else %}
-                    {{ comment.comment_text }}
+                    {{ comment.text }}
                 {% endif %}
             </span>
 

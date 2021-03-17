@@ -28,12 +28,12 @@
                     {% endif %}
                 {% elif postDisplayType == "modal" %}
                     {% if commentType == "postDescription" %}
-                        {{ comment.comment_text }}
+                        {{ comment.text }}
                         <div class="card-post-date">
                             <span>{{ comment.created_at|postdateformat|uppercase }}</span>
                         </div>
                     {% else %}
-                        {{ comment.comment_text }}
+                        {{ comment.text }}
                     {% endif %}
                 {% else %}
                     {{ comment.comment_text }}

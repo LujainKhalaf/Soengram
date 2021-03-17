@@ -30,4 +30,4 @@ class CreatePostForm(FlaskForm):
         ]
     )
 
-    submit = SubmitField("Create a Post")
+    submit = SubmitField("Upload")

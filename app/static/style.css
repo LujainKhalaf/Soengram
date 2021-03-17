@@ -441,10 +441,9 @@ button.dropdown-item:focus {
     font-size: 20px !important;
 }
 
-/*TODO: Uncomment when implementing comments*/
-/*.gallery-item-delete {*/
-/*    margin-left: 2.2rem;*/
-/*}*/
+.gallery-item-delete {
+    margin-left: 2.2rem;
+}
 
 .no-posts-yet,
 .upload-first-photo {

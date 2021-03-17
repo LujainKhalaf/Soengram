@@ -161,7 +161,7 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('post.post_id'), nullable=False)
     comment_text = db.Column(db.String(2200), nullable=False)
-    text = synonym(comment_text)
+    text = synonym('comment_text')
     created_at = db.Column(db.DateTime, nullable=False)
     user = db.relationship(
         'User',
@@ -170,7 +170,7 @@ class Comment(db.Model):
     )
 
     def __repr__(self):
-        return f'<Post post_id={self.comment_id}>'
+        return f'<Comment comment_id={self.comment_id}>'
 
     @staticmethod
     def insert(comment: Comment) -> None:

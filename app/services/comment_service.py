@@ -13,8 +13,8 @@ def add_comment(user_id: int, form: AddCommentForm) -> JSONResponse:
         comment = comment_builder(user_id, form)
 
         Comment.insert(comment)
-        return jsonify('Comment added'), 204
-    return jsonify('Post not found'), 404
+        return comment, 200
+    return None, 404
 
 
 def delete_comment(user_id: int, comment_id: int) -> JSONResponse:

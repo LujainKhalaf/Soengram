@@ -16,14 +16,13 @@ def add_comment(user_id: int) -> Any:
     comment, status_code = comment_service.add_comment(user_id, form)
 
     if comment:
-        template = render_template(
+        return render_template(
             'components/post/_post_comment.html',
             user=comment.user,
             comment=comment,
             commentType='userComment',
             postDisplayType='card'
         )
-        return template
 
     return status_code
 

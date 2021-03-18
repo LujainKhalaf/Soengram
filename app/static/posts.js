@@ -65,6 +65,7 @@ async function addComment(e) {
     const formData = new FormData();
     formData.append('comment', commentText);
     formData.append('post_id', postId);
+    formData.append('component', component);
 
     const res = await fetch('/add-comment', {method: 'POST', body: formData})
     const commentHTML = await res.text();

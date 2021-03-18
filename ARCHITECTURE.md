@@ -14,7 +14,7 @@ The controller layer is very lean and only handles the routing of our applicatio
 
 ### Service
 
-The service layer allows for the re-use of some buisness logic between our controllers and models. We can also use this layer to interact with other systems such as the file system, further validate user input, and validate database output before the controller layer. This, again, allows for very slim controllers who have the very basic purpose of HTTP routing, and prevents the over crowding of our models with non-model related business logic.
+The service layer allows for the re-use of some business logic between our controllers and models. We can also use this layer to interact with other systems such as the file system, further validate user input, and validate database output before the controller layer. This, again, allows for very slim controllers who have the very basic purpose of HTTP routing, and prevents the overcrowding of our models with non-model related business logic.
 
 ### Model
 

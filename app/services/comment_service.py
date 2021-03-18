@@ -17,17 +17,6 @@ def add_comment(user_id: int, form: AddCommentForm) -> JSONResponse:
     return None, 404
 
 
-def delete_comment(user_id: int, comment_id: int) -> JSONResponse:
-    comment = Comment.get_by_comment_id(comment_id)
-
-    if not Comment.is_comment_owned_by_user(comment, user_id):
-        return jsonify('Comment not found'), 404
-
-    Comment.delete(comment)
-
-    return jsonify('Comment deleted'), 204
-
-
 def comment_builder(user_id: int, form: AddCommentForm) -> Comment:
     return Comment(
         user_id=user_id,

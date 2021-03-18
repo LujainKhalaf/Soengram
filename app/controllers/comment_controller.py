@@ -19,8 +19,7 @@ def add_comment(user_id: int) -> Any:
         return render_template(
             'components/post/_post_comment.html',
             comment=comment,
-            commentType='userComment',
-            postDisplayType=form.component.data
+            commentType='userComment'
         )
 
     return status_code

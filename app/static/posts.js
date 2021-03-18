@@ -65,15 +65,31 @@ async function addComment(e) {
     const formData = new FormData();
     formData.append('comment', commentText);
     formData.append('post_id', postId);
-    formData.append('component', component);
 
     const res = await fetch('/add-comment', {method: 'POST', body: formData})
     const commentHTML = await res.text();
 
-    const commentList = document.getElementById(`comment-container-${postId}-${component}`);
     const div = document.createElement('div');
     div.innerHTML = commentHTML.trim();
-    commentList.prepend(div);
+    const cardCommentHTML = div.children[0];
+    const modalCommentHTML = div.children[1];
+
+    // Add comment to card
+    const cardCommentList = document.getElementById(`comment-container-${postId}-card`);
+    if (cardCommentList !== null && cardCommentList !== undefined) {
+        cardCommentList.prepend(cardCommentHTML);
+    }
+
+    // Add comment to modal
+    const modalCommentList = document.getElementById(`comment-container-${postId}-modal`);
+    if (modalCommentList !== null && modalCommentList !== undefined) {
+        modalCommentList.prepend(modalCommentHTML);
+    }
+
+    // const commentList = document.getElementById(`comment-container-${postId}-${component}`);
+    // const div = document.createElement('div');
+    // div.innerHTML = commentHTML.trim();
+    // commentList.prepend(div);
 
     comment.value = '';
 

@@ -7,9 +7,9 @@
 {% macro post_comment(user, comment, commentType, postDisplayType) -%}
     {% set MIN_SHOW_MORE_CHARACTER_LENGTH = 120 %}
 
-    <div class="post-comment">
+    <div class="post-comment d-flex">
         {% if postDisplayType == "modal" %}
-            <div class="display-inline-block comment-profile-img">
+            <div class="display-inline-block">
                 <a href="/{{ user.username }}"><img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="post-comment-profile-pic rounded-circle"></a>
             </div>
         {% endif %}

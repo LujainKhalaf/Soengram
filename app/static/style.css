@@ -447,9 +447,10 @@ button.dropdown-item:focus {
     font-size: 20px !important;
 }
 
-.gallery-item-delete {
-    margin-left: 2.2rem;
-}
+/*TODO: Uncomment when implementing comments*/
+/*.gallery-item-delete {*/
+/*    margin-left: 2.2rem;*/
+/*}*/
 
 .no-posts-yet,
 .upload-first-photo {
@@ -531,14 +532,8 @@ button.dropdown-item:focus {
 .modal .post-comment-text {
     display: inline-block;
     margin-left: 10px;
-    width: 245px;
+    width: 258px;
     vertical-align: top;
-    overflow-wrap: break-word;
-}
-
-.post-comment-text > a {
-    float: left;
-    padding-right: 5px;
 }
 
 .modal .card-post-date {
@@ -690,7 +685,6 @@ button.dropdown-item:focus {
 
 .card-comments-all {
     color: #8E8E8E;
-    cursor: pointer;
 }
 
 .card-post-date {
@@ -715,17 +709,5 @@ button.dropdown-item:focus {
 }
 
 .comment-container {
-    height: 407px;
     overflow-y: scroll;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.comment-container::-webkit-scrollbar {
-  display: none;
-}
-
- /*Hide scrollbar for IE, Edge and Firefox */
-.comment-container {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }

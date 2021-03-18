@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, TextAreaField, HiddenField, StringField
+from wtforms import SubmitField, TextAreaField, HiddenField
 from wtforms.validators import DataRequired, Length
 
 
@@ -22,6 +22,5 @@ class AddCommentForm(FlaskForm):
             )
         ]
     )
-    component = StringField('Component')
 
     submit = SubmitField("Post")

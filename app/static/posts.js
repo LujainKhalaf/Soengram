@@ -59,6 +59,8 @@ async function addComment(e) {
     const component = await e.getAttribute('data-component');
     const comment = await document.getElementById(`comment-input-${postId}-${component}`);
     const commentText = comment.value;
+    const postButton = $(`#btn-comment-submit-${postId}-${component}`);
+    postButton.addClass('disabled');
 
     const formData = new FormData();
     formData.append('comment', commentText);
@@ -78,4 +80,16 @@ async function addComment(e) {
     // Update post comment count
     let postCommentCount = $(`#comment-count-${postId}`);
     postCommentCount.text(parseInt(postCommentCount.text())+1);
+}
+
+function changePostButtonState(e) {
+    const postId = e.getAttribute('data-post-id');
+    const component = e.getAttribute('data-component');
+    const postButton = $(`#btn-comment-submit-${postId}-${component}`);
+
+    if (e.value === "") {
+        postButton.addClass('disabled');
+    } else {
+        postButton.removeClass('disabled');
+    }
 }

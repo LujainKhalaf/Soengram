@@ -18,10 +18,18 @@ def add_comment(user_id: int) -> Any:
     if comment:
         return render_template(
             'components/post/_post_comment.html',
+            user=comment.user,
             comment=comment,
             commentType='userComment',
-            postDisplayType=form.component.data
+            postDisplayType='modal'
         )
 
     return status_code
+
+
+@comment_routes.route('/delete-comment', methods=['DELETE'])
+@login_required
+def delete_comment(user_id: int) -> Any:
+    comment_id = request.form.get('comment_id')
+    return comment_service.delete_comment(user_id, comment_id)
 

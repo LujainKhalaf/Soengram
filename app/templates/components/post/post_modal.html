@@ -1,4 +1,5 @@
 {% from "components/post/post_comment.html" import post_comment with context %}
+{% from "components/post/post_comment_input.html" import post_comment_input with context %}
 
 {# Params:
     - user: User
@@ -29,17 +30,14 @@
                                     {# Post Description #}
                                     {{ post_comment(user, post, "postDescription", "modal") }}
 
-                                    <div id="comment-container-{{ post.id }}">
+                                    <div id="comment-container-{{ post.id }}-modal">
                                         {% for comment in post.comments %}
                                             {{ post_comment(comment.user, comment, "userComment", "modal") }}
                                         {% endfor %}
                                     </div>
                                 </div>
-                                {# TODO: Display comments using post_comment component. Must implement Bootstrap modal scrollable functionality #}
-                                <div class="form-group mt-auto d-flex flex-row align-items-between mb-3 mx-3">
-                                    <input type="text" class="form-control" id="comment-input-{{ post.id }}" placeholder="Add a comment...">
-                                    <button type="submit" class="btn btn-primary submit-comment-btn" onclick="addComment(this)" data-post-id={{ post.id }}>Post</button>
-                                </div>
+                                <hr />
+                                {{ post_comment_input(post, 'modal') }}
                             </div>
                         </div>
                     </div>

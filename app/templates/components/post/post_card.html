@@ -23,7 +23,6 @@
                 {% if post.comments|length > 2 %}
                     <div class="card-comments-all" data-bs-toggle="modal" data-bs-target="#post-modal-{{ post.id }}">
                         <span>View all {{ post.comments|length }} comments</span>
-                        {{ post_modal(user, post) }}
                     </div>
                 {% endif %}
 

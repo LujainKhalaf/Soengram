@@ -447,10 +447,6 @@ button.dropdown-item:focus {
     font-size: 20px !important;
 }
 
-.gallery-item-delete {
-    margin-left: 2.2rem;
-}
-
 .no-posts-yet,
 .upload-first-photo {
     margin: auto;

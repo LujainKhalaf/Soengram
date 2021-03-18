@@ -74,4 +74,8 @@ async function addComment(e) {
     commentList.prepend(div);
 
     comment.value = '';
+
+    // Update post comment count
+    let postCommentCount = $(`#comment-count-${postId}`);
+    postCommentCount.text(parseInt(postCommentCount.text())+1);
 }

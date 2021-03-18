@@ -447,6 +447,10 @@ button.dropdown-item:focus {
     font-size: 20px !important;
 }
 
+.gallery-item-comments .fa-comment {
+    padding-right: 8px;
+}
+
 .no-posts-yet,
 .upload-first-photo {
     margin: auto;

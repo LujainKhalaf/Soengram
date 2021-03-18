@@ -22,7 +22,7 @@
 
                 {% if post.comments|length > 2 %}
                     <div class="card-comments-all" data-bs-toggle="modal" data-bs-target="#post-modal-{{ post.id }}">
-                        <span>View all {{ post.comments|length }} comments</span>
+                        <span>View all <span id="comment-count-{{ post.id }}">{{ post.comments|length }}</span> comments</span>
                     </div>
                 {% endif %}
 

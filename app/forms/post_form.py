@@ -11,7 +11,7 @@ class CreatePostForm(FlaskForm):
 
     post_image = FileField(
         'Image',
-        render_kw={'style': 'height: auto', 'onchange': 'previewImage(event)'},
+        render_kw={'style': 'height: auto', 'onchange':'previewImage(event)', 'accept': 'image/*'},
         validators=[
             FileRequired(message='Must attach a photo'),
             FileAllowed(ALLOWED_EXTENSIONS, 'File type not allowed')

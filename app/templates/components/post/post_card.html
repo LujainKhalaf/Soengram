@@ -1,5 +1,5 @@
 {% from "components/post/post_comment.html" import post_comment with context %}
-
+{% from "components/post/post_modal.html" import post_modal with context %}
 {# Params:
     - post: Post
 #}
@@ -19,9 +19,10 @@
                 {{ post_comment(post.user, post, "postDescription", "card") }}
 
                 {% if post.comments|length > 2 %}
-                    <div class="card-comments-all">
+                    <div class="card-comments-all "data-bs-toggle="modal" data-bs-target="#post-modal-{{ post.id }}" in line 22 on post_card.html>
                     {# TODO: Open post modal on click #}
                         <span>View all {{ post.comments|length }} comments</span>
+                        {{ post_modal(user, post) }}
                     </div>
                 {% endif %}
 

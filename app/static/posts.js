@@ -35,6 +35,12 @@ $('.posts').infiniteScroll({
     history: false
 });
 
+function previewImage(event) {
+    const preview = document.getElementById('preview-image');
+    preview.src = URL.createObjectURL(event.target.files[0]);
+    preview.style.display = "block";
+}
+
 function commentReadMore(e) {
     const splicedCommentElement = e.parentElement;
     const fullCommentElement = $("#" + splicedCommentElement.getAttribute("id") + "> span.more-text");

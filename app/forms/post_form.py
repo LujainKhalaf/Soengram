@@ -11,7 +11,7 @@ class CreatePostForm(FlaskForm):
 
     post_image = FileField(
         'Image',
-        render_kw={'style': 'height: auto'},
+        render_kw={'style': 'height: auto', 'onchange':'previewImage(event)', 'accept': 'image/*'},
         validators=[
             FileRequired(message='Must attach a photo'),
             FileAllowed(ALLOWED_EXTENSIONS, 'File type not allowed')
@@ -20,7 +20,7 @@ class CreatePostForm(FlaskForm):
 
     description = TextAreaField(
         'Caption',
-        render_kw={'rows': 5, 'style': 'height: auto'},
+        render_kw={'rows': 5, 'style': 'height: 100%'},
         validators=[
             DataRequired(message='Caption Required'),
             Length(
@@ -30,4 +30,4 @@ class CreatePostForm(FlaskForm):
         ]
     )
 
-    submit = SubmitField("Create a Post")
+    submit = SubmitField("Upload")

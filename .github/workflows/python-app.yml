@@ -24,9 +24,9 @@ jobs:
     - name: Lint
       run: |
         flake8 . --exit-zero --count --max-complexity=10 --max-line-length=88 --statistics --exclude=./migrations,./venv
-    - name: Autoformat
-      run: |
-        black . --check --exclude \migrations
+#    - name: Autoformat
+#      run: |
+#        black . --check --exclude \migrations
     - name: Cyclomatic complexity
       run: |
         radon cc . -a -s -i venv,migrations

@@ -83,7 +83,7 @@ class User(db.Model):
         db.session.commit()
 
     @staticmethod
-    def is_authenticated(user_by_email: User, password: User) -> bool:
+    def is_authenticated(user_by_email: User, password: str) -> bool:
         if not user_by_email:
             return False
 

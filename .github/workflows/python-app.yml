@@ -33,9 +33,9 @@ jobs:
     - name: Maintainability index
       run: |
         radon mi . -i venv,migrations
-    - name: Static type checking
-      run: |
-        mypy . --exclude migrations --ignore-missing-imports
+#    - name: Static type checking
+#      run: |
+#        mypy . --exclude migrations --ignore-missing-imports
     - name: Test
       run: |
         pytest --cov=app -v

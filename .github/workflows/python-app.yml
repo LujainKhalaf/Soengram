@@ -33,7 +33,7 @@ jobs:
     - name: Maintainability index
       run: |
         radon mi . -i venv,migrations
-    - Static type checking
+    - name: Static type checking
       run: |
         mypy . --exclude migrations --ignore-missing-imports
     - name: Test

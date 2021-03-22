@@ -23,5 +23,5 @@ def create_post(user_id: int) -> Any:
 @post_routes.route("/delete-post", methods=["DELETE"])
 @login_required
 def delete_post(user_id: int) -> Any:
-    post_id = request.form.get("post_id")
+    post_id = request.form.get("post_id", type=int) or -1
     return post_service.delete_post(user_id, post_id)

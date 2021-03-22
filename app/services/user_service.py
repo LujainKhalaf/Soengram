@@ -19,7 +19,7 @@ def get_feed_with_offset(user_id: int) -> JSONResponse:
         return jsonify("No posts found"), 404
 
     # rendering the html to be implemented when view is created
-    return render_template("feed/_post-feed.html", feed=feed)
+    return render_template("feed/_post-feed.html", feed=feed), 200
 
 
 def get_followers(username: str) -> JSONResponse:

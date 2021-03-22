@@ -177,7 +177,7 @@ class Comment(db.Model):
         return comment and comment.user_id == user_id
 
 
-followers = db.Table(
+followers: db.Table = db.Table(
     "followers",
     db.Column("user_id", db.Integer, db.ForeignKey("user.user_id"), primary_key=True),
     db.Column(

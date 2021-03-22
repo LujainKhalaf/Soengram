@@ -15,7 +15,7 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
-folder_dir = os.getenv("POST_UPLOAD_FOLDER") + "seed/"
+folder_dir = os.getenv("POST_UPLOAD_FOLDER") or "" + "seed/"
 description_text = (
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula sollicitudin nibh, "
     "ac imperdiet leo laoreet quis. Duis risus ex, facilisis sed eros vitae, semper condimentum neque "
@@ -43,12 +43,6 @@ for index, user in enumerate(users):
     )
 
 conn.commit()
-
-folder_dir = os.getenv("POST_UPLOAD_FOLDER") + "seed/"
-description_text = (
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula sollicitudin nibh, "
-    "ac imperdiet leo laoreet quis. Duis risus ex, facilisis sed eros vitae, semper condimentum neque "
-)
 
 user1_posts = [
     {"user_id": 1, "image_url": f"{folder_dir}{i}.jpg", "description": description_text}

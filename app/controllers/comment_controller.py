@@ -1,5 +1,5 @@
 from typing import Any
-from flask import request, Blueprint, render_template
+from flask import Blueprint, render_template
 from app.services import comment_service
 from app.utils.session import login_required
 from app.forms.comment_form import AddCommentForm

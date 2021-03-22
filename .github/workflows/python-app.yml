@@ -23,7 +23,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint
       run: |
-        flake8 . --exit-zero --count --max-complexity=10 --max-line-length=88 --statistics --exclude=./migrations,./venv
+        flake8 . --exit-zero --count --max-complexity=10 --max-line-length=120 --statistics --exclude=./migrations,./venv
     - name: Autoformat
       run: |
         black . --check --exclude \migrations

@@ -1,5 +1,3 @@
-from flask import jsonify
-
 from app.forms.comment_form import AddCommentForm
 from app.models import Comment, Post
 from app.utils.entities import JSONResponse

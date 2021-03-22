@@ -22,11 +22,11 @@ def delete_post(user_id: int, post_id: int) -> JSONResponse:
     post = Post.get_by_post_id(post_id)
 
     if not Post.is_post_owned_by_user(post, user_id):
-        return jsonify('Post not found'), 404
+        return jsonify("Post not found"), 404
 
     Post.delete(post)
 
-    return jsonify('Post deleted'), 204
+    return jsonify("Post deleted"), 204
 
 
 def upload_post_image(file: Any, image_url: str) -> None:
@@ -35,11 +35,11 @@ def upload_post_image(file: Any, image_url: str) -> None:
 
 def post_builder(user_id: int, form: CreatePostForm) -> Post:
     file = form.post_image.data
-    filename = f'{uuid.uuid1().hex}.{get_file_extension(file.filename)}'
+    filename = f"{uuid.uuid1().hex}.{get_file_extension(file.filename)}"
 
     return Post(
         user_id=user_id,
         image_url=get_image_url(filename),
         description=form.description.data,
-        created_at=datetime.now()
+        created_at=datetime.now(),
     )

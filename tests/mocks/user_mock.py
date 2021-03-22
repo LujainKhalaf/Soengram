@@ -7,10 +7,10 @@ from app.utils.entities import SerializedUser
 def create_mock_user() -> User:
     return User(
         user_id=1,
-        username='username1',
-        full_name='first last',
-        email='test@email.com',
-        password=generate_password_hash('password')
+        username="username1",
+        full_name="first last",
+        email="test@email.com",
+        password=generate_password_hash("password"),
     )
 
 

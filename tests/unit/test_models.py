@@ -10,7 +10,7 @@ def test_user_constructor():
 
     assert type(user) is User
     assert user.user_id == 1
-    assert user.username == 'username1'
+    assert user.username == "username1"
 
 
 def test_user_serialize():
@@ -18,13 +18,13 @@ def test_user_serialize():
 
     assert type(serialized_user) is SerializedUser
     assert serialized_user.user_id == 1
-    assert not hasattr(serialized_user, 'password')
+    assert not hasattr(serialized_user, "password")
 
 
 def test_is_authenticated():
     user = create_mock_user()
 
-    assert User.is_authenticated(user, 'password')
+    assert User.is_authenticated(user, "password")
 
 
 def test_post_constructor():
@@ -33,7 +33,7 @@ def test_post_constructor():
     assert type(post) is Post
     assert post.post_id == 1
     assert post.user_id == 1
-    assert post.description == 'description'
+    assert post.description == "description"
 
 
 def test_is_post_owned_by_user():
@@ -49,7 +49,7 @@ def test_comment_constructor():
     assert comment.comment_id == 1
     assert comment.post_id == 1
     assert comment.user_id == 1
-    assert comment.comment_text == 'comment text'
+    assert comment.comment_text == "comment text"
 
 
 def test_is_comment_owned_by_user():

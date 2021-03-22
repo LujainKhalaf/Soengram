@@ -5,10 +5,10 @@ from app.utils.session import login_required
 from app.forms.comment_form import AddCommentForm
 
 
-comment_routes = Blueprint('comment_routes', __name__)
+comment_routes = Blueprint("comment_routes", __name__)
 
 
-@comment_routes.route('/add-comment', methods=['POST'])
+@comment_routes.route("/add-comment", methods=["POST"])
 @login_required
 def add_comment(user_id: int) -> Any:
     form = AddCommentForm()
@@ -17,10 +17,9 @@ def add_comment(user_id: int) -> Any:
 
     if comment:
         return render_template(
-            'components/post/_post_comment.html',
+            "components/post/_post_comment.html",
             comment=comment,
-            commentType='userComment'
+            commentType="userComment",
         )
 
     return status_code
-

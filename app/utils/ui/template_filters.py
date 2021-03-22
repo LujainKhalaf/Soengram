@@ -1,10 +1,10 @@
 from flask import Blueprint
 from datetime import datetime, date
 
-jinga = Blueprint('jinga', __name__)
+jinga = Blueprint("jinga", __name__)
 
 
-@jinga.app_template_filter('postdateformat')
+@jinga.app_template_filter("postdateformat")
 def post_date_format(value):
     if value is None:
         return ""
@@ -15,6 +15,6 @@ def post_date_format(value):
     return value.strftime(f"%B %d, %Y").lstrip("0").replace(" 0", " ")
 
 
-@jinga.app_template_filter('uppercase')
+@jinga.app_template_filter("uppercase")
 def uppercase(value):
     return value.upper()

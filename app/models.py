@@ -9,7 +9,7 @@ from app.utils.entities import SerializedUser
 
 
 class User(db.Model):
-    __tablename__ = 'user'
+    __tablename__ = "user"
 
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -18,21 +18,18 @@ class User(db.Model):
     full_name = db.Column(db.String(50), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     posts: List[Post] = db.relationship(
-        'Post',
-        back_populates='user',
-        lazy='select',
-        order_by='desc(Post.created_at)'
+        "Post", back_populates="user", lazy="select", order_by="desc(Post.created_at)"
     )
     following = db.relationship(
-        'User',
+        "User",
         secondary=lambda: followers,
         primaryjoin=lambda: (followers.c.user_id == User.user_id),
         secondaryjoin=lambda: (followers.c.following_id == User.user_id),
-        backref='followers'
+        backref="followers",
     )
 
     def __repr__(self):
-        return f'<User username={self.username}>'
+        return f"<User username={self.username}>"
 
     def serialize(self) -> SerializedUser:
         return SerializedUser(
@@ -40,7 +37,7 @@ class User(db.Model):
             username=self.username,
             email=self.email,
             full_name=self.full_name,
-            created_at=self.created_at
+            created_at=self.created_at,
         )
 
     def get_following(self) -> List[SerializedUser]:
@@ -91,14 +88,14 @@ class User(db.Model):
 
     @staticmethod
     def get_feed_by_user_id(user_id: int, offset: int) -> List[Post]:
-        query = f'''
+        query = f"""
             SELECT post_id
             FROM post
             JOIN followers f ON post.user_id = f.following_id
             WHERE {user_id} = f.user_id
             ORDER BY post.created_at DESC
             OFFSET {offset} LIMIT {Post.FEED_OFFSET_INCREMENT}
-        '''
+        """
 
         # will be an iterable of rows with 1 element being the post_id
         rows = db.session.execute(query)
@@ -107,32 +104,25 @@ class User(db.Model):
 
 
 class Post(db.Model):
-    __tablename__ = 'post'
+    __tablename__ = "post"
 
     BASE_FEED_OFFSET = 0
     FEED_OFFSET_INCREMENT = 10
 
     post_id = db.Column(db.Integer, primary_key=True)
-    id = synonym('post_id')
-    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
+    id = synonym("post_id")
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
     image_url = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2200), nullable=False)
-    text = synonym('description')
+    text = synonym("description")
     created_at = db.Column(db.DateTime, nullable=False)
-    user = db.relationship(
-        'User',
-        back_populates='posts',
-        lazy='select'
-    )
+    user = db.relationship("User", back_populates="posts", lazy="select")
     comments: List[Comment] = db.relationship(
-        'Comment',
-        backref='post',
-        lazy='select',
-        order_by='desc(Comment.created_at)'
+        "Comment", backref="post", lazy="select", order_by="desc(Comment.created_at)"
     )
 
     def __repr__(self):
-        return f'<Post post_id={self.post_id}>'
+        return f"<Post post_id={self.post_id}>"
 
     @staticmethod
     def insert(post: Post) -> None:
@@ -154,23 +144,19 @@ class Post(db.Model):
 
 
 class Comment(db.Model):
-    __tablename__ = 'comment'
+    __tablename__ = "comment"
 
     comment_id = db.Column(db.Integer, primary_key=True)
-    id = synonym('comment_id')
-    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
-    post_id = db.Column(db.Integer, db.ForeignKey('post.post_id'), nullable=False)
+    id = synonym("comment_id")
+    user_id = db.Column(db.Integer, db.ForeignKey("user.user_id"), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey("post.post_id"), nullable=False)
     comment_text = db.Column(db.String(2200), nullable=False)
-    text = synonym('comment_text')
+    text = synonym("comment_text")
     created_at = db.Column(db.DateTime, nullable=False)
-    user = db.relationship(
-        'User',
-        backref='comments',
-        lazy='select'
-    )
+    user = db.relationship("User", backref="comments", lazy="select")
 
     def __repr__(self):
-        return f'<Comment comment_id={self.comment_id}>'
+        return f"<Comment comment_id={self.comment_id}>"
 
     @staticmethod
     def insert(comment: Comment) -> None:
@@ -192,7 +178,9 @@ class Comment(db.Model):
 
 
 followers = db.Table(
-    'followers',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.user_id'), primary_key=True),
-    db.Column('following_id', db.Integer, db.ForeignKey('user.user_id'), primary_key=True)
+    "followers",
+    db.Column("user_id", db.Integer, db.ForeignKey("user.user_id"), primary_key=True),
+    db.Column(
+        "following_id", db.Integer, db.ForeignKey("user.user_id"), primary_key=True
+    ),
 )

@@ -16,3 +16,11 @@ def create_mock_user() -> User:
 
 def create_mock_serialized_user() -> SerializedUser:
     return create_mock_user().serialize()
+
+
+def mock_user_get_by_user_id(_) -> User:
+    return create_mock_user()
+
+
+def mock_user_get_by_username(_) -> User:
+    return create_mock_user()

@@ -1,7 +1,7 @@
 from typing import Any
 from flask import Blueprint, render_template, jsonify, request
 from app.models import User
-from app.utils.session import login_required, set_user_feed_offset, get_feed_offset
+from app.utils.session import login_required, set_user_feed_offset
 from app.services import user_service
 from app.models import Post
 

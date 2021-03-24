@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{# Params:
+    - list: User
+#}
+{% macro followers_following(status, list) -%}
+    <!-- Modal -->
+        <div class="modal fade" id="{{ status }}-count-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-sm" id="modal-following">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">{{ 'Following' if status == 'following' else 'Followers' }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="followers-following-modal">
+                        <div style="margin-left: 10px;">
+                            {% for user in list %}
+                                <br>
+                                <div class="display-inline-block comment-profile-img">
+                                    <a href="/{{ user.username }}"><img
+                                            src="{{ url_for('static', filename='assets/default-profile-picture.png') }}"
+                                            class="post-comment-profile-pic rounded-circle"></a>
+                                </div>
+                                <div class="post-comment-text">
+                                    <a href="/{{ user.username }}"><span
+                                            class="post-comment-username">{{ user.username }}</span></a>
+                                    <div>
+                                        <br>
+                                        <span>{{ user.full_name }}</span>
+                                    </div>
+                                </div>
+                                <br>
+                            {% endfor %}
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -->
+{%- endmacro %}

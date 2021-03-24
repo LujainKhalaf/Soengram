@@ -485,6 +485,10 @@ button.dropdown-item:focus {
     max-width: 902px;
 }
 
+#modal-following{
+    width: 400px;
+}
+
 .modal-image {
     width: 570px;
     height: 570px;

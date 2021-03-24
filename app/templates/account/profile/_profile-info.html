@@ -18,9 +18,51 @@
                 <li><a href="#"><span class="profile-stat-count"
                                       id="follow-button-follower-count">{{ user.followers|length }}</span> followers</a>
                 </li>
-                <li><a href="#"><span class="profile-stat-count">{{ user.following|length }}</span> following</a></li>
+                <li>
+                    <button type="button" style="border: none; background-color: transparent;" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"><a href="#"><span
+                            class="profile-stat-count">{{ user.following|length }}</span> following</a>
+                    </button>
+                </li>
             </ul>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Following</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="margin-left: 10px;">
+                            {% for user in user.following %}
+                                <br>
+                                <div class="display-inline-block comment-profile-img">
+                                    <a href="/{{ user.username }}"><img
+                                            src="{{ url_for('static', filename='assets/default-profile-picture.png') }}"
+                                            class="post-comment-profile-pic rounded-circle"></a>
+                                </div>
+                                <div class="post-comment-text">
+                                    <a href="/{{ user.username }}"><span
+                                            class="post-comment-username">{{ user.username }}</span></a>
+                                <div>
+                                    <br>
+                                    <span>{{ user.full_name }}</span>
+                                </div>
+                                </div>
+                                <br>
+                            {% endfor %}
+                        <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- -->
         <div class="profile-bio">
             <p class="profile-full-name">{{ user.full_name }}</p>
         </div>

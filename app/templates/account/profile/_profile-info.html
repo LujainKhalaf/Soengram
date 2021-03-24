@@ -20,7 +20,7 @@
                     <button type="button" style="border: none; background-color: transparent;"
                             data-bs-toggle="modal"
                             data-bs-target="#followers-count-modal"><a href="#"><span
-                            class="profile-stat-count">{{ user.followers|length }}</span> followers</a>
+                            class="profile-stat-count" id="follow-button-follower-count">{{ user.followers|length }}</span> followers</a>
                     </button>
                     {{ followers_following('followers', user.followers) }}
                 </li>

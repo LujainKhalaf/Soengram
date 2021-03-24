@@ -1,5 +1,3 @@
-from flask import jsonify
-
 from app.forms.comment_form import AddCommentForm
 from app.models import Comment, Post
 from app.utils.entities import JSONResponse
@@ -22,5 +20,5 @@ def comment_builder(user_id: int, form: AddCommentForm) -> Comment:
         user_id=user_id,
         post_id=form.post_id.data,
         comment_text=form.comment.data,
-        created_at=datetime.now()
+        created_at=datetime.now(),
     )

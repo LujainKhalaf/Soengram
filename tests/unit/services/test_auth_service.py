@@ -16,7 +16,7 @@ def test_user_session_builder():
 
     assert type(user_session) is UserSession
     assert user_session.user_id == 1
-    assert user_session.username == 'username1'
+    assert user_session.username == "username1"
 
 
 def test_user_builder():
@@ -24,5 +24,5 @@ def test_user_builder():
     user = user_builder(cast(SignupForm, form))
 
     assert type(user) is User
-    assert user.username == 'username1'
-    assert check_password_hash(user.password, 'password')
+    assert user.username == "username1"
+    assert check_password_hash(user.password, "password")

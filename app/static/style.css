@@ -491,6 +491,16 @@ button.dropdown-item:focus {
 
 #modal-following{
     width: 400px;
+    height: 500px;
+    position: center;
+    overflow-y: scroll;
+
+}
+
+.modal-title{
+    display:inline;
+    width:500px;
+    text-align:center;
 }
 
 .modal-image {
@@ -532,7 +542,8 @@ button.dropdown-item:focus {
     vertical-align: top;
 }
 
-.modal .post-comment-text {
+.modal .post-comment-text,
+.follower-following-modal{
     display: inline-block;
     margin-left: 10px;
     width: 245px;
@@ -552,7 +563,7 @@ button.dropdown-item:focus {
 .modal-post-user-link {
     padding: 20px 0 6px 16px;
 }
-
+.follower-following-profile-pic,
 .post-profile-pic,
 .post-comment-profile-pic {
     width: 32px;
@@ -565,7 +576,8 @@ button.dropdown-item:focus {
     font-weight: bold;
 }
 
-.post-comment-username {
+.post-comment-username,
+.follower-following-username{
     color: black;
     font-weight: bold;
 }
@@ -717,7 +729,6 @@ button.dropdown-item:focus {
 .submit-comment-btn {
     margin-left: 10px;
 }
-
 .comment-container {
     height: 407px;
     overflow-y: scroll;

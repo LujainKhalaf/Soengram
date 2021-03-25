@@ -11,20 +11,19 @@
                         <h5 class="modal-title" id="staticBackdropLabel">{{ 'Following' if status == 'following' else 'Followers' }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" id="followers-following-modal">
+                    <div class="modal-body" id="followers-following-modal modal-following">
                         <div id="modal-{{status}}" style="margin-left: 10px;">
                             {% for user in list %}
                                 <div class="py-2" id="follower-list-item-{{user.user_id}}">
-                                <div class="display-inline-block comment-profile-img">
+                                <div class="display-inline-block">
                                     <a href="/{{ user.username }}"><img
                                             src="{{ url_for('static', filename='assets/default-profile-picture.png') }}"
-                                            class="post-comment-profile-pic rounded-circle"></a>
+                                            class="follower-following-profile-pic rounded-circle"></a>
                                 </div>
-                                <div class="post-comment-text">
+                                <div class="follower-following-modal">
                                     <a href="/{{ user.username }}"><span
-                                            class="post-comment-username">{{ user.username }}</span></a>
+                                            class="follower-following-username">{{ user.username }}</span></a>
                                     <div>
-                                        <br>
                                         <span>{{ user.full_name }}</span>
                                     </div>
                                 </div>
@@ -37,5 +36,4 @@
             </div>
         </div>
 
-        <!-- -->
 {%- endmacro %}

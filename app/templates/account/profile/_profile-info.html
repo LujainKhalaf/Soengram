@@ -16,20 +16,13 @@
         <div class="profile-stats">
             <ul>
                 <li><span id="profile-post-count" class="profile-stat-count">{{ user.posts|length }}</span> posts</li>
-                <li>
-                    <button type="button" style="border: none; background-color: transparent;"
-                            data-bs-toggle="modal"
-                            data-bs-target="#followers-count-modal"><a href="#"><span
+                <li data-bs-toggle="modal" data-bs-target="#followers-count-modal">
+                    <a href="#"><span
                             class="profile-stat-count" id="follow-button-follower-count">{{ user.followers|length }}</span> followers</a>
-                    </button>
                     {{ followers_following_modal('followers', user.followers) }}
                 </li>
-                <li>
-                    <button type="button" style="border: none; background-color: transparent;"
-                            data-bs-toggle="modal"
-                            data-bs-target="#following-count-modal"><a href="#"><span
-                            class="profile-stat-count">{{ user.following|length }}</span> following</a>
-                    </button>
+                <li data-bs-toggle="modal" data-bs-target="#following-count-modal">
+                    <a href="#"><span class="profile-stat-count">{{ user.following|length }}</span> following</a>
                     {{ followers_following_modal('following', user.following) }}
                 </li>
             </ul>

@@ -14,9 +14,12 @@ class SigninForm(FlaskForm):
         "Email",
         validators=[
             DataRequired(message="Enter an email address."),
-            Length(max=EMAIL_LENGTH_MAX, message=f"Email cannot be more than {EMAIL_LENGTH_MAX} characters long."),
-            Email(message="Enter a valid email address.")
-        ]
+            Length(
+                max=EMAIL_LENGTH_MAX,
+                message=f"Email cannot be more than {EMAIL_LENGTH_MAX} characters long.",
+            ),
+            Email(message="Enter a valid email address."),
+        ],
     )
 
     password = PasswordField(
@@ -26,9 +29,9 @@ class SigninForm(FlaskForm):
             Length(
                 min=PASSWORD_LENGTH_MIN,
                 max=PASSWORD_LENGTH_MAX,
-                message=f"Password must be {PASSWORD_LENGTH_MIN} to {PASSWORD_LENGTH_MAX} characters long."
-            )
-        ]
+                message=f"Password must be {PASSWORD_LENGTH_MIN} to {PASSWORD_LENGTH_MAX} characters long.",
+            ),
+        ],
     )
 
     sign_in = SubmitField("Sign In")
@@ -40,7 +43,7 @@ class SigninForm(FlaskForm):
         user = User.get_by_email(self.email.data)
 
         if not User.is_authenticated(user, self.password.data):
-            self.email.errors.append('Incorrect username and/or password.')
+            self.email.errors.append("Incorrect username and/or password.")
             return False
 
         return True

@@ -1,3 +1,5 @@
 {% from "components/post/post_comment.html" import post_comment with context %}
 
-{{ post_comment(comment.user, comment, commentType, postDisplayType) }}
+{{ post_comment(comment.user, comment, commentType, 'card') }}
+
+{{ post_comment(comment.user, comment, commentType, 'modal') }}

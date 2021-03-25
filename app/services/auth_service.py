@@ -32,12 +32,9 @@ def user_builder(form: SignupForm) -> User:
         email=form.email.data,
         password=generate_password_hash(form.password.data),
         full_name=form.full_name.data,
-        created_at=datetime.now()
+        created_at=datetime.now(),
     )
 
 
 def user_session_builder(user: User) -> UserSession:
-    return UserSession(
-        user_id=user.user_id,
-        username=user.username
-    )
+    return UserSession(user_id=user.user_id, username=user.username)

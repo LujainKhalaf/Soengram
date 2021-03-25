@@ -59,6 +59,8 @@ async function addComment(e) {
     const component = await e.getAttribute('data-component');
     const comment = await document.getElementById(`comment-input-${postId}-${component}`);
     const commentText = comment.value;
+    const postButton = $(`#btn-comment-submit-${postId}-${component}`);
+    postButton.addClass('disabled');
 
     const formData = new FormData();
     formData.append('comment', commentText);
@@ -68,10 +70,43 @@ async function addComment(e) {
     const res = await fetch('/add-comment', {method: 'POST', body: formData})
     const commentHTML = await res.text();
 
-    const commentList = document.getElementById(`comment-container-${postId}-${component}`);
     const div = document.createElement('div');
     div.innerHTML = commentHTML.trim();
-    commentList.prepend(div);
+    const cardCommentHTML = div.children[0];
+    const modalCommentHTML = div.children[1];
+
+    // Add comment to card
+    const cardCommentList = document.getElementById(`comment-container-${postId}-card`);
+    if (cardCommentList !== null && cardCommentList !== undefined) {
+        cardCommentList.prepend(cardCommentHTML);
+    }
+
+    // Add comment to modal
+    const modalCommentList = document.getElementById(`comment-container-${postId}-modal`);
+    if (modalCommentList !== null && modalCommentList !== undefined) {
+        modalCommentList.prepend(modalCommentHTML);
+    }
+
+    // const commentList = document.getElementById(`comment-container-${postId}-${component}`);
+    // const div = document.createElement('div');
+    // div.innerHTML = commentHTML.trim();
+    // commentList.prepend(div);
 
     comment.value = '';
+
+    // Update post comment count
+    let postCommentCount = $(`#comment-count-${postId}`);
+    postCommentCount.text(parseInt(postCommentCount.text())+1);
+}
+
+function changePostButtonState(e) {
+    const postId = e.getAttribute('data-post-id');
+    const component = e.getAttribute('data-component');
+    const postButton = $(`#btn-comment-submit-${postId}-${component}`);
+
+    if (e.value === "") {
+        postButton.addClass('disabled');
+    } else {
+        postButton.removeClass('disabled');
+    }
 }

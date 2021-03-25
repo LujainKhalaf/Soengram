@@ -34,7 +34,7 @@ def get_user(user_id: int, username: str) -> Any:
         return "No user found", 404
 
     is_me = user.user_id == user_id
-    return render_template('account/profile/base.html', user=user, is_me=is_me, me=me)
+    return render_template("account/profile/base.html", user=user, is_me=is_me, me=me)
 
 
 @user_routes.route("/<username>/followers", methods=["GET"])

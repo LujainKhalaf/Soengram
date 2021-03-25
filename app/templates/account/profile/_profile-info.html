@@ -9,7 +9,7 @@
         <div class="profile-user-settings ">
             <h2 class="profile-user-name">{{ user.username }}
                 {% if not is_me %}
-                    {{ follow_button(session.get("logged_in").get("username") in user.followers|map(attribute="username"), user) }}
+                    {{ follow_button(session.get("logged_in").get("username") in user.followers|map(attribute="username"), user, me) }}
                 {% endif %}
             </h2>
         </div>

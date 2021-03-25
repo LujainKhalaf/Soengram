@@ -28,12 +28,13 @@ def get_next_feed(user_id: int) -> Any:
 @login_required
 def get_user(user_id: int, username: str) -> Any:
     user = User.get_by_username(username)
+    me = User.get_by_user_id(user_id)
 
     if not user:
         return 'No user found', 404
 
     is_me = user.user_id == user_id
-    return render_template('account/profile/base.html', user=user, is_me=is_me)
+    return render_template('account/profile/base.html', user=user, is_me=is_me, me=me)
 
 
 @user_routes.route('/<username>/followers', methods=['GET'])

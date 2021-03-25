@@ -12,9 +12,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body" id="followers-following-modal">
-                        <div style="margin-left: 10px;">
+                        <div id="modal-{{status}}" style="margin-left: 10px;">
                             {% for user in list %}
-                                <br>
+                                <div class="pt-3" id="follower-list-item-{{user.user_id}}">
                                 <div class="display-inline-block comment-profile-img">
                                     <a href="/{{ user.username }}"><img
                                             src="{{ url_for('static', filename='assets/default-profile-picture.png') }}"
@@ -28,7 +28,8 @@
                                         <span>{{ user.full_name }}</span>
                                     </div>
                                 </div>
-                                <br>
+                                </div>
+
                             {% endfor %}
                             <br>
                         </div>

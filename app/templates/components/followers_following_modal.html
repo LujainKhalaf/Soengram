@@ -14,7 +14,7 @@
                     <div class="modal-body" id="followers-following-modal">
                         <div id="modal-{{status}}" style="margin-left: 10px;">
                             {% for user in list %}
-                                <div class="pt-3" id="follower-list-item-{{user.user_id}}">
+                                <div class="py-2" id="follower-list-item-{{user.user_id}}">
                                 <div class="display-inline-block comment-profile-img">
                                     <a href="/{{ user.username }}"><img
                                             src="{{ url_for('static', filename='assets/default-profile-picture.png') }}"

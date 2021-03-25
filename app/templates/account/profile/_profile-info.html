@@ -1,5 +1,5 @@
 {% from "components/follow_button.html" import follow_button with context %}
-{% from "components/followers_following_list.html" import followers_following with context %}
+{% from "components/followers_following_modal.html" import followers_following_modal with context %}
 
 <div class="row profile-info">
     <div class="profile-image col-3">
@@ -22,7 +22,7 @@
                             data-bs-target="#followers-count-modal"><a href="#"><span
                             class="profile-stat-count" id="follow-button-follower-count">{{ user.followers|length }}</span> followers</a>
                     </button>
-                    {{ followers_following('followers', user.followers) }}
+                    {{ followers_following_modal('followers', user.followers) }}
                 </li>
                 <li>
                     <button type="button" style="border: none; background-color: transparent;"
@@ -30,7 +30,7 @@
                             data-bs-target="#following-count-modal"><a href="#"><span
                             class="profile-stat-count">{{ user.following|length }}</span> following</a>
                     </button>
-                    {{ followers_following('following', user.following) }}
+                    {{ followers_following_modal('following', user.following) }}
                 </li>
             </ul>
         </div>

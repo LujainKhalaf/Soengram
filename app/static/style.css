@@ -533,7 +533,7 @@ button.dropdown-item:focus {
 }
 
 .follower-following-modal-body {
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 400px;
 }
 

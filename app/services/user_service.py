@@ -46,7 +46,10 @@ def follow_user(user_id: int, user_id_to_follow: int) -> JSONResponse:
 
     User.add_to_following(user_id, user_id_to_follow)
     user = User.get_by_user_id(user_id)
-    return render_template("components/following_modal/_following-item.html", user=user), 200
+    return (
+        render_template("components/following_modal/_following-item.html", user=user),
+        200,
+    )
 
 
 def unfollow_user(user_id: int, user_id_to_remove: int) -> JSONResponse:

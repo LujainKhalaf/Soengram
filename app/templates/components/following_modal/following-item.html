@@ -3,22 +3,18 @@
 #}
 {% macro following_item(user) -%}
     <div class="d-flex m-3" id="follower-list-item-{{ user.user_id }}">
-        <div class="display-inline-block">
-            <a href="/{{ user.username }}">
-                <img
-                    src="{{ url_for('static', filename='assets/default-profile-picture.png') }}"
-                    class="follower-following-profile-pic rounded-circle"
-                    alt="profile-picture"
-                >
-            </a>
-        </div>
+        <a href="/{{ user.username }}">
+            <img
+                src="{{ url_for('static', filename='assets/default-profile-picture.png') }}"
+                class="follower-following-profile-pic rounded-circle"
+                alt="profile-picture"
+            >
+        </a>
         <div class="d-flex flex-column mx-3">
             <a href="/{{ user.username }}">
                 <span class="follower-following-username">{{ user.username }}</span>
             </a>
-            <div>
-                <span>{{ user.full_name }}</span>
-            </div>
+            <span>{{ user.full_name }}</span>
         </div>
     </div>
 {%- endmacro %}

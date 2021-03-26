@@ -489,13 +489,13 @@ button.dropdown-item:focus {
     max-width: 902px;
 }
 
-#modal-following{
-    width: 400px;
-    height: 500px;
-    position: center;
-    overflow-y: scroll;
+/*.follower-following-modal {*/
+/*    width: 400px;*/
+/*    height: 500px;*/
+/*    position: center;*/
+/*    overflow-y: scroll;*/
 
-}
+/*}*/
 
 .modal-title{
     display:inline;

@@ -15,7 +15,9 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
-folder_dir = os.getenv("POST_UPLOAD_FOLDER") or "" + "seed/"
+post_upload_folder = os.getenv("POST_UPLOAD_FOLDER") or ""
+folder_dir = post_upload_folder + "seed/"
+
 description_text = (
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula sollicitudin nibh, "
     "ac imperdiet leo laoreet quis. Duis risus ex, facilisis sed eros vitae, semper condimentum neque "

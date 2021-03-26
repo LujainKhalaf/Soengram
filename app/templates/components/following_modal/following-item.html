@@ -2,7 +2,7 @@
     - user: User
 #}
 {% macro following_item(user) -%}
-    <div class="py-2" id="follower-list-item-{{ user.user_id }}">
+    <div class="d-flex m-3" id="follower-list-item-{{ user.user_id }}">
         <div class="display-inline-block">
             <a href="/{{ user.username }}">
                 <img
@@ -12,7 +12,7 @@
                 >
             </a>
         </div>
-        <div class="follower-following-modal">
+        <div class="d-flex flex-column mx-3">
             <a href="/{{ user.username }}">
                 <span class="follower-following-username">{{ user.username }}</span>
             </a>

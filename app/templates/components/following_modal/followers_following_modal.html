@@ -9,14 +9,14 @@
     <div class="modal fade" id="{{ status }}-count-modal" data-bs-backdrop="static" data-bs-keyboard="false"
          tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-sm follower-following-modal" id="modal-following">
+        <div class="modal-dialog modal-sm follower-following-modal-wrapper">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">{{ 'Following' if status == 'following' else 'Followers' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="followers-following-modal modal-following">
-                    <div id="modal-{{ status }}" style="margin-left: 10px;">
+                <div class="modal-body">
+                    <div id="modal-{{ status }}" class="follower-following-modal-body">
                         {% for user in list %}
                             {{ following_item(user) }}
                         {% endfor %}

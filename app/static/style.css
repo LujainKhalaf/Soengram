@@ -489,20 +489,6 @@ button.dropdown-item:focus {
     max-width: 902px;
 }
 
-/*.follower-following-modal {*/
-/*    width: 400px;*/
-/*    height: 500px;*/
-/*    position: center;*/
-/*    overflow-y: scroll;*/
-
-/*}*/
-
-.modal-title{
-    display:inline;
-    width:500px;
-    text-align:center;
-}
-
 .modal-image {
     width: 570px;
     height: 570px;
@@ -542,8 +528,16 @@ button.dropdown-item:focus {
     vertical-align: top;
 }
 
-.modal .post-comment-text,
-.follower-following-modal{
+.follower-following-modal-wrapper {
+    max-width: 300px;
+}
+
+.follower-following-modal-body {
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+.modal .post-comment-text {
     display: inline-block;
     margin-left: 10px;
     width: 245px;

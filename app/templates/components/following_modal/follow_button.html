@@ -5,7 +5,7 @@
 #}
 {% macro follow_button(following, user, my_user_id) -%}
     <button
-        id="follow-button" class="btn {{ 'btn-following' if following else 'btn-primary' }} shadow-none"
+        id="follow-button" class="btn {{ 'btn-follow' if following else 'btn-primary' }} shadow-none"
         onclick="follow(this)" data-user-id="{{ user.user_id }}" data-current-user-id="{{ my_user_id }}"
     >
         {{ 'Following' if following else 'Follow' }}
@@ -25,7 +25,7 @@
 
                 followButton.innerText = 'Following';
                 followButton.title = 'Following';
-                followButton.className = 'btn btn-following';
+                followButton.className = 'btn btn-follow';
 
                 const listUserHTML = await res.text();
                 const list = document.getElementById('modal-followers');

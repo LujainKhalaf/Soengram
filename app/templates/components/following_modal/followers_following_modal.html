@@ -5,18 +5,15 @@
     - list: User
 #}
 {% macro followers_following_modal(status, list) -%}
-    <!-- Modal -->
-    <div class="modal fade" id="{{ status }}-count-modal" data-bs-backdrop="static" data-bs-keyboard="false"
-         tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm follower-following-modal-wrapper">
+    <div class="modal fade" id="{{ status }}-count-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered modal-follow">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">{{ 'Following' if status == 'following' else 'Followers' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="modal-{{ status }}" class="follower-following-modal-body">
+                    <div id="modal-{{ status }}" class="follow-body">
                         {% for user in list %}
                             {{ following_item(user) }}
                         {% endfor %}

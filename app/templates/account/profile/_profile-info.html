@@ -16,10 +16,10 @@
         <div class="profile-stats">
             <ul>
                 <li><span id="profile-post-count" class="profile-stat-count">{{ user.posts|length }}</span> posts</li>
-                <li data-bs-toggle="modal" data-bs-target="#followers-count-modal" role="button">
+                <li class="{{ 'pe-none' if user.followers|length == 0 }}" data-bs-toggle="modal" data-bs-target="#followers-count-modal" role="button">
                     <span class="profile-stat-count" id="follow-button-follower-count">{{ user.followers|length }}</span> followers
                 </li>
-                <li data-bs-toggle="modal" data-bs-target="#following-count-modal" role="button">
+                <li class="{{ 'pe-none' if user.following|length == 0 }}" data-bs-toggle="modal" data-bs-target="#following-count-modal" role="button">
                     <span class="profile-stat-count">{{ user.following|length }}</span> following
                 </li>
             </ul>

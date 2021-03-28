@@ -44,8 +44,16 @@
             }
 
             const followerCount = document.getElementById('follow-button-follower-count');
-            const currentCount = parseInt(followerCount.innerText)
+            const currentCount = parseInt(followerCount.innerText);
+
             followerCount.innerText = isFollowing ? `${currentCount + 1}` : `${currentCount - 1}`;
+
+            // Disable/Enable ability to display the followers modal
+            if (parseInt(followerCount.innerText) === 0) {
+                $("li[data-bs-target='#followers-count-modal']").addClass('pe-none');
+            } else {
+                $("li[data-bs-target='#followers-count-modal']").removeClass('pe-none');
+            }
         }
     </script>
 {%- endmacro %}

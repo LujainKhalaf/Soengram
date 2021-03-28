@@ -87,11 +87,6 @@ async function addComment(e) {
         modalCommentList.prepend(modalCommentHTML);
     }
 
-    // const commentList = document.getElementById(`comment-container-${postId}-${component}`);
-    // const div = document.createElement('div');
-    // div.innerHTML = commentHTML.trim();
-    // commentList.prepend(div);
-
     comment.value = '';
 
     // Update post comment count

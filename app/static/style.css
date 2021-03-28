@@ -376,10 +376,45 @@ button.dropdown-item:focus {
     font-weight: bold;
 }
 
-.btn-following {
+.btn-follow {
     background-color: transparent;
     border-color: #DBDBDB;
     color: black;
+}
+
+.modal-follow .modal-header {
+    height: 40px;
+}
+
+.modal-follow .modal-title {
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+.modal-follow .btn-close {
+    position: absolute;
+    right: 1rem;
+}
+
+.modal-follow {
+    width: 350px;
+}
+
+.modal-body .follow-body {
+    overflow-y: auto;
+    height: 310px;
+}
+
+.follow-user-info {
+    display: inline-block;
+    max-width: 250px;
+    margin-left: 15px;
+}
+
+.follow-username:hover {
+    color: black;
+    font-size: 14px ;
+    text-decoration: underline;
 }
 
 /*********************************/
@@ -548,7 +583,7 @@ button.dropdown-item:focus {
 .modal-post-user-link {
     padding: 20px 0 6px 16px;
 }
-
+.follow-profile-pic,
 .post-profile-pic,
 .post-comment-profile-pic {
     width: 32px;
@@ -621,19 +656,24 @@ button.dropdown-item:focus {
     margin-left: 15px;
 }
 
-.feed .sidebar-username {
+.feed .sidebar-username,
+.follow-username {
     overflow-wrap: break-word;
     color: black;
     font-weight: bold;
+    font-size: 14px;
 }
 
 .feed .sidebar-username:hover {
     color: black;
+    font-size: 14px ;
 }
 
-.feed .sidebar-fullname {
+.feed .sidebar-fullname,
+.follow-fullname {
     overflow-wrap: break-word;
     color: #8e8e8e;
+    font-size: 14px;
 }
 
 .feed .sidebar > footer {
@@ -713,7 +753,6 @@ button.dropdown-item:focus {
 .submit-comment-btn {
     margin-left: 10px;
 }
-
 .comment-container {
     height: 407px;
     overflow-y: scroll;
@@ -721,11 +760,11 @@ button.dropdown-item:focus {
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .comment-container::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
  /*Hide scrollbar for IE, Edge and Firefox */
 .comment-container {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }

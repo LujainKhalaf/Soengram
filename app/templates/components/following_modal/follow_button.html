@@ -1,0 +1,59 @@
+{# Params:
+    - following: Boolean
+    - user: User
+    - me: Logged in user
+#}
+{% macro follow_button(following, user, my_user_id) -%}
+    <button
+        id="follow-button" class="btn {{ 'btn-follow' if following else 'btn-primary' }} shadow-none"
+        onclick="follow(this)" data-user-id="{{ user.user_id }}" data-current-user-id="{{ my_user_id }}"
+    >
+        {{ 'Following' if following else 'Follow' }}
+    </button>
+
+    <script>
+        async function follow(e) {
+            const userId = await e.getAttribute('data-user-id');
+            const formData = new FormData();
+            formData.append('user_id', userId);
+
+            const followButton = document.getElementById('follow-button');
+            const isFollowing = followButton.innerText === 'Follow';
+            const currentUserId = await e.getAttribute('data-current-user-id');
+            if (isFollowing) {
+                const res = await fetch('/follow', {method: 'POST', body: formData});
+
+                followButton.innerText = 'Following';
+                followButton.title = 'Following';
+                followButton.className = 'btn btn-follow';
+
+                const listUserHTML = await res.text();
+                const list = document.getElementById('modal-followers');
+                const div = document.createElement('div');
+                div.innerHTML = listUserHTML.trim();
+                list.append(div);
+            } else {
+                await fetch('/unfollow', {method: 'POST', body: formData});
+
+                followButton.innerText = 'Follow';
+                followButton.title = 'Follow';
+                followButton.className = 'btn btn-primary';
+
+                const listuser = document.getElementById(`follower-list-item-${currentUserId}`);
+                listuser.parentNode.removeChild(listuser);
+            }
+
+            const followerCount = document.getElementById('follow-button-follower-count');
+            const currentCount = parseInt(followerCount.innerText);
+
+            followerCount.innerText = isFollowing ? `${currentCount + 1}` : `${currentCount - 1}`;
+
+            // Disable/Enable ability to display the followers modal
+            if (parseInt(followerCount.innerText) === 0) {
+                $("li[data-bs-target='#followers-count-modal']").addClass('pe-none');
+            } else {
+                $("li[data-bs-target='#followers-count-modal']").removeClass('pe-none');
+            }
+        }
+    </script>
+{%- endmacro %}

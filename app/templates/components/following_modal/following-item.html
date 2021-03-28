@@ -1,0 +1,14 @@
+{# Params:
+    - user: User
+#}
+{% macro following_item(user) -%}
+    <div class="d-flex m-3" id="follower-list-item-{{ user.user_id }}">
+        <a href="/{{ user.username }}">
+            <img src="{{ url_for('static', filename='assets/default-profile-picture.png') }}" class="follow-profile-pic rounded-circle" alt="profile-picture">
+        </a>
+        <div class="follow-user-info">
+            <a href="/{{ user.username }}" class="follow-username">{{ user.username }}</a><br>
+            <span class="follow-fullname">{{ user.full_name }}</span>
+        </div>
+    </div>
+{%- endmacro %}

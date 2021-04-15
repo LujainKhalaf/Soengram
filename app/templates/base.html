@@ -36,12 +36,6 @@
             {% block content %}{% endblock %}
         </div>
 
-        {% if request.endpoint != 'user_routes.get_feed' %}
-            <div class="container">
-                {% include "common/_footer.html" %}
-            </div>
-        {% endif %}
-
         <script src="{{ url_for('static', filename='infinite-scroll.min.js') }}"></script>
         <script src="{{ url_for('static', filename='posts.js') }}"></script>
     </body>

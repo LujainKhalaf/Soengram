@@ -70,7 +70,6 @@ hr {
 
 .container.content {
     max-width: 975px;
-    margin-top: 30px;
 }
 
 .display-inline-block {
@@ -262,24 +261,24 @@ button.dropdown-item:focus {
 /* Create Post                   */
 /*********************************/
 
-.container.create_post {
+.container.create-post {
     width: 600px;
     border: 1px solid #dbdbdb;
     background-color: white;
     padding: 0 0 34px 0;
 }
 
-.create_post-title {
+.create-post-title {
     margin: 22px auto 12px;
     text-align: center;
 }
 
-.create_post-form {
+.create-post-form {
     padding: 0 40px 0 40px;
     margin-top: 30px;
 }
 
-.create_post-form .form-control {
+.create-post-form .form-control {
     margin-top: 5px;
     height: 36px;
     font-size: 12px;
@@ -287,7 +286,7 @@ button.dropdown-item:focus {
     border-radius: 3px;
 }
 
-.create_post-form .row .btn {
+.create-post-form .row .btn {
     margin-top: 15px;
     width: 268px;
     border-radius: 5px;
@@ -304,6 +303,10 @@ button.dropdown-item:focus {
 /*********************************/
 /* Profile - Info                */
 /*********************************/
+
+.profile {
+    margin-top: 30px;
+}
 
 .profile-info {
     height: auto;
@@ -423,6 +426,7 @@ button.dropdown-item:focus {
 
 .post-gallery {
     margin: auto;
+    padding-bottom: 40px;
 }
 
 .post-gallery > .col {
@@ -603,6 +607,10 @@ button.dropdown-item:focus {
 /*********************************/
 /* Feed                          */
 /*********************************/
+
+.feed {
+    margin-top: 30px;
+}
 
 .feed .not-following {
     width: 975px;

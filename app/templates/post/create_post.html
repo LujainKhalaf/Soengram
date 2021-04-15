@@ -6,10 +6,10 @@
 
 {% block content %}
 
-<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
-    <div class="container create_post">
-        <h1 class="create_post-title">Create a Post</h1>
-        <form class="create_post-form" action="/post" method="POST" enctype="multipart/form-data">
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center" style="margin-top: -55px;">
+    <div class="container create-post">
+        <h1 class="create-post-title">Create a Post</h1>
+        <form class="create-post-form" action="/post" method="POST" enctype="multipart/form-data">
             {{ form.csrf_token }}
 
             <div class="error-group">

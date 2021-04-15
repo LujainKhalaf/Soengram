@@ -3,15 +3,15 @@
 {% block title %}{{ user.full_name }}{% endblock %}
 
 {% block content %}
+    <div class="profile">
+        {# Acknowledgement:
+            Some HTML and CSS code structure was taken from https://codepen.io/GeorgePark/pen/VXrwOP
+        #}
 
-    {# Acknowledgement:
-        Some HTML and CSS code structure was taken from https://codepen.io/GeorgePark/pen/VXrwOP
-    #}
+        {% include "account/profile/_profile_info.html" %}
 
-    {% include "account/profile/_profile_info.html" %}
+        <hr/>
 
-    <hr/>
-
-    {% include "account/profile/_post_gallery.html" %}
-
+        {% include "account/profile/_post_gallery.html" %}
+    </div>
 {% endblock %}

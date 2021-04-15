@@ -1,5 +1,5 @@
-{% from "components/following_modal/follow_button.html" import follow_button with context %}
-{% from "components/following_modal/followers_following_modal.html" import followers_following_modal with context %}
+{% from "components/follow/follow_button.html" import follow_button with context %}
+{% from "components/follow/follow_modal.html" import follow_modal with context %}
 
 <div class="row profile-info">
     <div class="profile-image col-3">
@@ -28,6 +28,6 @@
             <p class="profile-full-name">{{ user.full_name }}</p>
         </div>
     </div>
-    {{ followers_following_modal('following', user.following) }}
-    {{ followers_following_modal('followers', user.followers) }}
+    {{ follow_modal('following', user.following) }}
+    {{ follow_modal('followers', user.followers) }}
 </div>

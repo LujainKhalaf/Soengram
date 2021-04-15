@@ -432,9 +432,6 @@ button.dropdown-item:focus {
 .gallery-image {
     width: 293px;
     height: 293px;
-    /* TODO: Uncomment and remove above width and height when implementing responsiveness*/
-    /*width: 100%;*/
-    /*height: 100%;*/
     object-fit: cover;
 }
 
@@ -454,9 +451,6 @@ button.dropdown-item:focus {
     top: 0;
     width: 293px;
     height: 293px;
-    /* TODO: Uncomment and remove above width and height when implementing responsiveness*/
-    /*width: 100%;*/
-    /*height: 100%;*/
     background-color: rgba(0, 0, 0, 0.3);
 }
 

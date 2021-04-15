@@ -1,10 +1,10 @@
-{% from "components/following_modal/following-item.html" import following_item with context %}
+{% from "components/follow/follow_item.html" import follow_item with context %}
 
 {# Params:
     - status: label for model, following or followers
     - list: User
 #}
-{% macro followers_following_modal(status, list) -%}
+{% macro follow_modal(status, list) -%}
     <div class="modal fade" id="{{ status }}-count-modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered modal-follow">
             <div class="modal-content">
@@ -15,7 +15,7 @@
                 <div class="modal-body">
                     <div id="modal-{{ status }}" class="follow-body">
                         {% for user in list %}
-                            {{ following_item(user) }}
+                            {{ follow_item(user) }}
                         {% endfor %}
                     </div>
                 </div>
